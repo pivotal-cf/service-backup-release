@@ -22,6 +22,9 @@ networks:
   - range: 10.244.8.0/30
     reserved: [10.244.8.1]
     cloud_properties: {}
+  - range: 10.244.8.4/30
+    reserved: [10.244.8.5]
+    cloud_properties: {}
 
 resource_pools:
 - name: service-backup

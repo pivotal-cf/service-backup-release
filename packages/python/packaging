@@ -1,0 +1,14 @@
+set -eux
+
+version="2.7.8"
+name="Python-${version}"
+archive=python/${name}.tgz
+
+tar zxf ${archive}
+
+pushd ${name}
+  ./configure --prefix=${BOSH_INSTALL_TARGET}
+
+  make
+  make install
+popd
