@@ -18,3 +18,7 @@ blobs
 
 /bin
 /pkg
+
+# Development dependencies
+src/github.com/vito/gosub/
+src/github.com/codegangsta/cli/

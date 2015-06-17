@@ -32,6 +32,8 @@ function sync_package() {
   )
 }
 
+sync_package service-backup -app github.com/pivotal-cf-experimental/service-backup
+
 wait
 
 git diff --name-only packages/*/spec

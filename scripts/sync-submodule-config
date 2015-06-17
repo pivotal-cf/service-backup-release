@@ -6,5 +6,7 @@ go get github.com/vito/gosub
 go install github.com/vito/gosub
 
 {
-  gosub list
+  gosub list \
+    -test github.com/pivotal-cf-experimental/service-backup/... \
+    -app  github.com/pivotal-cf-experimental/service-backup/... 
 } | xargs gosub sync
