@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -e -x
+
+go get github.com/vito/gosub
+go install github.com/vito/gosub
+
+{
+  gosub list
+} | xargs gosub sync
