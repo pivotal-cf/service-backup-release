@@ -1,0 +1,5 @@
+---
+name: service-backup
+templates:
+  ctl.erb: bin/ctl
+packages:
