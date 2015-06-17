@@ -4,6 +4,12 @@ RUN_DIR=/var/vcap/sys/run/service-backup
 LOG_DIR=/var/vcap/sys/log/service-backup
 PIDFILE=${RUN_DIR}/pid
 
+export AWS_ACCESS_KEY_ID=<%= p('service-backup.blobstore.access_key_id') %>
+export AWS_SECRET_ACCESS_KEY=<%= p('service-backup.blobstore.secret_access_key') %>
+BUCKET_NAME=<%= p('service-backup.blobstore.bucket_name') %>
+BUCKET_PATH=<%= p('service-backup.blobstore.bucket_path') %>
+BLOBSTORE_ENDPOINT_URL=<%= p('service-backup.blobstore.endpoint_url') %>
+
 case $1 in
 
   start)
@@ -11,8 +17,20 @@ case $1 in
     chown -R vcap:vcap $RUN_DIR $LOG_DIR
     echo $$ >> $PIDFILE
 
+    local_file=/var/vcap/data/my_file
+    touch $local_file
+    echo "This is a test upload to S3" >> $local_file
+
     while true; do
-      echo "Hello from Service backup" >> $LOG_DIR/service-backup.log
+
+      /var/vcap/packages/aws-cli/bin/aws \
+          s3 cp \
+          "${local_file}" \
+          "s3://${BUCKET_NAME}/${BUCKET_PATH}" \
+          --endpoint-url "${ENDPOINT_URL}" \
+          2>&1 >> $LOG_DIR/upload_operation.log
+
+      echo "This is the aftermath of the upload..." >> $LOG_DIR/stdout.log
       sleep 10
     done
     ;;

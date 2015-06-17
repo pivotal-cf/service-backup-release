@@ -7,6 +7,14 @@ releases:
 - name: service-backup
   version: latest
 
+properties:
+  service-backup:
+    blobstore:
+      bucket_path: replace-with-remote-bucket-path
+      bucket_name: replace-with-bucket-name
+      access_key_id: replace-with-aws-access-key-id
+      secret_access_key: replace-with-aws-secret-access-key
+
 jobs:
 - name: service-backup
   instances: 1

@@ -1,6 +1,10 @@
 ---
 name: service-backup
 
+description: |
+  Service Backup provides ability to upload the backup produced by a service
+  to an S3-API-compatible blobstore.
+
 templates:
   ctl.erb: bin/ctl
 
@@ -8,4 +12,22 @@ packages:
 - python
 - aws-cli
 
-properties: {}
+properties:
+
+  ################################# BACKUP #################################
+
+  service-backup.blobstore.endpoint_url:
+    default: https://s3.amazonaws.com
+    description: URL of the blobstore endpoint
+
+  service-backup.blobstore.bucket_name:
+    description: Bucket to which backups are uploaded
+
+  service-backup.blobstore.bucket_path:
+    description: Local path from which backups are uploaded
+
+  service-backup.blobstore.access_key_id:
+    description: AWS Access Key to access the blobstore
+
+  service-backup.blobstore.secret_access_key:
+    description: AWS Secret Access Key to access the blobstore
