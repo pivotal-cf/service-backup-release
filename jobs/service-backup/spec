@@ -19,7 +19,7 @@ properties:
 
   service-backup.blobstore.endpoint_url:
     default: https://s3.amazonaws.com
-    description: URL of the blobstore endpoint
+    description: URL of the blobstore endpoint. Override this to use an S3-compatible blobstore like RiakS2.
 
   service-backup.blobstore.bucket_name:
     description: Bucket to which backups are uploaded
