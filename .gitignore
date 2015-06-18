@@ -19,6 +19,8 @@ blobs
 /bin
 /pkg
 
+manifests/*deployment.yml
+
 # Development dependencies
 src/github.com/vito/gosub/
 src/github.com/codegangsta/cli/
