@@ -19,18 +19,15 @@ case $1 in
 
     local_file=/var/vcap/data/my_file
     touch $local_file
-    echo "This is a test upload to S3" >> $local_file
 
     while true; do
+      echo $(date) >> $local_file
+      /var/vcap/packages/service-backup/bin/service-backup \
+      "${local_file}" \
+      "s3://${BUCKET_NAME}/${BUCKET_PATH}" \
+      "${BLOBSTORE_ENDPOINT_URL}" \
+      "$LOG_DIR/upload_operation.log"
 
-      /var/vcap/packages/aws-cli/bin/aws \
-          s3 cp \
-          "${local_file}" \
-          "s3://${BUCKET_NAME}/${BUCKET_PATH}" \
-          --endpoint-url "${ENDPOINT_URL}" \
-          2>&1 >> $LOG_DIR/upload_operation.log
-
-      echo "This is the aftermath of the upload..." >> $LOG_DIR/stdout.log
       sleep 10
     done
     ;;
