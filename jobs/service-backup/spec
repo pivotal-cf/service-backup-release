@@ -11,6 +11,7 @@ templates:
 packages:
 - python
 - aws-cli
+- service-backup
 
 properties:
 
