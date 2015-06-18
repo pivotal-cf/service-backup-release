@@ -1,3 +1,4 @@
 [submodule "src/github.com/pivotal-cf-experimental/service-backup"]
 	path = src/github.com/pivotal-cf-experimental/service-backup
-	url = git@github.com:pivotal-cf-experimental/service-backup
+	url = https://github.com/pivotal-cf-experimental/service-backup
+	branch = master

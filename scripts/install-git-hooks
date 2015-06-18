@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# This script should be re-run whenever a new commit hook is to be added to this script.
+# The operation in the script is idempotent, so it can be run multiple times.
+
 RELEASE=$(cd $(dirname $0)/.. && pwd)
 
 ln -fs ${RELEASE}/git-hooks/pre-commit ${RELEASE}/.git/hooks/pre-commit
