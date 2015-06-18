@@ -22,12 +22,12 @@ releases:
   version: latest
 
 jobs:
-name: my-composite-job
- templates:
- - name: my-existing-job-template
-   release: my-existing-release
- - name: service-backup
-   release: service-backup
+- name: my-composite-job
+  templates:
+  - name: my-existing-job-template
+    release: my-existing-release
+  - name: service-backup
+    release: service-backup
 ```
 
 An exhaustive and up-to-date list of properties can be found in the [service-backup job spec](./jobs/service-backup/spec).
