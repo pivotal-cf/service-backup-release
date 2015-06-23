@@ -10,6 +10,7 @@ BUCKET_NAME=<%= p('service-backup.blobstore.bucket_name') %>
 BUCKET_PATH=<%= p('service-backup.blobstore.bucket_path') %>
 BLOBSTORE_ENDPOINT_URL=<%= p('service-backup.blobstore.endpoint_url') %>
 SOURCE_FOLDER=<%= p('service-backup.source_folder') %>
+SOURCE_EXECUTABLE=<%= p('service-backup.source_executable') %>
 AWS_CLI_PATH="/var/vcap/packages/aws-cli/bin/aws"
 
 case $1 in
@@ -22,9 +23,6 @@ case $1 in
     mkdir -p "${SOURCE_FOLDER}"
 
     while true; do
-      current_time=$(date)
-      echo "Current time is ${current_time}" >> "${SOURCE_FOLDER}/${current_time}"
-
       /var/vcap/packages/service-backup/bin/service-backup \
           --aws-cli "${AWS_CLI_PATH}" \
           --aws-access-key-id "${AWS_ACCESS_KEY_ID}" \
@@ -32,7 +30,8 @@ case $1 in
           --source-folder "${SOURCE_FOLDER}" \
           --dest-folder "s3://${BUCKET_NAME}/${BUCKET_PATH}" \
           --endpoint-url "${BLOBSTORE_ENDPOINT_URL}" \
-          2>&1 >> "$LOG_DIR/upload_operation.log"
+          --backup-creator-cmd "${SOURCE_EXECUTABLE}" \
+          2>&1 >> "$LOG_DIR/out.log"
 
       sleep 10
     done
