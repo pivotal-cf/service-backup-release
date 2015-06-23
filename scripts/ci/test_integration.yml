@@ -1,0 +1,14 @@
+---
+platform: linux
+
+image: docker:///cflondonservices/service-backup
+
+inputs:
+- name: service-backup-release
+
+run:
+  path: service-backup-release/scripts/ci/test_integration
+
+params:
+  AWS_ACCESS_KEY_ID:
+  AWS_SECRET_ACCESS_KEY:

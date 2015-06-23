@@ -1,0 +1,20 @@
+---
+resources:
+- name: service-backup-release
+  type: git
+  source:
+    branch: develop
+    private_key: {{service-backup-release-private-key}}
+    uri: git@github.com:pivotal-cf-experimental/service-backup-release
+
+jobs:
+- name: integration-test
+  plan:
+  - get: service-backup-release
+    trigger: true
+  - task: integration-test
+    file: service-backup-release/scripts/ci/test_integration.yml
+    config:
+      params:
+        AWS_ACCESS_KEY_ID: {{integration-test-aws-access-key-id}}
+        AWS_SECRET_ACCESS_KEY: {{integration-test-aws-secret-access-key}}
