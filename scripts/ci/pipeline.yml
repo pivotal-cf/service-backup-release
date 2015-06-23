@@ -30,5 +30,6 @@ jobs:
 - name: docker-image
   plan:
   - get: service-backup-release
-    put: service-backup-ci-image
+    trigger: true
+  - put: service-backup-ci-image
     params: {build: service-backup-release/scripts/ci/}
