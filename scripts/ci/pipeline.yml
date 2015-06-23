@@ -7,6 +7,14 @@ resources:
     private_key: {{service-backup-release-private-key}}
     uri: git@github.com:pivotal-cf-experimental/service-backup-release
 
+- name: service-backup-ci-image
+  type: docker-image
+  source:
+    username: {{docker-username}}
+    email: {{docker-email}}
+    password: {{docker-password}}
+    repository: cflondonservices/service-backup
+
 jobs:
 - name: integration-test
   plan:
@@ -18,3 +26,9 @@ jobs:
       params:
         AWS_ACCESS_KEY_ID: {{integration-test-aws-access-key-id}}
         AWS_SECRET_ACCESS_KEY: {{integration-test-aws-secret-access-key}}
+
+- name: docker-image
+  plan:
+  - get: service-backup-release
+    put: service-backup-ci-image
+    params: {build: service-backup-release/scripts/ci/}
