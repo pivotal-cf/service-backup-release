@@ -6,3 +6,5 @@ dependencies:
 
 files:
   - github.com/pivotal-cf-experimental/service-backup/*.go # gosub
+  - github.com/cloudfoundry-incubator/cf-lager/*.go # gosub
+  - github.com/pivotal-golang/lager/*.go # gosub

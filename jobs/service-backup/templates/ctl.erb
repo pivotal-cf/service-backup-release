@@ -4,11 +4,13 @@ RUN_DIR=/var/vcap/sys/run/service-backup
 LOG_DIR=/var/vcap/sys/log/service-backup
 PIDFILE=${RUN_DIR}/pid
 
-export AWS_ACCESS_KEY_ID=<%= p('service-backup.blobstore.access_key_id') %>
-export AWS_SECRET_ACCESS_KEY=<%= p('service-backup.blobstore.secret_access_key') %>
+AWS_ACCESS_KEY_ID=<%= p('service-backup.blobstore.access_key_id') %>
+AWS_SECRET_ACCESS_KEY=<%= p('service-backup.blobstore.secret_access_key') %>
 BUCKET_NAME=<%= p('service-backup.blobstore.bucket_name') %>
 BUCKET_PATH=<%= p('service-backup.blobstore.bucket_path') %>
 BLOBSTORE_ENDPOINT_URL=<%= p('service-backup.blobstore.endpoint_url') %>
+SOURCE_FOLDER=<%= p('service-backup.source_folder') %>
+AWS_CLI_PATH="/var/vcap/packages/aws-cli/bin/aws"
 
 case $1 in
 
@@ -17,16 +19,20 @@ case $1 in
     chown -R vcap:vcap $RUN_DIR $LOG_DIR
     echo $$ >> $PIDFILE
 
-    local_file=/var/vcap/data/my_file
-    touch $local_file
+    mkdir -p "${SOURCE_FOLDER}"
 
     while true; do
-      echo $(date) >> $local_file
+      current_time=$(date)
+      echo "Current time is ${current_time}" >> "${SOURCE_FOLDER}/${current_time}"
+
       /var/vcap/packages/service-backup/bin/service-backup \
-      "${local_file}" \
-      "s3://${BUCKET_NAME}/${BUCKET_PATH}" \
-      "${BLOBSTORE_ENDPOINT_URL}" \
-      "$LOG_DIR/upload_operation.log"
+          --aws-cli "${AWS_CLI_PATH}" \
+          --aws-access-key-id "${AWS_ACCESS_KEY_ID}" \
+          --aws-secret-access-key "${AWS_SECRET_ACCESS_KEY}" \
+          --source-folder "${SOURCE_FOLDER}" \
+          --dest-folder "s3://${BUCKET_NAME}/${BUCKET_PATH}" \
+          --endpoint-url "${BLOBSTORE_ENDPOINT_URL}" \
+          2>&1 >> "$LOG_DIR/upload_operation.log"
 
       sleep 10
     done

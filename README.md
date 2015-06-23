@@ -32,6 +32,41 @@ jobs:
 
 An exhaustive and up-to-date list of properties can be found in the [service-backup job spec](./jobs/service-backup/spec).
 
+### Limitations
+
+#### Co-location
+
+The `service-backup` job in this release cannot be co-located with other jobs
+that depend on packages with the same name, e.g. python. This is a restriction
+in BOSH.
+
+#### Bucket and Permissions
+
+The provided bucket must already exist, and the required permissions are as
+follows:
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "service-backup-policy",
+      "Effect": "Allow",
+      "Action": [
+        "s3:ListBucket",
+        "s3:ListBucketMultipartUploads",
+        "s3:ListMultipartUploadParts",
+        "s3:PutObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::MY_BUCKET_NAME/*",
+        "arn:aws:s3:::MY_BUCKET_NAME"
+      ]
+    }
+  ]
+}
+```
+
 ## Development
 
 - Clone the repo:

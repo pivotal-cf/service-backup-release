@@ -14,6 +14,7 @@ properties:
       bucket_path: replace-with-bucket-path
       access_key_id: replace-with-access-key
       secret_access_key: replace-with-secret-access-key
+  source_folder: replace-with-source-folder-on-local-machine
 
 jobs:
 - name: service-backup
