@@ -15,6 +15,7 @@ properties:
       access_key_id: replace-with-access-key
       secret_access_key: replace-with-secret-access-key
   source_folder: replace-with-source-folder-on-local-machine
+  source_executable: replace-with-source-executable
 
 jobs:
 - name: service-backup
