@@ -119,6 +119,11 @@ Some information that might be useful to developers:
 cd /path/to/bosh/release
 ./scripts/sync-submodule-config
 ```
+ This script will overwrite the `.gitmodules` file, replacing `git@` with
+ `https://`.
+ This needs to be manually corrected for any private repositories, e.g.
+ `pivotal-cf-experimental/service-backup`.
+ An issue is open with `gosub` at https://github.com/vito/gosub/issues/1
 
 - _Branching strategy_: This repo uses `develop` and `master` branches: `master` is stable, `develop` is not.
 
