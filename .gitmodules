@@ -21,3 +21,11 @@
 	path = src/github.com/pivotal-golang/lager
 	url = https://github.com/pivotal-golang/lager
 	branch = master
+[submodule "src/gopkg.in/robfig/cron.v2"]
+	path = src/gopkg.in/robfig/cron.v2
+	url = https://gopkg.in/robfig/cron.v2
+	branch = master
+[submodule "src/github.com/tedsuo/ifrit"]
+	path = src/github.com/tedsuo/ifrit
+	url = https://github.com/tedsuo/ifrit
+	branch = master
