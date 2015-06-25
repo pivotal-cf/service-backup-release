@@ -35,7 +35,7 @@ jobs:
 
 An exhaustive and up-to-date list of properties can be found in the [service-backup job spec](./jobs/service-backup/spec).
 
-### Bucket name and path requirements
+### Bucket name and path
 
 The bucket name should not start with `s3://` and it should not contain underscores. Additionally, neither the bucket name nor the bucket path should have preceding or trailing slashes. An example of syntactically-valid properties is:
 
@@ -44,8 +44,10 @@ properties:
   service-backup:
     blobstore:
       bucket_name: my-bucket-name
-      bucket_path: my/remote/directory/inside/bucket
+      bucket_path: my/remote/path/inside/bucket
 ```
+
+The provided path is appended with the current date such that the resultant path is `/my/remote/path/inside/bucket/YYYY/MM/DD/` and hence the artifacts are accessible at `s3://my-bucket-name/my/remote/path/inside/bucket/YYYY/MM/DD/`.
 
 ### Limitations
 
