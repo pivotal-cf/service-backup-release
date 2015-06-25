@@ -14,6 +14,9 @@ properties:
       bucket_path: replace-with-bucket-path-in-S3
       access_key_id: replace-with-AWS-access-key
       secret_access_key: replace-with-AWS-secret-access-key
+    source_folder: replace-with-source-folder-on-local-machine
+    source_executable: replace-with-source-executable
+    cron_schedule: replace-with-cron-schedule
 
 releases:
 - name: my-existing-release
@@ -31,6 +34,18 @@ jobs:
 ```
 
 An exhaustive and up-to-date list of properties can be found in the [service-backup job spec](./jobs/service-backup/spec).
+
+### Bucket name and path requirements
+
+The bucket name should not start with `s3://` and it should not contain underscores. Additionally, neither the bucket name nor the bucket path should have preceding or trailing slashes. An example of syntactically-valid properties is:
+
+```yml
+properties:
+  service-backup:
+    blobstore:
+      bucket_name: my-bucket-name
+      bucket_path: my/remote/directory/inside/bucket
+```
 
 ### Limitations
 
