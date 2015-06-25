@@ -56,6 +56,7 @@ follows:
         "s3:ListBucket",
         "s3:ListBucketMultipartUploads",
         "s3:ListMultipartUploadParts",
+        "s3:CreateBucket",
         "s3:PutObject"
       ],
       "Resource": [
@@ -66,6 +67,8 @@ follows:
   ]
 }
 ```
+
+The `s3:CreateBucket` permission is required because the tool will attempt to create the bucket if it does not already exist. If the desired bucket already exists, the `s3:CreateBucket` permission is not required.
 
 ## Development
 
