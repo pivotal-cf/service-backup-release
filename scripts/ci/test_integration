@@ -11,7 +11,8 @@ AWS_ACCESS_KEY_ID="${AWS_ACCESS_KEY_ID:?}"
 AWS_SECRET_ACCESS_KEY="${AWS_SECRET_ACCESS_KEY:?}"
 
 export GOPATH=${BASE_DIR}
-export PATH=$GOPATH/bin:$PATH
+export GOROOT=${GOPATH}
+export PATH=${GOPATH}/bin:${PATH}
 
 pushd "${BASE_DIR}"
   go install github.com/onsi/ginkgo/ginkgo
