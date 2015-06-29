@@ -13,7 +13,7 @@ SOURCE_FOLDER="<%= p('service-backup.source_folder') %>"
 SOURCE_EXECUTABLE="<%= p('service-backup.source_executable') %>"
 CLEANUP_EXECUTABLE="<%= p('service-backup.cleanup_executable') %>"
 CRON_SCHEDULE="<%= p('service-backup.cron_schedule') %>"
-AWS_CLI_PATH="/var/vcap/packages/aws-cli/bin/aws"
+MAX_RETRIES="<%= p('service-backup.max_retries') %>"
 
 case $1 in
 
@@ -25,7 +25,6 @@ case $1 in
     mkdir -p "${SOURCE_FOLDER}"
 
     exec /var/vcap/packages/service-backup/bin/service-backup \
-        --aws-cli "${AWS_CLI_PATH}" \
         --aws-access-key-id "${AWS_ACCESS_KEY_ID}" \
         --aws-secret-access-key "${AWS_SECRET_ACCESS_KEY}" \
         --source-folder "${SOURCE_FOLDER}" \
@@ -35,6 +34,7 @@ case $1 in
         --backup-creator-cmd "${SOURCE_EXECUTABLE}" \
         --cleanup-cmd "${CLEANUP_EXECUTABLE}" \
         --cron-schedule "${CRON_SCHEDULE}" \
+        --max-retries "${MAX_RETRIES}" \
         2>&1 >> "$LOG_DIR/out.log"
     ;;
 
