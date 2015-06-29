@@ -139,6 +139,9 @@ cd /path/to/bosh/release
 
 - _Branching strategy_: This repo uses `develop` and `master` branches: `master` is stable, `develop` is not.
 
+- the `max_retries` property may be used if you are facing failures in the backup upload process.
+It corresponds to how many attempts the S3 client will try, for each file part.
+
 ## Contributing
 
 Submit pull-requests against the `develop` branch.
