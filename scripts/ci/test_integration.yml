@@ -1,7 +1,7 @@
 ---
 platform: linux
 
-image: "docker:///golang#1.4"
+image: docker:///cflondonservices/service-backup
 
 inputs:
 - name: service-backup-release

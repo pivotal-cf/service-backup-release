@@ -26,3 +26,10 @@ jobs:
       params:
         AWS_ACCESS_KEY_ID: {{integration-test-aws-access-key-id}}
         AWS_SECRET_ACCESS_KEY: {{integration-test-aws-secret-access-key}}
+
+- name: docker-image
+  plan:
+  - get: service-backup-release
+    trigger: true
+  - put: service-backup-ci-image
+    params: {build: service-backup-release/scripts/ci/}
