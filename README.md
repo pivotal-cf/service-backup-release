@@ -49,14 +49,6 @@ properties:
 
 The provided path is appended with the current date such that the resultant path is `/my/remote/path/inside/bucket/YYYY/MM/DD/` and hence the artifacts are accessible at `s3://my-bucket-name/my/remote/path/inside/bucket/YYYY/MM/DD/`.
 
-### Limitations
-
-#### Co-location
-
-The `service-backup` job in this release cannot be co-located with other jobs
-that depend on packages with the same name, e.g. python. This is a restriction
-in BOSH.
-
 #### Bucket and Permissions
 
 The provided bucket must already exist, and the required permissions are as

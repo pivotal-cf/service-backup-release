@@ -9,8 +9,6 @@ templates:
   ctl.erb: bin/ctl
 
 packages:
-- python
-- aws-cli
 - service-backup
 
 properties:
