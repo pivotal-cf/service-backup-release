@@ -49,17 +49,19 @@ properties:
 
 The provided path is appended with the current date such that the resultant path is `/my/remote/path/inside/bucket/YYYY/MM/DD/` and hence the artifacts are accessible at `s3://my-bucket-name/my/remote/path/inside/bucket/YYYY/MM/DD/`.
 
-#### Bucket and Permissions
+#### AWS Backup User Permissions
 
-The provided bucket must already exist, and the required permissions are as
-follows:
+First, create a new AWS user to perform backups under the Identity & Access Management (IAM) page.
+Copy this user's Access Key ID and Secret into the service-backup manifest section listed above.
+
+Next, create a new custom policy (IAM > Policies > Create Policy > Create Your Own Policy) and paste in the following permissions:
 
 ```json
 {
   "Version": "2012-10-17",
   "Statement": [
     {
-      "Sid": "service-backup-policy",
+      "Sid": "ServiceBackupPolicy",
       "Effect": "Allow",
       "Action": [
         "s3:ListBucket",
@@ -78,6 +80,8 @@ follows:
 ```
 
 The `s3:CreateBucket` permission is required because the tool will attempt to create the bucket if it does not already exist. If the desired bucket already exists, the `s3:CreateBucket` permission is not required.
+
+Finally, attach this policy to your AWS user (IAM > Policies > Policy Actions > Attach).
 
 ## Development
 
