@@ -1,5 +1,17 @@
 #!/bin/bash
 
+set -e
+
+mkdir -p /var/vcap/sys/log/monit
+
+exec 1>> /var/vcap/sys/log/monit/service-backup.log
+exec 2>> /var/vcap/sys/log/monit/service-backup.err.log
+
+log(){
+  message=$1
+  echo "$(date +"%Y-%m-%d %H:%M:%S") ----- $message"
+}
+
 RUN_DIR=/var/vcap/sys/run/service-backup
 LOG_DIR=/var/vcap/sys/log/service-backup
 PIDFILE=${RUN_DIR}/pid
@@ -24,6 +36,7 @@ case $1 in
 
     mkdir -p "${SOURCE_FOLDER}"
 
+    log "start script: starting service-backup"
     exec /var/vcap/packages/service-backup/bin/service-backup \
         --aws-access-key-id "${AWS_ACCESS_KEY_ID}" \
         --aws-secret-access-key "${AWS_SECRET_ACCESS_KEY}" \
@@ -36,11 +49,15 @@ case $1 in
         --cron-schedule "${CRON_SCHEDULE}" \
         --max-retries "${MAX_RETRIES}" \
         2>&1 >> "$LOG_DIR/out.log"
+
+    log "start script: completed starting service-backup"
     ;;
 
   stop)
+    log "stop script: stopping service-backup"
     kill -9 `cat $PIDFILE`
     rm -f $PIDFILE
+    log "stop script: completed stopping service-backup"
     ;;
 
   *)
