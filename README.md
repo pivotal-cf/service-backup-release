@@ -146,6 +146,10 @@ cd /path/to/bosh/release
 - the `max_retries` property may be used if you are facing failures in the backup upload process.
 It corresponds to how many attempts the S3 client will try, for each file part.
 
+## Downloading releases
+
+The final releases can be found under https://s3-eu-west-1.amazonaws.com/cf-services-external-builds/service-backup/final/
+
 ## Contributing
 
 Submit pull-requests against the `develop` branch.
