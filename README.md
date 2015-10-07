@@ -150,6 +150,12 @@ It corresponds to how many attempts the S3 client will try, for each file part.
 
 The final releases can be found under https://s3-eu-west-1.amazonaws.com/cf-services-external-builds/service-backup/final/
 
+Please ensure that the AWS IAM user you are configured to use has attached a policy of AmazonS3ReadOnlyAccess or you may encounter the following error when attempting to list the bucket contents:
+
+```
+A client error (AccessDenied) occurred when calling the ListObjects operation: Access Denied
+```
+
 ## Contributing
 
 Submit pull-requests against the `develop` branch.
