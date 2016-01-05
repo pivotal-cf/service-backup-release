@@ -10,6 +10,7 @@ templates:
 
 packages:
 - service-backup
+- aws-cli
 
 properties:
 
@@ -40,10 +41,6 @@ properties:
   service-backup.cleanup_executable:
     description: Local executable to cleanup backups. Tokens are split on spaces; first is command to execute and remaining are passed as args to command.
     default: ""
-
-  service-backup.max_retries:
-    description: Max number of retries for each S3 upload part. Consider increasing this if expecting a large backup
-    default: 50
 
   service-backup.cron_schedule:
     description: Schedule on which to perform backups. Supports "* * * * *" syntax.

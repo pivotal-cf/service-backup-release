@@ -63,7 +63,6 @@ SOURCE_FOLDER="<%= p('service-backup.source_folder') %>"
 SOURCE_EXECUTABLE="<%= p('service-backup.source_executable') %>"
 CLEANUP_EXECUTABLE="<%= p('service-backup.cleanup_executable') %>"
 CRON_SCHEDULE="<%= p('service-backup.cron_schedule') %>"
-MAX_RETRIES="<%= p('service-backup.max_retries') %>"
 
 case $1 in
 
@@ -85,7 +84,7 @@ case $1 in
         --backup-creator-cmd "${SOURCE_EXECUTABLE}" \
         --cleanup-cmd "${CLEANUP_EXECUTABLE}" \
         --cron-schedule "${CRON_SCHEDULE}" \
-        --max-retries "${MAX_RETRIES}" \
+        --aws-cli-path /var/vcap/packages/aws-cli/bin/aws \
         2>&1 >> "$LOG_DIR/out.log"
 
     log "start script: completed starting service-backup"
