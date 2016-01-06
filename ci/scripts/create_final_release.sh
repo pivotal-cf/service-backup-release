@@ -41,6 +41,9 @@ git add releases
 git add .final_builds
 git commit -m "Final release v${release_version} metadata"
 
+mkdir -p ~/.ssh
+ssh-keyscan github.com >> ~/.ssh/known_hosts
+
 git fetch
 git rebase origin/develop
 git push origin HEAD:develop
