@@ -5,19 +5,6 @@ dependencies:
 - golang
 
 files:
-  - github.com/aws/aws-sdk-go/aws/*.go # gosub
-  - github.com/aws/aws-sdk-go/aws/awserr/*.go # gosub
-  - github.com/aws/aws-sdk-go/aws/awsutil/*.go # gosub
-  - github.com/aws/aws-sdk-go/aws/credentials/*.go # gosub
-  - github.com/aws/aws-sdk-go/internal/endpoints/*.go # gosub
-  - github.com/aws/aws-sdk-go/internal/protocol/query/*.go # gosub
-  - github.com/aws/aws-sdk-go/internal/protocol/query/queryutil/*.go # gosub
-  - github.com/aws/aws-sdk-go/internal/protocol/rest/*.go # gosub
-  - github.com/aws/aws-sdk-go/internal/protocol/restxml/*.go # gosub
-  - github.com/aws/aws-sdk-go/internal/protocol/xml/xmlutil/*.go # gosub
-  - github.com/aws/aws-sdk-go/internal/signer/v4/*.go # gosub
-  - github.com/aws/aws-sdk-go/service/s3/*.go # gosub
-  - github.com/aws/aws-sdk-go/service/s3/s3manager/*.go # gosub
   - github.com/cloudfoundry-incubator/cf-lager/*.go # gosub
   - github.com/pivotal-cf-experimental/service-backup/*.go # gosub
   - github.com/pivotal-cf-experimental/service-backup/backup/*.go # gosub
