@@ -1,0 +1,16 @@
+---
+platform: linux
+
+image: docker:///cflondonservices/service-backups-release-ci
+
+inputs:
+- name: service-backup-release
+- name: sha-to-release
+
+run:
+  path: service-backup-release/ci/scripts/create_final_release.sh
+
+params:
+  AWS_ACCESS_KEY_ID:
+  AWS_SECRET_ACCESS_KEY:
+  GIT_SSH_KEY:
