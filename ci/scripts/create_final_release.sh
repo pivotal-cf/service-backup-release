@@ -16,7 +16,6 @@ do
   mustHave $v
 done
 
-
 pushd $(dirname $0)/../..
 
 sha_to_release=$(cat ../sha-to-release/service-backup-release.sha)
