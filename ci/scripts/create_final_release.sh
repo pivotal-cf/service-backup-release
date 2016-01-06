@@ -25,7 +25,9 @@ git checkout $sha_to_release
 release_version=$(( $(ls releases/service-backup | grep service-backup | wc -l) + 1 ))
 git tag "v${release_version}"
 
-printf "\-\-\-\nblobstore:\n\ts3:\n\t\taccess_key_id: ${AWS_ACCESS_KEY_ID}\n\t\tsecret_access_key: ${AWS_SECRET_ACCESS_KEY}" > config/private.yml
+# Avoid '--' being interpreted as an argument to printf
+printf "%s-\nblobstore:\n  s3:\n    access_key_id: ${AWS_ACCESS_KEY_ID}\n    secret_access_key: ${AWS_SECRET_ACCESS_KEY}" "--" > config/private.yml
+cat config/private.yml
 bosh -n create release --name service-backup --final --with-tarball
 
 key=/tmp/key
