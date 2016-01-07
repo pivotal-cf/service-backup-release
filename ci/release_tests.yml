@@ -1,0 +1,20 @@
+---
+platform: linux
+
+image: docker:///cflondonservices/service-backups-release-ci
+
+inputs:
+- name: service-backup-release
+- name: services-enablement-meta
+
+run:
+  path: service-backup-release/ci/scripts/release_tests.sh
+
+params:
+  AWS_ACCESS_KEY_ID:
+  AWS_SECRET_ACCESS_KEY:
+  BOSH_HOST:
+  BOSH_USERNAME:
+  BOSH_PASSWORD:
+  BOSH_KEY_RELATIVE_PATH:
+  BOSH_MANIFEST_RELATIVE_PATH:
