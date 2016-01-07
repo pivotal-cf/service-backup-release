@@ -5,8 +5,6 @@ image: docker:///cflondonservices/service-backups-release-ci
 
 inputs:
 - name: service-backup-release
-- name: services-enablement-meta
-- name: aws-stemcell
 
 run:
   path: service-backup-release/ci/scripts/create_dev_release.sh
