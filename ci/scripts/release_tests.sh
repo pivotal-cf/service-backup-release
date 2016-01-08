@@ -27,8 +27,6 @@ do
   fi
 done
 
-chmod 400 $BOSH_PRIVATE_KEY_FILE # TODO do we need this?
-
 cd service-backup-release
 export GOPATH=$PWD
 export PATH=$PATH:$GOPATH/bin
