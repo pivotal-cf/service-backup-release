@@ -46,5 +46,5 @@ properties:
     description: Schedule on which to perform backups. Supports "* * * * *" syntax.
 
   service-backup.missing_properties_message:
-    default: Provide these missing fields in your manifest, or set Backup VM instances to 0 to disable backups.
+    default: Provide these missing fields in your manifest.
     description: Custom message to show when required backup parameters are not present.
