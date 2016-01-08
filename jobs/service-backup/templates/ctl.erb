@@ -1,10 +1,17 @@
-#!/bin/bash
+#!/bin/bash -e
 
 <%
+def field_present?(field)
+  if_p(field) do
+    return true
+  end
+
+  false
+end
+
 # Provides a more user-friendly error message when user meant to disable
 # backups, but forgot to set Backup VM instances to 0
 def verify_config_is_valid
-
   required_fields = [
     'service-backup.blobstore.access_key_id',
     'service-backup.blobstore.secret_access_key',
@@ -20,25 +27,14 @@ def verify_config_is_valid
     missing_fields << field unless field_present?(field)
   end
 
-  if missing_fields.empty? == false
-    raise <<-eof
-Invalid config - Missing values for #{missing_fields.join(", ")}.
-Provide these missing fields in your manifest, or set Backup VM instances to 0 to disable backups.
-eof
+  if !missing_fields.empty?
+    custom_msg = p('service-backup.missing_properties_message')
+    raise "Invalid config - Missing values for #{missing_fields.join(", ")}.\n#{custom_msg}"
   end
 end
 
-def field_present?(field)
-    if_p(field) do |_|
-      return true
-    end
-    return false
-end
+verify_config_is_valid
 %>
-
-<% verify_config_is_valid %>
-
-set -e
 
 mkdir -p /var/vcap/sys/log/monit
 
