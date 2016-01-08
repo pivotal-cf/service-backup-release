@@ -1,0 +1,15 @@
+---
+platform: linux
+
+image: docker:///cflondonservices/service-backups-release-ci
+
+inputs:
+- name: service-backup-release
+
+run:
+  path: service-backup-release/ci/scripts/cleanup_deployment.sh
+
+params:
+  BOSH_URL: https://52.31.130.254:25555
+  BOSH_USERNAME: director
+  BOSH_PASSWORD:  Yoo0giraexahnoohaemi
