@@ -4,6 +4,9 @@ set -e
 
 service ssh start
 
+mkdir -p ~/.ssh
+ssh-keyscan localhost >> ~/.ssh/known_hosts
+
 MY_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # This script expects to live two directories below the base directory.
