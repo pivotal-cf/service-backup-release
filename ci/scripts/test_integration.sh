@@ -1,6 +1,8 @@
 #!/bin/bash
 
-set -eux
+set -e
+
+service ssh start
 
 MY_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 

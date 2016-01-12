@@ -2,13 +2,14 @@
 
 set -e
 
+pushd $(dirname $0)/..
+
 # ensure gosub is installed (this will recompile it only if necessary)
 go get github.com/vito/gosub
 go install github.com/vito/gosub
 
 function sync_package() {
   bosh_pkg=${1}
-
   shift
 
   (
@@ -37,3 +38,5 @@ sync_package service-backup -app github.com/pivotal-cf-experimental/service-back
 wait
 
 git diff --name-only packages/*/spec
+
+popd
