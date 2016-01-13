@@ -7,7 +7,7 @@ inputs:
 - name: service-backup-release
 
 run:
-  path: service-backup-release/ci/scripts/test_integration.sh
+  path: service-backup-release/ci/scripts/unit_integration_tests.sh
 
 params:
   AWS_ACCESS_KEY_ID:

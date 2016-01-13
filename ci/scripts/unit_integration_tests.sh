@@ -19,6 +19,9 @@ export GOPATH=${BASE_DIR}
 export PATH=${GOPATH}/bin:${PATH}
 
 pushd "${BASE_DIR}"
+  bundle install
+  bundle exec rspec
+
   go install github.com/onsi/ginkgo/ginkgo
   ./src/github.com/pivotal-cf-experimental/service-backup/scripts/test_integration
 popd
