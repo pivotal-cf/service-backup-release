@@ -39,13 +39,13 @@ For SCP swap the `blobstore` section with the following:
 
 ```yml
     scp:
-      user: "vagrant"
-      server: "192.168.50.4"
-      destination: "mybackups/alex"
+      user: username
+      server: backup-server.com
+      destination: mybackups/service
       key: |
         -----BEGIN RSA PRIVATE KEY-----
         -----END RSA PRIVATE KEY-----
-      port: "22"
+      port: 22
 ```
 
 An exhaustive and up-to-date list of properties can be found in the [service-backup job spec](./jobs/service-backup/spec).
