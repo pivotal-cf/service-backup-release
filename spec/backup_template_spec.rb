@@ -33,6 +33,17 @@ RSpec.describe 'backup job template rendering' do
     end
   end
 
+  context 'when the manifest contains invalid destination' do
+    let(:manifest) { YAML.load_file('spec/fixtures/invalid_destination.yml') }
+
+    it 'raises an error' do
+      expect {
+        renderer.render('jobs/service-backup/templates/ctl.erb')
+      }.to raise_error(RuntimeError, "Invalid config - invalid destination type not_a_valid_destination")
+    end
+  end
+
+
   context 'when the manifest contains invalid S3 properties' do
     let(:manifest) { YAML.load_file('spec/fixtures/invalid_scp.yml') }
 

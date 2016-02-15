@@ -33,7 +33,7 @@ def required_fields(type)
   when 's3'
     required_fields_s3
   else
-    raise 'invalid destination type' #TODO: TEST!
+    raise 'Invalid config - invalid destination type '+type 
   end
 end
 
