@@ -16,43 +16,43 @@ properties:
 
   ################################# BACKUP #################################
 
-  service-backup.blobstore.endpoint_url:
+  service-backup.destination.s3.endpoint_url:
     default: https://s3.amazonaws.com
     description: URL of the blobstore endpoint. Override this to use an S3-compatible blobstore like RiakS2.
 
-  service-backup.blobstore.bucket_name:
+  service-backup.destination.s3.bucket_name:
     default: ""
     description: Bucket to which backups are uploaded
 
-  service-backup.blobstore.bucket_path:
+  service-backup.destination.s3.bucket_path:
     default: ""
     description: Path in bucket to which backups are uploaded
 
-  service-backup.blobstore.access_key_id:
+  service-backup.destination.s3.access_key_id:
     default: ""
     description: AWS Access Key to access the blobstore
 
-  service-backup.blobstore.secret_access_key:
+  service-backup.destination.s3.secret_access_key:
     default: ""
     description: AWS Secret Access Key to access the blobstore
 
-  service-backup.scp.user:
+  service-backup.destination.scp.user:
     default: ""
     description: SCP user on remote server
 
-  service-backup.scp.server:
+  service-backup.destination.scp.server:
     default: ""
     description: SCP remote server host
 
-  service-backup.scp.destination:
+  service-backup.destination.scp.destination:
     default: ""
     description: Remote path on server for upload
 
-  service-backup.scp.key:
+  service-backup.destination.scp.key:
     default: ""
     description: SSH key identity file for remote server
 
-  service-backup.scp.port:
+  service-backup.destination.scp.port:
     default: 22
     description: SSH port on remote server
 

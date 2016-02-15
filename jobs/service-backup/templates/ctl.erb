@@ -6,7 +6,7 @@ def field_present?(field)
   !p(field).empty?
 end
 
-def required_fields
+def required_fields(type)
   required_fields_common = [
     'service-backup.source_folder',
     'service-backup.source_executable',
@@ -14,34 +14,49 @@ def required_fields
   ]
 
   required_fields_s3 = required_fields_common + [
-    'service-backup.blobstore.endpoint_url',
-    'service-backup.blobstore.access_key_id',
-    'service-backup.blobstore.secret_access_key',
-    'service-backup.blobstore.bucket_name',
-    'service-backup.blobstore.bucket_path'
+    'service-backup.destination.s3.endpoint_url',
+    'service-backup.destination.s3.access_key_id',
+    'service-backup.destination.s3.secret_access_key',
+    'service-backup.destination.s3.bucket_name',
+    'service-backup.destination.s3.bucket_path'
   ]
 
   required_fields_scp = required_fields_common + [
-    'service-backup.scp.server',
-    'service-backup.scp.user',
-    'service-backup.scp.destination',
-    'service-backup.scp.key'
+    'service-backup.destination.scp.server',
+    'service-backup.destination.scp.user',
+    'service-backup.destination.scp.destination',
+    'service-backup.destination.scp.key'
   ]
-
-  if field_present?('service-backup.blobstore.access_key_id')
-    required_fields_s3
-  elsif field_present?('service-backup.scp.server')
+  case type
+  when 'scp'
     required_fields_scp
+  when 's3'
+    required_fields_s3
   else
-    []
+    raise 'invalid destination type' #TODO: TEST!
   end
+end
+
+def skip_backups?
+  p('service-backup')['destination'] == nil or p('service-backup.destination').size == 0
+end
+
+def destination_type
+  return "" if p('service-backup')['destination'] == nil
+  p('service-backup.destination').keys.first
 end
 
 # Provides a more user-friendly error message when user meant to disable
 # backups, but forgot to set Backup VM instances to 0
 def verify_config_is_valid
+  return if skip_backups?
+  if p('service-backup.destination').size > 1
+    raise "Invalid config - You can only specify one backup destination in the manifest."
+  end
+  destination = p('service-backup.destination').keys.first
+
   missing_fields = []
-  required_fields.each do |field|
+  required_fields(destination).each do |field|
     missing_fields << field unless field_present?(field)
   end
 
@@ -68,34 +83,38 @@ RUN_DIR=/var/vcap/sys/run/service-backup
 LOG_DIR=/var/vcap/sys/log/service-backup
 PIDFILE=${RUN_DIR}/pid
 
-AWS_ACCESS_KEY_ID="<%= p('service-backup.blobstore.access_key_id') %>"
-AWS_SECRET_ACCESS_KEY="<%= p('service-backup.blobstore.secret_access_key') %>"
-BUCKET_NAME="<%= p('service-backup.blobstore.bucket_name') %>"
-BLOBSTORE_ENDPOINT_URL="<%= p('service-backup.blobstore.endpoint_url') %>"
+<% if destination_type == 's3' %>
+  AWS_ACCESS_KEY_ID="<%= p('service-backup.destination.s3.access_key_id') %>"
+  AWS_SECRET_ACCESS_KEY="<%= p('service-backup.destination.s3.secret_access_key') %>"
+  BUCKET_NAME="<%= p('service-backup.destination.s3.bucket_name') %>"
+  BLOBSTORE_ENDPOINT_URL="<%= p('service-backup.destination.s3.endpoint_url') %>"
+  DEST_PATH=<%= p('service-backup.destination.s3.bucket_path') %>
+<% end %>
+
+
+<% if destination_type == 'scp' %>
+  DEST_PATH=<%= p('service-backup.destination.scp.destination') %>
+  private_key_path=/var/vcap/data/backups.key
+  echo "<%= p('service-backup.destination.scp.key') %>" > $private_key_path
+  chmod 400 $private_key_path
+
+  SCP_PORT=<%= p('service-backup.destination.scp.port') %>
+  SCP_USER=<%= p('service-backup.destination.scp.user') %>
+  SCP_SERVER="<%= p('service-backup.destination.scp.server') %>"
+
+  KNOWN_HOSTS=/root/.ssh/known_hosts
+  KNOWN_HOSTS_TMP=${KNOWN_HOSTS}.tmp
+  mkdir -p $(dirname $KNOWN_HOSTS)
+  ssh-keyscan $SCP_SERVER >> $KNOWN_HOSTS
+  sort -u $KNOWN_HOSTS > $KNOWN_HOSTS_TMP
+  mv $KNOWN_HOSTS_TMP $KNOWN_HOSTS
+<% end %>
+
 SOURCE_FOLDER="<%= p('service-backup.source_folder') %>"
 SOURCE_EXECUTABLE="<%= p('service-backup.source_executable') %>"
 CLEANUP_EXECUTABLE="<%= p('service-backup.cleanup_executable') %>"
 CRON_SCHEDULE="<%= p('service-backup.cron_schedule') %>"
-SCP_SERVER="<%= p('service-backup.scp.server') %>"
 
-<% if !p('service-backup.blobstore.bucket_path').empty? %>
-DEST_PATH=<%= p('service-backup.blobstore.bucket_path') %>
-<% elsif !p('service-backup.scp.destination').empty? %>
-DEST_PATH=<%= p('service-backup.scp.destination') %>
-<% end %>
-
-<% if !p('service-backup.scp.server').empty? %>
-private_key_path=/var/vcap/data/backups.key
-echo "<%= p('service-backup.scp.key') %>" > $private_key_path
-chmod 400 $private_key_path
-
-KNOWN_HOSTS=/root/.ssh/known_hosts
-KNOWN_HOSTS_TMP=${KNOWN_HOSTS}.tmp
-mkdir -p $(dirname $KNOWN_HOSTS)
-ssh-keyscan $SCP_SERVER >> $KNOWN_HOSTS
-sort -u $KNOWN_HOSTS > $KNOWN_HOSTS_TMP
-mv $KNOWN_HOSTS_TMP $KNOWN_HOSTS
-<% end %>
 
 case $1 in
 
@@ -119,8 +138,8 @@ case $1 in
         --cron-schedule "${CRON_SCHEDULE}" \
         --aws-cli-path /var/vcap/packages/aws-cli/bin/aws \
         --ssh-host "${SCP_SERVER}" \
-        --ssh-port <%= p('service-backup.scp.port') %> \
-        --ssh-user <%= p('service-backup.scp.user') %> \
+        --ssh-port "${SCP_PORT}" \
+        --ssh-user "${SCP_USER}" \
         --ssh-private-key-path "$private_key_path" \
         2>&1 >> "$LOG_DIR/out.log"
 

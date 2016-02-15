@@ -21,7 +21,7 @@ RSpec.describe 'backup job template rendering' do
     it 'raises an error containing a custom message' do
       expect {
         renderer.render('jobs/service-backup/templates/ctl.erb')
-      }.to raise_error(RuntimeError, "Invalid config - Missing values for service-backup.blobstore.bucket_name, service-backup.blobstore.bucket_path.\n#{custom_msg}")
+      }.to raise_error(RuntimeError, "Invalid config - Missing values for service-backup.destination.s3.bucket_name, service-backup.destination.s3.bucket_path.\n#{custom_msg}")
     end
   end
 
@@ -39,12 +39,29 @@ RSpec.describe 'backup job template rendering' do
     it 'raises an error containing a custom message' do
       expect {
         renderer.render('jobs/service-backup/templates/ctl.erb')
-      }.to raise_error(RuntimeError, "Invalid config - Missing values for service-backup.scp.user.\n#{custom_msg}")
+      }.to raise_error(RuntimeError, "Invalid config - Missing values for service-backup.destination.scp.user.\n#{custom_msg}")
+    end
+  end
+
+  context 'when the manifest contains multiple destination properties' do
+    let(:manifest) { YAML.load_file('spec/fixtures/invalid_multiple_destinations.yml') }
+
+    it 'raises an error' do
+      expect {
+        renderer.render('jobs/service-backup/templates/ctl.erb')
+      }.to raise_error(RuntimeError, "Invalid config - You can only specify one backup destination in the manifest.")
     end
   end
 
   context 'when the manifest contains no backup properties' do
     let(:manifest) { YAML.load_file('spec/fixtures/skip_backups.yml') }
+
+    it 'templates without error' do
+      renderer.render('jobs/service-backup/templates/ctl.erb')
+    end
+  end
+  context 'when the manifest contains no destination key' do
+    let(:manifest) { YAML.load_file('spec/fixtures/skip_backups_without_destination_key.yml') }
 
     it 'templates without error' do
       renderer.render('jobs/service-backup/templates/ctl.erb')

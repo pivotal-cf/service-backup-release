@@ -9,18 +9,13 @@ releases:
 
 properties:
   service-backup:
-    blobstore:
-      endpoint_url: some-url
-      bucket_name: test
-      bucket_path: foo/bar
-      access_key_id: key
-      secret_access_key: itsasecret
-    scp:
-      server: ""
-      user: ""
-      destination: ""
-      key: ""
-      port: 22
+    destination:
+      s3:
+        endpoint_url: some-url
+        bucket_name: test
+        bucket_path: foo/bar
+        access_key_id: key
+        secret_access_key: itsasecret
     source_folder: /foo
     source_executable: whoami
     cron_schedule: '*/5 * * * * *'
