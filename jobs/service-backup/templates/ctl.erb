@@ -1,9 +1,8 @@
 #!/bin/bash -e
 
 <%
-# Only works while all necessary fields are strings!
 def field_present?(field)
-  !p(field).empty?
+  !p(field).to_s.empty?
 end
 
 def required_fields(type)
@@ -33,30 +32,31 @@ def required_fields(type)
   when 's3'
     required_fields_s3
   else
-    raise 'Invalid config - invalid destination type '+type 
+    raise 'Invalid config - invalid destination type '+type
   end
 end
 
-def skip_backups?
-  p('service-backup')['destination'] == nil or p('service-backup.destination').size == 0
+def destination_type
+  filtered_not_nil_config.keys.first
 end
 
-def destination_type
-  return "" if p('service-backup')['destination'] == nil
-  p('service-backup.destination').keys.first
+def filtered_not_nil_config
+  p('service-backup.destination').select do |type, properties|
+    properties.values.count {|x| x != nil} > 0
+  end
 end
 
 # Provides a more user-friendly error message when user meant to disable
 # backups, but forgot to set Backup VM instances to 0
 def verify_config_is_valid
-  return if skip_backups?
-  if p('service-backup.destination').size > 1
+  return if filtered_not_nil_config.empty?
+
+  if filtered_not_nil_config.size > 1
     raise "Invalid config - You can only specify one backup destination in the manifest."
   end
-  destination = p('service-backup.destination').keys.first
 
   missing_fields = []
-  required_fields(destination).each do |field|
+  required_fields(destination_type).each do |field|
     missing_fields << field unless field_present?(field)
   end
 

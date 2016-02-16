@@ -2,13 +2,16 @@ require 'spec_helper'
 
 require 'yaml'
 require 'bosh/template/renderer'
+require 'bosh/template/property_helper'
 
 RSpec.describe 'backup job template rendering' do
-  let(:renderer) { Bosh::Template::Renderer.new({context: manifest.to_json}) }
+  let(:renderer) {
+     Bosh::Template::Renderer.new({context: emulate_bosh_director_merge(YAML.load_file(manifest_file)).to_json})
+  }
   let(:custom_msg) { 'custom message' }
 
   context 'when the manifest contains valid s3 properties' do
-    let(:manifest) { YAML.load_file('spec/fixtures/valid_s3.yml') }
+    let(:manifest_file) { 'spec/fixtures/valid_s3.yml' }
 
     it 'templates without error' do
       renderer.render('jobs/service-backup/templates/ctl.erb')
@@ -16,7 +19,7 @@ RSpec.describe 'backup job template rendering' do
   end
 
   context 'when the manifest contains invalid S3 properties' do
-    let(:manifest) { YAML.load_file('spec/fixtures/invalid_s3.yml') }
+    let(:manifest_file) { 'spec/fixtures/invalid_s3.yml' }
 
     it 'raises an error containing a custom message' do
       expect {
@@ -26,26 +29,15 @@ RSpec.describe 'backup job template rendering' do
   end
 
   context 'when the manifest contains valid scp properties' do
-    let(:manifest) { YAML.load_file('spec/fixtures/valid_scp.yml') }
+    let(:manifest_file) { 'spec/fixtures/valid_scp.yml' }
 
     it 'templates without error' do
       renderer.render('jobs/service-backup/templates/ctl.erb')
     end
   end
 
-  context 'when the manifest contains invalid destination' do
-    let(:manifest) { YAML.load_file('spec/fixtures/invalid_destination.yml') }
-
-    it 'raises an error' do
-      expect {
-        renderer.render('jobs/service-backup/templates/ctl.erb')
-      }.to raise_error(RuntimeError, "Invalid config - invalid destination type not_a_valid_destination")
-    end
-  end
-
-
   context 'when the manifest contains invalid S3 properties' do
-    let(:manifest) { YAML.load_file('spec/fixtures/invalid_scp.yml') }
+    let(:manifest_file) { 'spec/fixtures/invalid_scp.yml' }
 
     it 'raises an error containing a custom message' do
       expect {
@@ -55,7 +47,7 @@ RSpec.describe 'backup job template rendering' do
   end
 
   context 'when the manifest contains multiple destination properties' do
-    let(:manifest) { YAML.load_file('spec/fixtures/invalid_multiple_destinations.yml') }
+    let(:manifest_file) { 'spec/fixtures/invalid_multiple_destinations.yml' }
 
     it 'raises an error' do
       expect {
@@ -65,17 +57,27 @@ RSpec.describe 'backup job template rendering' do
   end
 
   context 'when the manifest contains no backup properties' do
-    let(:manifest) { YAML.load_file('spec/fixtures/skip_backups.yml') }
+    let(:manifest_file) { 'spec/fixtures/skip_backups.yml' }
 
     it 'templates without error' do
       renderer.render('jobs/service-backup/templates/ctl.erb')
     end
   end
-  context 'when the manifest contains no destination key' do
-    let(:manifest) { YAML.load_file('spec/fixtures/skip_backups_without_destination_key.yml') }
 
-    it 'templates without error' do
-      renderer.render('jobs/service-backup/templates/ctl.erb')
+  include Bosh::Template::PropertyHelper
+
+  # Trying to emulate bosh director Bosh::Director::DeploymentPlan::Job#extract_template_properties
+  def emulate_bosh_director_merge(manifest)
+    manifest_properties = manifest["properties"]
+
+    job_spec = YAML.load_file('jobs/service-backup/spec')
+    spec_properties = job_spec["properties"]
+
+    effective_properties = {}
+    spec_properties.each_pair do |name, definition|
+      copy_property(effective_properties, manifest_properties, name, definition["default"])
     end
+
+    manifest.merge({"properties" => effective_properties})
   end
 end

@@ -17,11 +17,11 @@ properties:
         access_key_id: key
         secret_access_key: itsasecret
       scp:
-        server: ""
-        user: ""
-        destination: ""
-        key: ""
-        port: 22
+        server: some-server
+        user: some-user
+        destination: some-destination
+        key: some-key
+        port: 999
     source_folder: /foo
     source_executable: whoami
     cron_schedule: '*/5 * * * * *'
