@@ -127,20 +127,24 @@ case $1 in
 
     log "start script: starting service-backup"
     exec /var/vcap/packages/service-backup/bin/service-backup \
+        --cron-schedule "${CRON_SCHEDULE}" \
+        --backup-creator-cmd "${SOURCE_EXECUTABLE}" \
+        --source-folder "${SOURCE_FOLDER}" \
+        --dest-path "$DEST_PATH" \
+        --cleanup-cmd "${CLEANUP_EXECUTABLE}" \
+        <% if destination_type == 's3' %> \
         --aws-access-key-id "${AWS_ACCESS_KEY_ID}" \
         --aws-secret-access-key "${AWS_SECRET_ACCESS_KEY}" \
-        --source-folder "${SOURCE_FOLDER}" \
-        --dest-bucket "${BUCKET_NAME}" \
-        --dest-path "$DEST_PATH" \
         --endpoint-url "${BLOBSTORE_ENDPOINT_URL}" \
-        --backup-creator-cmd "${SOURCE_EXECUTABLE}" \
-        --cleanup-cmd "${CLEANUP_EXECUTABLE}" \
-        --cron-schedule "${CRON_SCHEDULE}" \
         --aws-cli-path /var/vcap/packages/aws-cli/bin/aws \
+        --dest-bucket "${BUCKET_NAME}" \
+        <% end %> \
+        <% if destination_type == 'scp' %> \
         --ssh-host "${SCP_SERVER}" \
         --ssh-port "${SCP_PORT}" \
         --ssh-user "${SCP_USER}" \
         --ssh-private-key-path "$private_key_path" \
+        <% end %> \
         2>&1 >> "$LOG_DIR/out.log"
 
     log "start script: completed starting service-backup"
