@@ -60,6 +60,9 @@ properties:
   service-backup.destination.azure.path:
     description: Path in container to which backups are uploaded
 
+  service-backup.destination.azure.blob_store_base_url:
+    description: Path in url to which backups are uploaded
+
 
   service-backup.source_folder:
     description: Local path from which backups are uploaded. All files in here are uploaded.

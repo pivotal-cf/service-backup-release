@@ -124,6 +124,7 @@ PIDFILE=${RUN_DIR}/pid
   AZURE_STORAGE_ACCESS_KEY="<%= p('service-backup.destination.azure.storage_access_key') %>"
   AZURE_CONTAINER="<%= p('service-backup.destination.azure.container') %>"
   DEST_PATH="<%= p('service-backup.destination.azure.path') %>"
+  AZURE_BLOB_STORE_BASE_URL="<%= p('service-backup.destination.azure.blob_store_base_url') %>"
 <% end %>
 
 SOURCE_FOLDER="<%= p('service-backup.source_folder') %>"
@@ -165,6 +166,7 @@ case $1 in
         --azure-storage-account "${AZURE_STORAGE_ACCOUNT}" \
         --azure-storage-access-key "${AZURE_STORAGE_ACCESS_KEY}" \
         --azure-container "${AZURE_CONTAINER}" \
+        --azure-blob-store-base-url "${AZURE_BLOB_STORE_BASE_URL"} \
         <% end %> \
         2>&1 >> "$LOG_DIR/out.log"
 
