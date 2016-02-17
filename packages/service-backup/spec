@@ -5,8 +5,10 @@ dependencies:
 - golang
 
 files:
+  - github.com/Azure/azure-sdk-for-go/storage/*.go # gosub
   - github.com/cloudfoundry-incubator/cf-lager/*.go # gosub
   - github.com/pivotal-cf-experimental/service-backup/*.go # gosub
+  - github.com/pivotal-cf-experimental/service-backup/azure/*.go # gosub
   - github.com/pivotal-cf-experimental/service-backup/backup/*.go # gosub
   - github.com/pivotal-cf-experimental/service-backup/s3/*.go # gosub
   - github.com/pivotal-cf-experimental/service-backup/scp/*.go # gosub

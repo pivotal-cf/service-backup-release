@@ -29,3 +29,7 @@
 	path = src/github.com/tedsuo/ifrit
 	url = https://github.com/tedsuo/ifrit
 	branch = master
+[submodule "src/github.com/Azure/azure-sdk-for-go"]
+	path = src/github.com/Azure/azure-sdk-for-go
+	url = https://github.com/Azure/azure-sdk-for-go
+	branch = master
