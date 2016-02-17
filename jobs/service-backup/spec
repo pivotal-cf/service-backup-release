@@ -31,6 +31,7 @@ properties:
   service-backup.destination.s3.secret_access_key:
     description: AWS Secret Access Key to access the blobstore
 
+
   service-backup.destination.scp.user:
     description: SCP user on remote server
 
@@ -45,6 +46,20 @@ properties:
 
   service-backup.destination.scp.port:
     description: SSH port on remote server
+
+
+  service-backup.destination.azure.storage_account:
+    description: Azure account name to access the storage service
+
+  service-backup.destination.azure.storage_access_key:
+    description: Azure access key to access the storage service
+
+  service-backup.destination.azure.container:
+    description: Container to which backups are uploaded
+
+  service-backup.destination.azure.path:
+    description: Path in container to which backups are uploaded
+
 
   service-backup.source_folder:
     description: Local path from which backups are uploaded. All files in here are uploaded.

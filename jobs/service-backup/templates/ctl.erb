@@ -26,11 +26,21 @@ def required_fields(type)
     'service-backup.destination.scp.destination',
     'service-backup.destination.scp.key'
   ]
+
+  required_fields_azure = required_fields_common + [
+    'service-backup.destination.azure.storage_account',
+    'service-backup.destination.azure.storage_access_key',
+    'service-backup.destination.azure.container',
+    'service-backup.destination.azure.path'
+  ]
+
   case type
   when 'scp'
     required_fields_scp
   when 's3'
     required_fields_s3
+  when 'azure'
+    required_fields_azure
   else
     raise 'Invalid config - invalid destination type '+type
   end
@@ -91,7 +101,6 @@ PIDFILE=${RUN_DIR}/pid
   DEST_PATH=<%= p('service-backup.destination.s3.bucket_path') %>
 <% end %>
 
-
 <% if destination_type == 'scp' %>
   DEST_PATH=<%= p('service-backup.destination.scp.destination') %>
   private_key_path=/var/vcap/data/backups.key
@@ -108,6 +117,13 @@ PIDFILE=${RUN_DIR}/pid
   ssh-keyscan $SCP_SERVER >> $KNOWN_HOSTS
   sort -u $KNOWN_HOSTS > $KNOWN_HOSTS_TMP
   mv $KNOWN_HOSTS_TMP $KNOWN_HOSTS
+<% end %>
+
+<% if destination_type == 'azure' %>
+  AZURE_STORAGE_ACCOUNT="<%= p('service-backup.destination.azure.storage_account') %>"
+  AZURE_STORAGE_ACCESS_KEY="<%= p('service-backup.destination.azure.storage_access_key') %>"
+  AZURE_CONTAINER="<%= p('service-backup.destination.azure.container') %>"
+  DEST_PATH="<%= p('service-backup.destination.azure.path') %>"
 <% end %>
 
 SOURCE_FOLDER="<%= p('service-backup.source_folder') %>"
@@ -144,6 +160,11 @@ case $1 in
         --ssh-port "${SCP_PORT}" \
         --ssh-user "${SCP_USER}" \
         --ssh-private-key-path "$private_key_path" \
+        <% end %> \
+        <% if destination_type == 'azure' %> \
+        --azure-storage-account "${AZURE_STORAGE_ACCOUNT}" \
+        --azure-storage-access-key "${AZURE_STORAGE_ACCESS_KEY}" \
+        --azure-container "${AZURE_CONTAINER}" \
         <% end %> \
         2>&1 >> "$LOG_DIR/out.log"
 

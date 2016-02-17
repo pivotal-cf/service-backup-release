@@ -64,6 +64,25 @@ RSpec.describe 'backup job template rendering' do
     end
   end
 
+  context 'when the manifest contains valid azure properties' do
+    let(:manifest_file) { 'spec/fixtures/valid_azure.yml' }
+
+    it 'templates without error' do
+      renderer.render('jobs/service-backup/templates/ctl.erb')
+    end
+  end
+
+  context 'when the manifest contains invalid azure properties' do
+    let(:manifest_file) { 'spec/fixtures/invalid_azure.yml' }
+
+    it 'raises an error containing a custom message' do
+      expect {
+        renderer.render('jobs/service-backup/templates/ctl.erb')
+      }.to raise_error(RuntimeError, "Invalid config - Missing values for service-backup.destination.azure.storage_account, service-backup.destination.azure.container, service-backup.destination.azure.path.\n#{custom_msg}")
+    end
+  end
+
+
   include Bosh::Template::PropertyHelper
 
   # Trying to emulate bosh director Bosh::Director::DeploymentPlan::Job#extract_template_properties
