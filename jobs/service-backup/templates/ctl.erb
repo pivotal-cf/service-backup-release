@@ -92,23 +92,13 @@ RUN_DIR=/var/vcap/sys/run/service-backup
 LOG_DIR=/var/vcap/sys/log/service-backup
 PIDFILE=${RUN_DIR}/pid
 
-<% if destination_type == 's3' %>
-  AWS_ACCESS_KEY_ID="<%= p('service-backup.destination.s3.access_key_id') %>"
-  AWS_SECRET_ACCESS_KEY="<%= p('service-backup.destination.s3.secret_access_key') %>"
-  BUCKET_NAME="<%= p('service-backup.destination.s3.bucket_name') %>"
-  BLOBSTORE_ENDPOINT_URL="<%= p('service-backup.destination.s3.endpoint_url') %>"
-  DEST_PATH=<%= p('service-backup.destination.s3.bucket_path') %>
-<% end %>
-
 <% if destination_type == 'scp' %>
-  DEST_PATH=<%= p('service-backup.destination.scp.destination') %>
-  private_key_path=/var/vcap/data/backups.key
-  echo "<%= p('service-backup.destination.scp.key') %>" > $private_key_path
-  chmod 400 $private_key_path
+  PRIVATE_KEY_PATH=/var/vcap/data/backups.key
+  echo '<%= p('service-backup.destination.scp.key') %>' > $PRIVATE_KEY_PATH
+  chmod 400 $PRIVATE_KEY_PATH
 
   SCP_PORT=<%= p('service-backup.destination.scp.port') %>
-  SCP_USER=<%= p('service-backup.destination.scp.user') %>
-  SCP_SERVER="<%= p('service-backup.destination.scp.server') %>"
+  SCP_SERVER='<%= p('service-backup.destination.scp.server') %>'
 
   KNOWN_HOSTS=/root/.ssh/known_hosts
   KNOWN_HOSTS_TMP=${KNOWN_HOSTS}.tmp
@@ -118,19 +108,7 @@ PIDFILE=${RUN_DIR}/pid
   mv $KNOWN_HOSTS_TMP $KNOWN_HOSTS
 <% end %>
 
-<% if destination_type == 'azure' %>
-  AZURE_STORAGE_ACCOUNT="<%= p('service-backup.destination.azure.storage_account') %>"
-  AZURE_STORAGE_ACCESS_KEY="<%= p('service-backup.destination.azure.storage_access_key') %>"
-  AZURE_CONTAINER="<%= p('service-backup.destination.azure.container') %>"
-  DEST_PATH="<%= p('service-backup.destination.azure.path') %>"
-  AZURE_BLOB_STORE_BASE_URL="<%= p('service-backup.destination.azure.blob_store_base_url', '') %>"
-<% end %>
-
-SOURCE_FOLDER="<%= p('service-backup.source_folder') %>"
-SOURCE_EXECUTABLE="<%= p('service-backup.source_executable') %>"
-CLEANUP_EXECUTABLE="<%= p('service-backup.cleanup_executable') %>"
-CRON_SCHEDULE="<%= p('service-backup.cron_schedule') %>"
-
+SOURCE_FOLDER='<%= p('service-backup.source_folder') %>'
 
 case $1 in
 
@@ -143,29 +121,31 @@ case $1 in
 
     log "start script: starting service-backup"
     exec /var/vcap/packages/service-backup/bin/service-backup \
-        --cron-schedule "${CRON_SCHEDULE}" \
-        --backup-creator-cmd "${SOURCE_EXECUTABLE}" \
+        --cron-schedule '<%= p('service-backup.cron_schedule') %>' \
+        --backup-creator-cmd '<%= p('service-backup.source_executable') %>' \
         --source-folder "${SOURCE_FOLDER}" \
-        --dest-path "$DEST_PATH" \
-        --cleanup-cmd "${CLEANUP_EXECUTABLE}" \
+        --cleanup-cmd '<%= p('service-backup.cleanup_executable') %>' \
         <% if destination_type == 's3' %> \
-        --aws-access-key-id "${AWS_ACCESS_KEY_ID}" \
-        --aws-secret-access-key "${AWS_SECRET_ACCESS_KEY}" \
-        --endpoint-url "${BLOBSTORE_ENDPOINT_URL}" \
+        --dest-path '<%= p('service-backup.destination.s3.bucket_path') %>' \
+        --aws-access-key-id '<%= p('service-backup.destination.s3.access_key_id') %>' \
+        --aws-secret-access-key '<%= p('service-backup.destination.s3.secret_access_key') %>' \
+        --endpoint-url '<%= p('service-backup.destination.s3.endpoint_url') %>' \
         --aws-cli-path /var/vcap/packages/aws-cli/bin/aws \
-        --dest-bucket "${BUCKET_NAME}" \
+        --dest-bucket '<%= p('service-backup.destination.s3.bucket_name') %>' \
         <% end %> \
         <% if destination_type == 'scp' %> \
+        --dest-path '<%= p('service-backup.destination.scp.destination') %>' \
         --ssh-host "${SCP_SERVER}" \
         --ssh-port "${SCP_PORT}" \
-        --ssh-user "${SCP_USER}" \
-        --ssh-private-key-path "$private_key_path" \
+        --ssh-user '<%= p('service-backup.destination.scp.user') %>' \
+        --ssh-private-key-path "$PRIVATE_KEY_PATH" \
         <% end %> \
         <% if destination_type == 'azure' %> \
-        --azure-storage-account "${AZURE_STORAGE_ACCOUNT}" \
-        --azure-storage-access-key "${AZURE_STORAGE_ACCESS_KEY}" \
-        --azure-container "${AZURE_CONTAINER}" \
-        --azure-blob-store-base-url "${AZURE_BLOB_STORE_BASE_URL}" \
+        --dest-path '<%= p('service-backup.destination.azure.path') %>' \
+        --azure-storage-account '<%= p('service-backup.destination.azure.storage_account') %>' \
+        --azure-storage-access-key '<%= p('service-backup.destination.azure.storage_access_key') %>' \
+        --azure-container '<%= p('service-backup.destination.azure.container') %>' \
+        --azure-blob-store-base-url '<%= p('service-backup.destination.azure.blob_store_base_url', '') %>' \
         <% end %> \
         2>&1 >> "$LOG_DIR/out.log"
 
