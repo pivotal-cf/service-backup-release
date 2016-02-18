@@ -121,6 +121,7 @@ case $1 in
 
     log "start script: starting service-backup"
     exec /var/vcap/packages/service-backup/bin/service-backup \
+        <%= destination_type || 'skip' %> \
         --cron-schedule '<%= p('service-backup.cron_schedule') %>' \
         --backup-creator-cmd '<%= p('service-backup.source_executable') %>' \
         --source-folder "${SOURCE_FOLDER}" \
