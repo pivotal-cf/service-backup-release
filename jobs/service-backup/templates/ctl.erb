@@ -113,7 +113,7 @@ PIDFILE=${RUN_DIR}/pid
   KNOWN_HOSTS=/root/.ssh/known_hosts
   KNOWN_HOSTS_TMP=${KNOWN_HOSTS}.tmp
   mkdir -p $(dirname $KNOWN_HOSTS)
-  ssh-keyscan $SCP_SERVER >> $KNOWN_HOSTS
+  ssh-keyscan -p $SCP_PORT $SCP_SERVER >> $KNOWN_HOSTS
   sort -u $KNOWN_HOSTS > $KNOWN_HOSTS_TMP
   mv $KNOWN_HOSTS_TMP $KNOWN_HOSTS
 <% end %>
