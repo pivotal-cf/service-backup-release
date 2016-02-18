@@ -70,6 +70,14 @@ RSpec.describe 'backup job template rendering' do
     it 'templates without error' do
       renderer.render('jobs/service-backup/templates/ctl.erb')
     end
+
+    context 'without the optional properties' do
+      let(:manifest_file) { 'spec/fixtures/valid_azure_without_optional.yml' }
+
+      it 'templates without error' do
+        renderer.render('jobs/service-backup/templates/ctl.erb')
+      end
+    end
   end
 
   context 'when the manifest contains invalid azure properties' do

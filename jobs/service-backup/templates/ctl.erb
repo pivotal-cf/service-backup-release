@@ -123,7 +123,7 @@ PIDFILE=${RUN_DIR}/pid
   AZURE_STORAGE_ACCESS_KEY="<%= p('service-backup.destination.azure.storage_access_key') %>"
   AZURE_CONTAINER="<%= p('service-backup.destination.azure.container') %>"
   DEST_PATH="<%= p('service-backup.destination.azure.path') %>"
-  AZURE_BLOB_STORE_BASE_URL="<%= p('service-backup.destination.azure.blob_store_base_url') %>"
+  AZURE_BLOB_STORE_BASE_URL="<%= p('service-backup.destination.azure.blob_store_base_url', '') %>"
 <% end %>
 
 SOURCE_FOLDER="<%= p('service-backup.source_folder') %>"
