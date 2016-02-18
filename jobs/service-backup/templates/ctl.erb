@@ -5,62 +5,43 @@ def field_present?(field)
   !p(field).to_s.empty?
 end
 
-def required_fields(type)
+def destination_required_fields
+  {
+    "s3"=>['access_key_id', 'secret_access_key', 'bucket_name', 'bucket_path'],
+    "scp"=>['server', 'user', 'destination', 'key'],
+    "azure"=>['storage_account', 'storage_access_key', 'container', 'path']
+  }
+end
+
+def required_fields(destination)
   required_fields_common = [
     'service-backup.source_folder',
     'service-backup.source_executable',
     'service-backup.cron_schedule'
   ]
 
-  required_fields_s3 = required_fields_common + [
-    'service-backup.destination.s3.access_key_id',
-    'service-backup.destination.s3.secret_access_key',
-    'service-backup.destination.s3.bucket_name',
-    'service-backup.destination.s3.bucket_path'
-  ]
-
-  required_fields_scp = required_fields_common + [
-    'service-backup.destination.scp.server',
-    'service-backup.destination.scp.user',
-    'service-backup.destination.scp.destination',
-    'service-backup.destination.scp.key'
-  ]
-
-  required_fields_azure = required_fields_common + [
-    'service-backup.destination.azure.storage_account',
-    'service-backup.destination.azure.storage_access_key',
-    'service-backup.destination.azure.container',
-    'service-backup.destination.azure.path'
-  ]
-
-  case type
-  when 'scp'
-    required_fields_scp
-  when 's3'
-    required_fields_s3
-  when 'azure'
-    required_fields_azure
-  else
-    raise 'Invalid config - invalid destination type '+type
-  end
+  required_fields_for_destination = destination_required_fields[destination]
+  raise 'Invalid config - invalid destination '+destination unless required_fields_for_destination
+  required_fields_common + required_fields_for_destination.map {|e| 'service-backup.destination.' + destination + '.' + e }
 end
 
 def destination_type
-  filtered_not_nil_config.keys.first
+  specified_destinations.keys.first
 end
 
-def filtered_not_nil_config
-  p('service-backup.destination').select do |type, properties|
-    properties.values.count {|x| x != nil} > 0
+def specified_destinations
+  p('service-backup.destination').select do |destination, properties|
+    required_properties = properties.select {|k| destination_required_fields[destination].include? k }
+    required_properties.values.count {|x| x != nil} > 0
   end
 end
 
 # Provides a more user-friendly error message when user meant to disable
 # backups, but forgot to set Backup VM instances to 0
 def verify_config_is_valid
-  return if filtered_not_nil_config.empty?
+  return if specified_destinations.empty?
 
-  if filtered_not_nil_config.size > 1
+  if specified_destinations.size > 1
     raise "Invalid config - You can only specify one backup destination in the manifest."
   end
 
