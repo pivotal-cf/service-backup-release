@@ -17,6 +17,7 @@ properties:
   ################################# BACKUP #################################
 
   service-backup.destination.s3.endpoint_url:
+    default: https://s3.amazonaws.com
     description: URL of the blobstore endpoint. Override this to use an S3-compatible blobstore like RiakS2.
 
   service-backup.destination.s3.bucket_name:
@@ -46,8 +47,8 @@ properties:
 
   service-backup.destination.scp.port:
     description: SSH port on remote server
-
-
+    default: 22
+    
   service-backup.destination.azure.storage_account:
     description: Azure account name to access the storage service
 
@@ -62,6 +63,7 @@ properties:
 
   service-backup.destination.azure.blob_store_base_url:
     description: Path in url to which backups are uploaded
+    default: core.windows.net
 
 
   service-backup.source_folder:
