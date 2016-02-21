@@ -11,11 +11,12 @@ Here is an example BOSH deployment manifest for uploading to a blobstore:
 ---
 properties:
   service-backup:
-    blobstore:
-      bucket_name: replace-with-bucket-name-in-S3
-      bucket_path: replace-with-bucket-path-in-S3
-      access_key_id: replace-with-AWS-access-key
-      secret_access_key: replace-with-AWS-secret-access-key
+    destination:
+      s3:
+        bucket_name: replace-with-bucket-name-in-S3
+        bucket_path: replace-with-bucket-path-in-S3
+        access_key_id: replace-with-AWS-access-key
+        secret_access_key: replace-with-AWS-secret-access-key
     source_folder: replace-with-source-folder-on-local-machine
     source_executable: replace-with-source-executable
     cron_schedule: replace-with-cron-schedule
@@ -35,7 +36,7 @@ jobs:
     release: service-backup
 ```
 
-For SCP swap the `blobstore` section with the following:
+For SCP swap the `s3` section with the following:
 
 ```yml
     scp:
@@ -46,6 +47,16 @@ For SCP swap the `blobstore` section with the following:
         -----BEGIN RSA PRIVATE KEY-----
         -----END RSA PRIVATE KEY-----
       port: 22
+```
+
+For Azure swap the `s3` section with the following:
+
+```yml
+    azure:
+      storage_account: storageaccount
+      storage_access_key: somekey
+      container: yourcontainer
+      path: backup_path
 ```
 
 An exhaustive and up-to-date list of properties can be found in the [service-backup job spec](./jobs/service-backup/spec).
