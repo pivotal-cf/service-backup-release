@@ -1,8 +1,4 @@
 ---
-golang/go1.4.2.linux-amd64.tar.gz:
-  object_id: 4849b2df-9250-4727-afc6-90533b84e195
-  sha: 5020af94b52b65cc9b6f11d50a67e4bae07b0aff
-  size: 62442704
 aws-cli/awscli-bundle.zip:
   object_id: 1ddaf076-758d-4a77-b4af-7c8378d5a2a9
   sha: 60a57058fa208072ee056f3b746f7d57bb58699f
@@ -11,3 +7,7 @@ python/Python-2.7.11.tgz:
   object_id: ef4401b7-48f4-4312-8e5a-86c001cc3cf0
   sha: 62a0b1b703d42999cc4aa9ee3c55eb7efe35802a
   size: 16856409
+golang/go1.6.linux-amd64.tar.gz:
+  object_id: c42f2044-02d3-4dac-93ca-0351528a60fd
+  sha: 01a6a28dbe31a53103b600979bbbbd63a8104456
+  size: 84799480
