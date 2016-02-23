@@ -10,6 +10,7 @@ files:
   - github.com/pivotal-cf-experimental/service-backup/*.go # gosub
   - github.com/pivotal-cf-experimental/service-backup/azure/*.go # gosub
   - github.com/pivotal-cf-experimental/service-backup/backup/*.go # gosub
+  - github.com/pivotal-cf-experimental/service-backup/parseargs/*.go # gosub
   - github.com/pivotal-cf-experimental/service-backup/s3/*.go # gosub
   - github.com/pivotal-cf-experimental/service-backup/scp/*.go # gosub
   - github.com/pivotal-golang/lager/*.go # gosub
