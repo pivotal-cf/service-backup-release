@@ -10,6 +10,7 @@ export GOROOT=$(readlink -nf /var/vcap/packages/golang)
 export PATH=$GOROOT/bin:$PATH
 
 go install github.com/pivotal-cf-experimental/service-backup
+go install github.com/pivotal-cf-experimental/service-backup/cmd/manual-backup
 
 # clean up source artifacts
 rm -rf ${BOSH_INSTALL_TARGET}/src ${BOSH_INSTALL_TARGET}/pkg
