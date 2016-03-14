@@ -4,8 +4,8 @@ platform: linux
 image: docker:///cflondonservices/service-backups-release-ci
 
 inputs:
-- name: service-backup-release
-- name: services-enablement-meta
+  - name: service-backup-release
+  - name: services-enablement-meta
 
 run:
   path: service-backup-release/ci/scripts/release_tests.sh
