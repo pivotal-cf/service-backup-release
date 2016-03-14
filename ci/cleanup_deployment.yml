@@ -10,6 +10,7 @@ run:
   path: service-backup-release/ci/scripts/cleanup_deployment.sh
 
 params:
-  BOSH_URL: https://52.31.130.254:25555
-  BOSH_USERNAME: director
-  BOSH_PASSWORD:  Yoo0giraexahnoohaemi
+  BOSH_URL:
+  BOSH_USERNAME:
+  BOSH_PASSWORD:
+  BOSH_DEPLOYMENT_NAMES:
