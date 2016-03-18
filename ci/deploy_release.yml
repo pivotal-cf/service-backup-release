@@ -7,10 +7,11 @@ inputs:
 - name: service-backup-release
 
 run:
-  path: service-backup-release/ci/scripts/create_dev_release.sh
+  path: service-backup-release/ci/scripts/deploy_release.sh
 
 params:
   BOSH_URL:
   BOSH_CA_CERT_PATH:
   BOSH_CLIENT:
   BOSH_CLIENT_SECRET:
+  MANIFEST:

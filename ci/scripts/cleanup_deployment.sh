@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash -eu
 
 mustHave() {
   var=$1
@@ -11,12 +11,12 @@ mustHave() {
   fi
 }
 
-for v in BOSH_URL BOSH_USERNAME BOSH_PASSWORD BOSH_DEPLOYMENT_NAMES
+for v in BOSH_URL BOSH_CA_CERT_PATH BOSH_CLIENT BOSH_CLIENT_SECRET BOSH_DEPLOYMENT_NAMES
 do
   mustHave $v
 done
 
 for BOSH_DEPLOYMENT_NAME in $BOSH_DEPLOYMENT_NAMES
 do
-  bosh -n -t $BOSH_URL -u $BOSH_USERNAME -p $BOSH_PASSWORD delete deployment $BOSH_DEPLOYMENT_NAME
+  bosh --non-interactive --target $BOSH_URL --ca-cert $BOSH_CA_CERT_PATH delete deployment $BOSH_DEPLOYMENT_NAME
 done
