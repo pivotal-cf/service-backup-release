@@ -61,6 +61,14 @@ For Azure swap the `s3` section with the following:
       path: backup_path
 ```
 
+To disable backups set the destination block to be empty:
+
+```
+properties:
+  service-backup:
+    destination: {}
+```
+
 An exhaustive and up-to-date list of properties can be found in the [service-backup job spec](./jobs/service-backup/spec).
 
 ### Bucket name and path
