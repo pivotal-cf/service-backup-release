@@ -89,8 +89,6 @@ PIDFILE=${RUN_DIR}/pid
   mv $KNOWN_HOSTS_TMP $KNOWN_HOSTS
 <% end %>
 
-SOURCE_FOLDER='<%= p('service-backup.source_folder') %>'
-
 case $1 in
 
   start)
@@ -98,15 +96,22 @@ case $1 in
     chown -R vcap:vcap $RUN_DIR $LOG_DIR
     echo $$ > $PIDFILE
 
-    mkdir -p "${SOURCE_FOLDER}"
+    <% if_p('service-backup.source_folder') do %>
+      SOURCE_FOLDER='<%= p('service-backup.source_folder') %>'
+      mkdir -p "${SOURCE_FOLDER}"
+    <% end %>
 
     log "start script: starting service-backup"
     exec /var/vcap/packages/service-backup/bin/service-backup \
-        <%= destination_type || 'skip' %> \
-        --cron-schedule '<%= p('service-backup.cron_schedule') %>' \
-        --backup-creator-cmd '<%= p('service-backup.source_executable') %>' \
-        --source-folder "${SOURCE_FOLDER}" \
-        --cleanup-cmd '<%= p('service-backup.cleanup_executable') %>' \
+        <% if destination_type %> \
+          destination_type \
+          --cron-schedule '<%= p('service-backup.cron_schedule') %>' \
+          --backup-creator-cmd '<%= p('service-backup.source_executable') %>' \
+          --source-folder "${SOURCE_FOLDER}" \
+          --cleanup-cmd '<%= p('service-backup.cleanup_executable') %>' \
+        <% else %> \
+          skip \
+        <% end %> \
         <% if destination_type == 's3' %> \
         --dest-path '<%= p('service-backup.destination.s3.bucket_path') %>' \
         --aws-access-key-id '<%= p('service-backup.destination.s3.access_key_id') %>' \

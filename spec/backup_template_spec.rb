@@ -56,8 +56,16 @@ RSpec.describe 'backup job template rendering' do
     end
   end
 
-  context 'when the manifest contains no backup properties' do
+  context 'when the manifest contains no backup destination properties' do
     let(:manifest_file) { 'spec/fixtures/skip_backups.yml' }
+
+    it 'templates without error' do
+      renderer.render('jobs/service-backup/templates/ctl.erb')
+    end
+  end
+
+  context 'when the manifest contains no backup properties' do
+    let(:manifest_file) { 'spec/fixtures/no_service_backups.yml' }
 
     it 'templates without error' do
       renderer.render('jobs/service-backup/templates/ctl.erb')
