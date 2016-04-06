@@ -3,7 +3,7 @@ BOSH release of service backup tool
 
 ## Usage
 
-This BOSH release is intended to be co-located with other releases that need to perform backups. The release supports uploading to supported blobstores (AWS s3 & Ceph s3) and via SCP. At this time only one upload destination is supported. 
+This BOSH release is intended to be co-located with other releases that need to perform backups. The release supports uploading to supported s3 blobstores (AWS s3, Ceph s3, [Swift w/ s3 compatibility middleware](https://swiftstack.com/docs/admin/middleware/s3_middleware.html)), Azure blobstore and via SCP. At this time only one upload destination is supported.
 
 The tool will create a folder structure in your destination bucket / folder as follows: `yyyy/mm/dd` and uses the machine it is running on to calculate the date. For example if your machine is using UTC time, then the folder structure will reflect this.
 
