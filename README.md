@@ -71,6 +71,10 @@ properties:
 
 An exhaustive and up-to-date list of properties can be found in the [service-backup job spec](./jobs/service-backup/spec).
 
+#### Disabling backups
+
+Backups can be disabled by removing the `service-backup` section from your manifest and then redeploying. You can still leave the template on your job if you wish.
+
 ### Bucket name and path
 
 The bucket name should not start with `s3://` and it should not contain underscores. Additionally, neither the bucket name nor the bucket path should have preceding or trailing slashes. An example of syntactically-valid properties is:
