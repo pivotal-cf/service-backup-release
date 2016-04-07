@@ -11,6 +11,7 @@ templates:
 packages:
 - service-backup
 - aws-cli
+- blobxfer
 
 properties:
 
@@ -48,7 +49,7 @@ properties:
   service-backup.destination.scp.port:
     description: SSH port on remote server
     default: 22
-    
+
   service-backup.destination.azure.storage_account:
     description: Azure account name to access the storage service
 
