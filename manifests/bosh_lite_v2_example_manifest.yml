@@ -1,0 +1,43 @@
+---
+name: service-backup
+director_uuid: &director_uuid REPLACE_WITH_DIR_UUID
+
+stemcells:
+  - alias: trusty
+    os: ubuntu-trusty
+    version: latest
+
+releases:
+- name: service-backup
+  version: latest
+
+properties:
+  service-backup:
+    destination:
+      azure:
+        storage_account: AZURE_STORAGE_ACCOUNT
+        storage_access_key: AZURE_STORAGE_KEY
+        container: AZURE_STORAGE_CONTAINER
+        path: whose_blobs/runs_blobs
+        blob_store_base_url: core.windows.net
+    source_folder: /tmp
+    source_executable: true
+    cron_schedule: '*/5 * * * * *'
+
+jobs:
+- name: service-backup
+  instances: 1
+  stemcell: trusty
+  vm_type: medium
+  persistent_disk_type: ten
+  networks:
+  - name: backup-network
+  templates:
+  - {release:  service-backup, name: service-backup}
+
+update:
+  canaries: 1
+  max_in_flight: 1
+  serial: false
+  canary_watch_time: 1000-60000
+  update_watch_time: 1000-60000
