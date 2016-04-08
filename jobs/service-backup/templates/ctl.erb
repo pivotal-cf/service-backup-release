@@ -136,6 +136,7 @@ case $1 in
         --azure-storage-access-key '<%= p('service-backup.destination.azure.storage_access_key') %>' \
         --azure-container '<%= p('service-backup.destination.azure.container') %>' \
         --azure-blob-store-base-url '<%= p('service-backup.destination.azure.blob_store_base_url', '') %>' \
+        --azure-cli-path /var/vcap/packages/blobxfer/bin/blobxfer \
         <% end %> \
         2>&1 >> "$LOG_DIR/out.log"
 
