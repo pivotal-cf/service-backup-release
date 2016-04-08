@@ -109,9 +109,6 @@ case $1 in
           --backup-creator-cmd '<%= p('service-backup.source_executable') %>' \
           --source-folder "${SOURCE_FOLDER}" \
           --cleanup-cmd '<%= p('service-backup.cleanup_executable') %>' \
-          <% if_p('service-backup.service_identifier_executable') do %> \
-            --service-identifier-cmd '<%= p('service-backup.service_identifier_executable') %>' \
-          <% end %> \
         <% else %> \
           skip \
         <% end %> \
