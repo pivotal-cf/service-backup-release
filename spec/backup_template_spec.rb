@@ -98,6 +98,20 @@ RSpec.describe 'backup job template rendering' do
     end
   end
 
+  context 'when the manifest contains a service identifier command' do
+    let(:manifest_file) { 'spec/fixtures/service_identifier.yml' }
+
+    it 'templates without an error' do
+      renderer.render('jobs/service-backup/templates/ctl.erb')
+    end
+
+    it 'templates the service identifier cmd option in the control scripts' do
+      ctl = renderer.render('jobs/service-backup/templates/ctl.erb')
+      expect(ctl).to match("--service-identifier-cmd 'service-identifier-cmd'")
+    end
+
+  end
+
 
   include Bosh::Template::PropertyHelper
 
