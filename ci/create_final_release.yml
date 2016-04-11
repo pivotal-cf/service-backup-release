@@ -7,6 +7,9 @@ inputs:
 - name: service-backup-release
 - name: sha-to-release
 
+outputs:
+- name: final-tarball
+
 run:
   path: service-backup-release/ci/scripts/create_final_release.sh
 

@@ -49,3 +49,6 @@ git rebase origin/develop
 git push origin HEAD:develop
 
 git push origin --tags
+popd
+
+mv service-backup-release/releases/*.tgz final-tarball/
