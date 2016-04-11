@@ -61,19 +61,34 @@ For Azure swap the `s3` section with the following:
       path: backup_path
 ```
 
-To disable backups set the destination block to be empty:
-
-```
-properties:
-  service-backup:
-    destination: {}
-```
-
 An exhaustive and up-to-date list of properties can be found in the [service-backup job spec](./jobs/service-backup/spec).
 
 #### Disabling backups
 
 Backups can be disabled by removing the `service-backup` section from your manifest and then redeploying. You can still leave the template on your job if you wish.
+
+#### Identifying service instance that is being back up in logs
+
+You may provide a binary that returns a string identifier for your service instance. This will appear in all log messages under the data element `identifier` e.g.
+
+`{ "source": "ServiceBackuo", "message": "doing-stuff", "data": { "identifier": "service_identifier" }, "timestamp": 1232345, "log_level": 1 }`
+
+Add the `service_identifier_executable` key to your manifest:
+
+```yml
+properties:
+  service-backup:
+    destination:
+      s3:
+        bucket_name: replace-with-bucket-name-in-S3
+        bucket_path: replace-with-bucket-path-in-S3
+        access_key_id: replace-with-AWS-access-key
+        secret_access_key: replace-with-AWS-secret-access-key
+    source_folder: replace-with-source-folder-on-local-machine
+    source_executable: replace-with-source-executable
+    cron_schedule: replace-with-cron-schedule
+    service_identifier_executable: replace-with-service-identifier-executable #optional
+```
 
 ### Bucket name and path
 
