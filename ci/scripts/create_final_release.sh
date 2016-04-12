@@ -1,20 +1,11 @@
-#!/bin/bash -e
-
-mustHave() {
-  var=$1
-  shift
-
-  if [ -z "${!var}" ]
-  then
-    echo "must set $var" >&2
-    exit 1
-  fi
-}
+#!/bin/bash -eu
 
 for v in AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY GIT_SSH_KEY
 do
-  mustHave $v
+  [[ -n "${!v:-}" ]] || { echo "must set $v" >&2; exit 1; }
 done
+
+OUTPUT_DIR="$(pwd)/final-tarball"
 
 pushd $(dirname $0)/../..
 
@@ -28,6 +19,7 @@ git tag "v${release_version}"
 # Avoid '--' being interpreted as an argument to printf
 printf "%s-\nblobstore:\n  s3:\n    access_key_id: ${AWS_ACCESS_KEY_ID}\n    secret_access_key: ${AWS_SECRET_ACCESS_KEY}" "--" > config/private.yml
 bosh -n create release --name service-backup --final --with-tarball
+mv releases/service-backup/*.tgz "$OUTPUT_DIR/"
 
 key=/tmp/key
 echo "$GIT_SSH_KEY" > $key
@@ -50,5 +42,3 @@ git push origin HEAD:develop
 
 git push origin --tags
 popd
-
-mv service-backup-release/releases/service-backup/*.tgz final-tarball/
