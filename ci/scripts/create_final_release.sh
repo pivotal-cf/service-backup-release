@@ -20,7 +20,7 @@ pushd $(dirname $0)/../..
 
 sha_to_release=$(cat ../sha-to-release/service-backup-release.sha)
 echo "releasing $sha_to_release"
-git checkout $sha_to_release
+git checkout "$sha_to_release"
 
 release_version=$(( $(ls releases/service-backup | grep service-backup | wc -l) + 1 ))
 git tag "v${release_version}"
@@ -51,4 +51,4 @@ git push origin HEAD:develop
 git push origin --tags
 popd
 
-mv service-backup-release/releases/*.tgz final-tarball/
+mv service-backup-release/releases/service-backup/*.tgz final-tarball/
