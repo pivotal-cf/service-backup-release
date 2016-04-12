@@ -14,7 +14,7 @@ echo "releasing $sha_to_release"
 git checkout "$sha_to_release"
 
 release_version=$(( $(ls releases/service-backup | grep service-backup | wc -l) + 1 ))
-git tag "v${release_version}"
+git tag --force "v${release_version}"
 
 # Avoid '--' being interpreted as an argument to printf
 printf "%s-\nblobstore:\n  s3:\n    access_key_id: ${AWS_ACCESS_KEY_ID}\n    secret_access_key: ${AWS_SECRET_ACCESS_KEY}" "--" > config/private.yml
