@@ -7,10 +7,10 @@ python/Python-2.7.11.tgz:
   object_id: ef4401b7-48f4-4312-8e5a-86c001cc3cf0
   sha: 62a0b1b703d42999cc4aa9ee3c55eb7efe35802a
   size: 16856409
-golang/go1.6.linux-amd64.tar.gz:
-  object_id: c42f2044-02d3-4dac-93ca-0351528a60fd
-  sha: 01a6a28dbe31a53103b600979bbbbd63a8104456
-  size: 84799480
+golang/go1.6.1.linux-amd64.tar.gz:
+  object_id: 1018e92a-b78d-4ca1-812a-347d054c15cc
+  sha: c73492474dcc7a233772d27e948b74468d9f1849
+  size: 84824395
 blobxfer/azure-common-1.1.1.zip:
   object_id: 52715fb1-f94f-4b46-8481-0f489f457d0b
   sha: f5ca189aaa62b56a9fcdeadea5d5ebe16aec6588
