@@ -4,7 +4,7 @@ BOSH operators running services (e.g. Redis service broker for Cloud Foundry) ma
 
 ## Using Service Backup
 
-See the [extensive documentation](https://github.com/pivotal-cf/docs-service-backup).
+User documentation can be found [here](https://docs.pivotal.io/service-backup).
 
 ## Contributing to Service Backup
 
