@@ -20,7 +20,7 @@ Below are the steps to clone and work on the Service Backup repo, however, if yo
     git clone git@github.com:pivotal-cf-experimental/service-backup-release.git
     ```
 
-    Note that development is carried out on a branch called `develop`; this will be checked out by default.
+    Note that development is carried out on a branch called `master`; this will be checked out by default.
 
 This repository is the BOSH release, and contains the Go code for the service backup daemon and its dependencies as submodules.
 
@@ -82,4 +82,4 @@ This repository is the BOSH release, and contains the Go code for the service ba
 
 - **Send a pull request**
 
-    Set up a pull request to the service-backup repository. Remember that development is carried out on a branch called `develop`; please submit to this branch!
+    Set up a pull request to the service-backup repository. Remember that development is carried out on a branch called `master`; please submit to this branch!

@@ -37,8 +37,8 @@ mkdir -p ~/.ssh
 ssh-keyscan github.com >> ~/.ssh/known_hosts
 
 git fetch
-git rebase origin/develop
-git push origin HEAD:develop
+git rebase origin/master
+git push origin HEAD:master
 
 git push origin --tags
 popd
