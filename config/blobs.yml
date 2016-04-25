@@ -7,10 +7,6 @@ python/Python-2.7.11.tgz:
   object_id: ef4401b7-48f4-4312-8e5a-86c001cc3cf0
   sha: 62a0b1b703d42999cc4aa9ee3c55eb7efe35802a
   size: 16856409
-golang/go1.6.1.linux-amd64.tar.gz:
-  object_id: 1018e92a-b78d-4ca1-812a-347d054c15cc
-  sha: c73492474dcc7a233772d27e948b74468d9f1849
-  size: 84824395
 blobxfer/azure-common-1.1.1.zip:
   object_id: 52715fb1-f94f-4b46-8481-0f489f457d0b
   sha: f5ca189aaa62b56a9fcdeadea5d5ebe16aec6588
@@ -35,3 +31,7 @@ blobxfer/setuptools-20.6.7.tar.gz:
   object_id: f2d4bdd4-1e19-4deb-b456-e29634fed5d6
   sha: 8afa042dece06be473b025e628d3585ab5d27de3
   size: 675428
+golang/go1.6.2.linux-amd64.tar.gz:
+  object_id: 2cc9ee78-d3a2-4415-8302-db88c2c981da
+  sha: b8318b09de06076d5397e6ec18ebef3b45cd315d
+  size: 84840658
