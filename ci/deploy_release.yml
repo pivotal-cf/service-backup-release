@@ -1,7 +1,7 @@
 ---
 platform: linux
 
-image: docker:///cflondonservices/service-backups-release-ci
+image: docker:///pcfservicesenablement/services-enablement-ci
 
 inputs:
 - name: service-backup-release
