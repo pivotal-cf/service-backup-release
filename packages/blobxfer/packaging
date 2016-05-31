@@ -18,6 +18,11 @@ pushd setuptools-20.6.7
   ${BOSH_INSTALL_TARGET}/bin/python setup.py install --record setuptools-files.txt
 popd
 
+tar xfv blobxfer/six-1.10.0.tar.gz
+pushd six-1.10.0
+  ${BOSH_INSTALL_TARGET}/bin/python setup.py install --record six-files.txt
+popd
+
 tar xvf blobxfer/python-dateutil-2.4.2.tar.gz
 pushd python-dateutil-2.4.2
   ${BOSH_INSTALL_TARGET}/bin/python setup.py install
@@ -42,7 +47,10 @@ cp blobxfer/wrapper.py ${BOSH_INSTALL_TARGET}/bin/blobxfer
 
 chmod +x ${BOSH_INSTALL_TARGET}/bin/blobxfer
 
-
 pushd setuptools-20.6.7
   cat setuptools-files.txt | xargs rm
+popd
+
+pushd six-1.10.0
+  cat six-files.txt | xargs rm
 popd
