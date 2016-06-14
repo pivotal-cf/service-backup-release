@@ -103,6 +103,7 @@ case $1 in
 
     log "start script: starting service-backup"
     exec /var/vcap/packages/service-backup/bin/service-backup \
+        --exit-if-in-progress '<%= p('service-backup.exit_if_in_progress') %>' \
         <% if destination_type %> \
           <%= destination_type %> \
           --cron-schedule '<%= p('service-backup.cron_schedule') %>' \
