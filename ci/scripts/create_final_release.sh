@@ -12,6 +12,7 @@ pushd $(dirname $0)/../..
 sha_to_release=$(cat ../sha-to-release/service-backup-release.sha)
 echo "releasing $sha_to_release"
 git checkout "$sha_to_release"
+git submodule update --init --recursive
 
 release_version=$(( $(ls releases/service-backup | grep service-backup | wc -l) + 1 ))
 git tag --force "v${release_version}"
