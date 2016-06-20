@@ -1,0 +1,60 @@
+#!/bin/bash -eu
+
+<% if destination_type == 'scp' %>
+  PRIVATE_KEY_PATH=/var/vcap/data/backups.key
+  echo '<%= p('service-backup.destination.scp.key') %>' > $PRIVATE_KEY_PATH
+  chmod 400 $PRIVATE_KEY_PATH
+
+  SCP_PORT=<%= p('service-backup.destination.scp.port') %>
+  SCP_SERVER='<%= p('service-backup.destination.scp.server') %>'
+
+  KNOWN_HOSTS=/root/.ssh/known_hosts
+  KNOWN_HOSTS_TMP=${KNOWN_HOSTS}.tmp
+  mkdir -p $(dirname $KNOWN_HOSTS)
+  ssh-keyscan -p $SCP_PORT $SCP_SERVER >> $KNOWN_HOSTS
+  sort -u $KNOWN_HOSTS > $KNOWN_HOSTS_TMP
+  mv $KNOWN_HOSTS_TMP $KNOWN_HOSTS
+<% end %>
+
+<% if_p('service-backup.source_folder') do %>
+  SOURCE_FOLDER='<%= p('service-backup.source_folder') %>'
+  mkdir -p "${SOURCE_FOLDER}"
+<% end %>
+
+/var/vcap/packages/service-backup/bin/manual-backup \
+  <% if destination_type %> \
+    <%= destination_type %> \
+    --cron-schedule '<%= p('service-backup.cron_schedule') %>' \
+    --exit-if-in-progress '<%= p('service-backup.exit_if_in_progress') %>' \
+    --backup-creator-cmd '<%= p('service-backup.source_executable') %>' \
+    --source-folder "${SOURCE_FOLDER}" \
+    --cleanup-cmd '<%= p('service-backup.cleanup_executable') %>' \
+    <% if_p('service-backup.service_identifier_executable') do %> \
+      --service-identifier-cmd '<%= p('service-backup.service_identifier_executable') %>' \
+    <% end %> \
+  <% else %> \
+    skip \
+  <% end %> \
+  <% if destination_type == 's3' %> \
+  --dest-path '<%= p('service-backup.destination.s3.bucket_path') %>' \
+  --aws-access-key-id '<%= p('service-backup.destination.s3.access_key_id') %>' \
+  --aws-secret-access-key '<%= p('service-backup.destination.s3.secret_access_key') %>' \
+  --endpoint-url '<%= p('service-backup.destination.s3.endpoint_url') %>' \
+  --aws-cli-path /var/vcap/packages/aws-cli/bin/aws \
+  --dest-bucket '<%= p('service-backup.destination.s3.bucket_name') %>' \
+  <% end %> \
+  <% if destination_type == 'scp' %> \
+  --dest-path '<%= p('service-backup.destination.scp.destination') %>' \
+  --ssh-host "${SCP_SERVER}" \
+  --ssh-port "${SCP_PORT}" \
+  --ssh-user '<%= p('service-backup.destination.scp.user') %>' \
+  --ssh-private-key-path "$PRIVATE_KEY_PATH" \
+  <% end %> \
+  <% if destination_type == 'azure' %> \
+  --dest-path '<%= p('service-backup.destination.azure.path') %>' \
+  --azure-storage-account '<%= p('service-backup.destination.azure.storage_account') %>' \
+  --azure-storage-access-key '<%= p('service-backup.destination.azure.storage_access_key') %>' \
+  --azure-container '<%= p('service-backup.destination.azure.container') %>' \
+  --azure-blob-store-base-url '<%= p('service-backup.destination.azure.blob_store_base_url', '') %>' \
+  --azure-cli-path /var/vcap/packages/blobxfer/bin/blobxfer
+  <% end %>
