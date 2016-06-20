@@ -7,14 +7,16 @@ image_resource:
 
 inputs:
 - name: service-backup-release
+  path: release-to-upload
 - name: services-enablement-meta
 
 run:
-  path: service-backup-release/ci/scripts/deploy_release.sh
+  path: services-enablement-meta/ci-scripts/upload-release.sh
 
 params:
   BOSH_URL:
-  BOSH_CA_CERT_PATH:
-  BOSH_CLIENT:
-  BOSH_CLIENT_SECRET:
-  MANIFEST:
+  BOSH_CA_CERT:
+  BOSH_USERNAME:
+  BOSH_PASSWORD:
+  RELEASE_NAME:
+  AUTH_TYPE:
