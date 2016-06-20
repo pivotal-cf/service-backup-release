@@ -4,7 +4,7 @@ mustHave() {
   var=$1
   shift
 
-  if [ -z "${!var}" ]
+  if [ -z "${!var:-}" ]
   then
     echo "must set $var" >&2
     exit 1
