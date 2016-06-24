@@ -5,7 +5,6 @@ dependencies:
 - golang
 
 files:
-  - github.com/Azure/azure-sdk-for-go/storage/*.go # gosub
   - github.com/cloudfoundry-incubator/cf-lager/*.go # gosub
   - github.com/pivotal-cf-experimental/service-backup/*.go # gosub
   - github.com/pivotal-cf-experimental/service-backup/azure/*.go # gosub
@@ -18,3 +17,4 @@ files:
   - github.com/pivotal-golang/lager/*.go # gosub
   - github.com/tedsuo/ifrit/*.go # gosub
   - gopkg.in/robfig/cron.v2/*.go # gosub
+  - gopkg.in/yaml.v2/*.go # gosub
