@@ -8,6 +8,7 @@ description: |
 templates:
   ctl.erb: bin/ctl
   backup.yml.erb: config/backup.yml
+  manual-backup.sh.erb: bin/manual-backup
 
 packages:
 - service-backup
