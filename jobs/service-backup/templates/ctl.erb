@@ -27,7 +27,7 @@ case $1 in
     <% end %>
 
     log "start script: starting service-backup"
-    exec /var/vcap/packages/service-backup/bin/service-backup /var/vcap/packages/service-backup/config/backup.yml 2>&1 >> "$LOG_DIR/out.log"
+    exec /var/vcap/packages/service-backup/bin/service-backup /var/vcap/jobs/service-backup/config/backup.yml 2>&1 >> "$LOG_DIR/out.log"
 
     log "start script: completed starting service-backup"
     ;;
