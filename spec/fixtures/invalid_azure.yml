@@ -9,12 +9,12 @@ releases:
 
 properties:
   service-backup:
-    destination:
-      azure:
-        storage_account: ""
-        storage_access_key: some-access-key
-        container: ""
-        path: ""
+    destinations:
+      - type: azure
+        config:
+          storage_account: ""
+          container: ""
+          path: ""
     source_folder: /foo
     source_executable: whoami
     cron_schedule: '*/5 * * * * *'

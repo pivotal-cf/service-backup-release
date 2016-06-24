@@ -9,7 +9,6 @@ releases:
 
 properties:
   service-backup:
-    destination:
     source_folder: /foo
     source_executable: whoami
     cron_schedule: '*/5 * * * * *'

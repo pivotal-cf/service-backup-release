@@ -12,11 +12,10 @@ properties:
     destinations:
       - type: scp
         config:
-          server: ""
-          user: ""
-          destination:
-          key:
-          port: 22
+          server: foo
+          user: user
+          destination: /var
+          key: akey
     source_folder: /foo
     source_executable: whoami
     cron_schedule: '*/5 * * * * *'

@@ -1,4 +1,5 @@
 require 'rspec'
+require 'rspec/its'
 
 RSpec.configure do |c|
   c.disable_monkey_patching!

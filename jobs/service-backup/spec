@@ -7,6 +7,7 @@ description: |
 
 templates:
   ctl.erb: bin/ctl
+  backup.yml.erb: config/backup.yml
 
 packages:
 - service-backup
@@ -16,56 +17,8 @@ packages:
 properties:
 
   ################################# BACKUP #################################
-
-  service-backup.destination.s3.endpoint_url:
-    default: https://s3.amazonaws.com
-    description: URL of the blobstore endpoint. Override this to use an S3-compatible blobstore like RiakS2.
-
-  service-backup.destination.s3.bucket_name:
-    description: Bucket to which backups are uploaded
-
-  service-backup.destination.s3.bucket_path:
-    description: Path in bucket to which backups are uploaded
-
-  service-backup.destination.s3.access_key_id:
-    description: AWS Access Key to access the blobstore
-
-  service-backup.destination.s3.secret_access_key:
-    description: AWS Secret Access Key to access the blobstore
-
-
-  service-backup.destination.scp.user:
-    description: SCP user on remote server
-
-  service-backup.destination.scp.server:
-    description: SCP remote server host
-
-  service-backup.destination.scp.destination:
-    description: Remote path on server for upload
-
-  service-backup.destination.scp.key:
-    description: SSH key identity file for remote server
-
-  service-backup.destination.scp.port:
-    description: SSH port on remote server
-    default: 22
-
-  service-backup.destination.azure.storage_account:
-    description: Azure account name to access the storage service
-
-  service-backup.destination.azure.storage_access_key:
-    description: Azure access key to access the storage service
-
-  service-backup.destination.azure.container:
-    description: Container to which backups are uploaded
-
-  service-backup.destination.azure.path:
-    description: Path in container to which backups are uploaded
-
-  service-backup.destination.azure.blob_store_base_url:
-    description: Path in url to which backups are uploaded
-    default: core.windows.net
-
+  service-backup.destinations:
+    default: []
 
   service-backup.source_folder:
     description: Local path from which backups are uploaded. All files in here are uploaded.
@@ -90,3 +43,11 @@ properties:
   service-backup.exit_if_in_progress:
     default: "false"
     description: Optional field to reject subsequent backup requests if a backup is already in progress. Defaults to false.
+
+  service-backup.aws_cli_path:
+    default: /var/vcap/packages/aws-cli/bin/aws
+    description: Path the to aws cli
+
+  service-backup.azure_cli_path:
+    default: /var/vcap/packages/blobxfer/bin/blobxfer
+    description: Path the to azure cli

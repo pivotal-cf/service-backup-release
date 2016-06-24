@@ -10,13 +10,19 @@ releases:
 properties:
   service-backup:
     destinations:
-      - type: scp
+      - type: s3
         config:
-          server: ""
-          user: ""
-          destination:
-          key:
-          port: 22
+          endpoint_url: some-url
+          bucket_name: test
+          bucket_path: foo/bar
+          access_key_id: key
+          secret_access_key: itsasecret
+      - config:
+          endpoint_url: some-url
+          bucket_name: test
+          bucket_path: foo/bar
+          access_key_id: key
+          secret_access_key: itsasecret
     source_folder: /foo
     source_executable: whoami
     cron_schedule: '*/5 * * * * *'

@@ -1,0 +1,78 @@
+<%
+def validate_config(config)
+  return if config["destinations"].empty?
+
+  required_properties = %w(source_executable source_folder cron_schedule)
+  empty_properties = required_properties.select do |property|
+    config[property].to_s.empty?
+  end
+
+  if empty_properties.any?
+    raise invalid_config_message("Missing values for service_backup: #{empty_properties.join(", ")}")
+  end
+end
+
+def validate_type(type)
+  unless %w(scp s3 azure).include?(type)
+    raise invalid_config_message("Unknown destination type: #{type}")
+  end
+end
+
+def validate_destination(type, destination)
+  config = destination.fetch("config") do
+    raise invalid_config_message("Missing config for #{type}")
+  end
+
+  empty_properties = required_properties(type).select do |property|
+    config[property].nil? || config[property].empty?
+  end
+
+  if empty_properties.any?
+    raise invalid_config_message("Missing values for #{type}: #{empty_properties.join(", ")}")
+  end
+end
+
+def required_properties(type)
+  {
+    'scp' => ['server', 'user', 'destination', 'key'],
+    's3' => ['access_key_id', 'secret_access_key', 'bucket_name', 'bucket_path'],
+    'azure' => ['storage_account', 'storage_access_key', 'container', 'path']
+  }[type]
+end
+
+def set_defaults(type, destination)
+  {
+    'scp' => lambda {
+      destination["config"]["port"] = 22 if destination["config"]["port"].nil?
+    },
+    's3' => lambda {
+      destination["config"]["endpoint_url"] = "https://s3.amazonaws.com" if destination["config"]["endpoint_url"].nil?
+    },
+    'azure' => lambda {
+      destination["config"]["blob_store_base_url"] = "core.windows.net" if destination["config"]["blob_store_base_url"].nil?
+    }
+  }[type].call
+end
+
+def invalid_config_message(message)
+  custom_message = p('service-backup.missing_properties_message')
+  "Invalid config - #{message}.\n#{custom_message}"
+end
+
+service_backup_config = p('service-backup')
+
+
+validate_config(service_backup_config)
+
+service_backup_config["destinations"].each do |destination|
+  type = destination.fetch("type") do
+    raise invalid_config_message("Missing type for destination")
+  end
+
+  validate_type(type)
+  validate_destination(type, destination)
+  set_defaults(type, destination)
+end
+%>
+
+<%= service_backup_config.to_yaml %>

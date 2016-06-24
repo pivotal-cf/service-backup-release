@@ -1,6 +1,6 @@
 [submodule "src/github.com/pivotal-cf-experimental/service-backup"]
 	path = src/github.com/pivotal-cf-experimental/service-backup
-	url = git@github.com:pivotal-cf-experimental/service-backup.git
+	url = https://github.com/pivotal-cf-experimental/service-backup
 	branch = master
 [submodule "src/github.com/cloudfoundry-incubator/cf-lager"]
 	path = src/github.com/cloudfoundry-incubator/cf-lager
@@ -33,3 +33,7 @@
 	path = src/github.com/Azure/azure-sdk-for-go
 	url = https://github.com/Azure/azure-sdk-for-go
 	branch = master
+[submodule "src/gopkg.in/yaml.v2"]
+	path = src/gopkg.in/yaml.v2
+	url = https://gopkg.in/yaml.v2
+	branch = v2

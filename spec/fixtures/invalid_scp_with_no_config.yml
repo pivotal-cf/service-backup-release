@@ -11,12 +11,6 @@ properties:
   service-backup:
     destinations:
       - type: scp
-        config:
-          server: ""
-          user: ""
-          destination:
-          key:
-          port: 22
     source_folder: /foo
     source_executable: whoami
     cron_schedule: '*/5 * * * * *'
