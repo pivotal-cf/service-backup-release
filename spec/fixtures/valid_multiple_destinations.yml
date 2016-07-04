@@ -11,6 +11,7 @@ properties:
   service-backup:
     destinations:
       - type: azure
+        name: long-term-backups
         config:
           storage_account: some-account
           storage_access_key: some-access-key

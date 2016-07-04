@@ -252,6 +252,7 @@ RSpec.describe 'backup job config rendering' do
 
     it { should eq({"destinations"=>
       [{"type"=>"azure",
+        "name"=>"long-term-backups",
         "config"=> {
           "storage_account"=>"some-account",
           "storage_access_key"=>"some-access-key",
