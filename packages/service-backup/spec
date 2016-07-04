@@ -15,6 +15,7 @@ files:
   - github.com/pivotal-cf-experimental/service-backup/s3/*.go # gosub
   - github.com/pivotal-cf-experimental/service-backup/scp/*.go # gosub
   - github.com/pivotal-golang/lager/*.go # gosub
+  - github.com/satori/go.uuid/*.go # gosub
   - github.com/tedsuo/ifrit/*.go # gosub
   - gopkg.in/robfig/cron.v2/*.go # gosub
   - gopkg.in/yaml.v2/*.go # gosub
