@@ -242,7 +242,7 @@ RSpec.describe 'backup job config rendering' do
     it 'raises an error containing a custom message' do
       expect {
         renderer.render('jobs/service-backup/templates/backup.yml.erb')
-      }.to raise_error(RuntimeError, "Invalid config - Missing values for service_backup: source_executable, source_folder, cron_schedule.\n#{custom_msg}")
+      }.to raise_error(RuntimeError, "Invalid config - Missing values for service_backup: source_folder, cron_schedule.\n#{custom_msg}")
     end
   end
 

@@ -2,7 +2,7 @@
 def validate_config(config)
   return if config["destinations"].empty?
 
-  required_properties = %w(source_executable source_folder cron_schedule)
+  required_properties = %w(source_folder cron_schedule)
   empty_properties = required_properties.select do |property|
     config[property].to_s.empty?
   end
