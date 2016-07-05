@@ -44,6 +44,7 @@ def set_defaults(type, destination)
   {
     'scp' => lambda {
       destination["config"]["port"] = 22 if destination["config"]["port"].nil?
+      destination["config"]["fingerprint"] = "" if destination["config"]["fingerprint"].nil?
     },
     's3' => lambda {
       destination["config"]["endpoint_url"] = "https://s3.amazonaws.com" if destination["config"]["endpoint_url"].nil?

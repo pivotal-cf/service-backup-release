@@ -87,6 +87,7 @@ RSpec.describe 'backup job config rendering' do
           "user"=>"user",
           "destination"=>"/var",
           "key"=>"akey",
+          "fingerprint"=>"ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAubiN81eDcafrgMeLzaFPsw2kNvEcq",
           "port"=>22}}],
      "source_folder"=>"/foo",
      "aws_cli_path" => "/var/vcap/packages/aws-cli/bin/aws",
@@ -124,6 +125,13 @@ RSpec.describe 'backup job config rendering' do
     subject{ YAML.load(renderer.render('jobs/service-backup/templates/backup.yml.erb')) }
 
     its(["destinations", 0, "config", "port"]){ should eq(22)}
+  end
+
+  context 'when the manifest contains no fingerprint for scp' do
+    let(:manifest_file) { 'spec/fixtures/valid_scp_without_fingerprint.yml' }
+    subject{ YAML.load(renderer.render('jobs/service-backup/templates/backup.yml.erb')) }
+
+    its(["destinations", 0, "config", "fingerprint"]){ should eq("")}
   end
 
   context 'when the manifest contains valid azure properties' do
@@ -266,6 +274,7 @@ RSpec.describe 'backup job config rendering' do
            "user"=>"user",
            "destination"=>"/var",
            "key"=>"akey",
+           "fingerprint"=>"",
            "port"=>22}
        }
      ],

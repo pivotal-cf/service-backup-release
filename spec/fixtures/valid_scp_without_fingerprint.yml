@@ -17,7 +17,6 @@ properties:
           destination: /var
           key: akey
           port: 22
-          fingerprint: ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAubiN81eDcafrgMeLzaFPsw2kNvEcq
     source_folder: /foo
     source_executable: whoami
     cron_schedule: '*/5 * * * * *'
