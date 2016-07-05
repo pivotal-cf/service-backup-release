@@ -5,10 +5,6 @@
 [submodule "src/github.com/cloudfoundry-incubator/cf-lager"]
 	path = src/github.com/cloudfoundry-incubator/cf-lager
 	url = https://github.com/cloudfoundry-incubator/cf-lager
-[submodule "src/github.com/nu7hatch/gouuid"]
-	path = src/github.com/nu7hatch/gouuid
-	url = https://github.com/nu7hatch/gouuid
-	branch = master
 [submodule "src/github.com/onsi/ginkgo"]
 	path = src/github.com/onsi/ginkgo
 	url = https://github.com/onsi/ginkgo
