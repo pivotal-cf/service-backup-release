@@ -2,13 +2,13 @@ set -e
 
 cp -r /var/vcap/packages/python/* ${BOSH_INSTALL_TARGET}
 
-tar xfv blobxfer/blobxfer-0.10.0.tar.gz
-pushd blobxfer-0.10.0
+tar xfv blobxfer/blobxfer-0.11.1.tar.gz
+pushd blobxfer-0.11.1
   ${BOSH_INSTALL_TARGET}/bin/python setup.py install
 popd
 
-tar xfv blobxfer/requests-2.9.1.tar.gz
-pushd requests-2.9.1
+tar xfv blobxfer/requests-2.10.0.tar.gz
+pushd requests-2.10.0
   ${BOSH_INSTALL_TARGET}/bin/python setup.py install
 popd
 
@@ -28,13 +28,13 @@ pushd python-dateutil-2.4.2
   ${BOSH_INSTALL_TARGET}/bin/python setup.py install
 popd
 
-unzip blobxfer/azure-storage-0.30.0.zip
-pushd azure-storage-0.30.0
+unzip blobxfer/azure-storage-0.32.0.zip
+pushd azure-storage-0.32.0
   ${BOSH_INSTALL_TARGET}/bin/python setup.py install
 popd
 
-unzip blobxfer/azure-common-1.1.1.zip
-pushd azure-common-1.1.1
+unzip blobxfer/azure-common-1.1.4.zip
+pushd azure-common-1.1.4
   ${BOSH_INSTALL_TARGET}/bin/python setup.py install
 popd
 
