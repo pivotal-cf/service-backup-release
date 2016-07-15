@@ -14,8 +14,6 @@ RUN_DIR=/var/vcap/sys/run/service-backup
 LOG_DIR=/var/vcap/sys/log/service-backup
 PIDFILE=${RUN_DIR}/pid
 
-export PYTHONHOME=/var/vcap/packages/python
-
 case $1 in
 
   start)

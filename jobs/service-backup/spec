@@ -14,7 +14,6 @@ packages:
 - service-backup
 - aws-cli
 - blobxfer
-- python
 
 properties:
 
