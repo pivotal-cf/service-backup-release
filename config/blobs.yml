@@ -7,26 +7,10 @@ python/Python-2.7.11.tgz:
   object_id: ef4401b7-48f4-4312-8e5a-86c001cc3cf0
   sha: 62a0b1b703d42999cc4aa9ee3c55eb7efe35802a
   size: 16856409
-blobxfer/azure-common-1.1.1.zip:
-  object_id: 52715fb1-f94f-4b46-8481-0f489f457d0b
-  sha: f5ca189aaa62b56a9fcdeadea5d5ebe16aec6588
-  size: 6543
-blobxfer/azure-storage-0.30.0.zip:
-  object_id: 79ba86d5-1301-46f8-ac14-9307739185fc
-  sha: 62de894f490869a364910c3c3dfa93930e5814ba
-  size: 153988
-blobxfer/blobxfer-0.10.0.tar.gz:
-  object_id: 2172f77f-d099-4cf5-923b-dd8fbf5703ef
-  sha: 7dfd2d28c3122ca520e553ab223ee87aea3d6342
-  size: 43929
 blobxfer/python-dateutil-2.4.2.tar.gz:
   object_id: 6b1adbbe-bcd2-4cf5-983c-ab9ce85324dd
   sha: 1d975f5db65306a61f4353ef00308ec806f47f54
   size: 209120
-blobxfer/requests-2.9.1.tar.gz:
-  object_id: 72e521bd-6184-45cf-93b8-d1bb2e665637
-  sha: 172838c7115c0c1f9cb8663b025f4599915bb805
-  size: 695285
 blobxfer/setuptools-20.6.7.tar.gz:
   object_id: f2d4bdd4-1e19-4deb-b456-e29634fed5d6
   sha: 8afa042dece06be473b025e628d3585ab5d27de3
@@ -35,7 +19,19 @@ golang/go1.6.2.linux-amd64.tar.gz:
   object_id: 2cc9ee78-d3a2-4415-8302-db88c2c981da
   sha: b8318b09de06076d5397e6ec18ebef3b45cd315d
   size: 84840658
-blobxfer/six-1.10.0.tar.gz:
-  object_id: 9bdfbf5d-32c8-47d1-9047-c2ef5c9b259f
-  sha: 30d480d2e352e8e4c2aae042cf1bf33368ff0920
-  size: 29630
+blobxfer/azure-common-1.1.4.zip:
+  object_id: dfe5780a-a249-4c8f-b5d5-6f55c9c39292
+  sha: 9780efee38fbaaeaeb697232eb22f18638a2d99f
+  size: 6575
+blobxfer/azure-storage-0.32.0.zip:
+  object_id: 3071aefa-ba11-47b2-b064-aecd1bd592a5
+  sha: 17aae39fd581e3ed4795c2654568d7c7b480e179
+  size: 164004
+blobxfer/blobxfer-0.11.1.tar.gz:
+  object_id: cd20e00c-318e-4241-ac19-b0b2526d889f
+  sha: c7dfb991683e0099dd9769487f378203fd08d849
+  size: 50482
+blobxfer/requests-2.10.0.tar.gz:
+  object_id: 0564ec27-2e36-4405-bd6b-b8d6499b40bd
+  sha: 1b9a2395402692262fc61fa15bedbc3e112b1029
+  size: 477617
