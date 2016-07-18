@@ -19,6 +19,12 @@ pushd requests-2.10.0
   ${BOSH_INSTALL_TARGET}/bin/python setup.py install
 popd
 
+# Needed by dateutil
+tar xvf blobxfer/six-1.10.0.tar.gz
+pushd six-1.10.0
+  ${BOSH_INSTALL_TARGET}/bin/python setup.py install
+popd
+
 # Does not seem to be explicitly declared, but used at runtime by azure storage
 tar xvf blobxfer/python-dateutil-2.4.2.tar.gz
 pushd python-dateutil-2.4.2

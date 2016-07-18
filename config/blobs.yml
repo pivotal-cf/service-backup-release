@@ -1,8 +1,4 @@
 ---
-aws-cli/awscli-bundle.zip:
-  object_id: 1ddaf076-758d-4a77-b4af-7c8378d5a2a9
-  sha: 60a57058fa208072ee056f3b746f7d57bb58699f
-  size: 6596271
 python/Python-2.7.11.tgz:
   object_id: ef4401b7-48f4-4312-8e5a-86c001cc3cf0
   sha: 62a0b1b703d42999cc4aa9ee3c55eb7efe35802a
@@ -35,3 +31,7 @@ blobxfer/requests-2.10.0.tar.gz:
   object_id: 0564ec27-2e36-4405-bd6b-b8d6499b40bd
   sha: 1b9a2395402692262fc61fa15bedbc3e112b1029
   size: 477617
+blobxfer/six-1.10.0.tar.gz:
+  object_id: 9bdfbf5d-32c8-47d1-9047-c2ef5c9b259f
+  sha: 30d480d2e352e8e4c2aae042cf1bf33368ff0920
+  size: 29630
