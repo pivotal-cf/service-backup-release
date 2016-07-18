@@ -35,3 +35,7 @@ blobxfer/six-1.10.0.tar.gz:
   object_id: 9bdfbf5d-32c8-47d1-9047-c2ef5c9b259f
   sha: 30d480d2e352e8e4c2aae042cf1bf33368ff0920
   size: 29630
+aws-cli/awscli-bundle.zip:
+  object_id: e2cb3da2-2c5e-4f8d-b62c-830b3ab4d777
+  sha: 9c7652a1ed539732eb8fa43df91cb7f928d6b9d0
+  size: 7058663
