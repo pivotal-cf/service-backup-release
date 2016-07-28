@@ -11,10 +11,6 @@ blobxfer/setuptools-20.6.7.tar.gz:
   object_id: f2d4bdd4-1e19-4deb-b456-e29634fed5d6
   sha: 8afa042dece06be473b025e628d3585ab5d27de3
   size: 675428
-golang/go1.6.2.linux-amd64.tar.gz:
-  object_id: 2cc9ee78-d3a2-4415-8302-db88c2c981da
-  sha: b8318b09de06076d5397e6ec18ebef3b45cd315d
-  size: 84840658
 blobxfer/azure-common-1.1.4.zip:
   object_id: dfe5780a-a249-4c8f-b5d5-6f55c9c39292
   sha: 9780efee38fbaaeaeb697232eb22f18638a2d99f
@@ -39,3 +35,7 @@ aws-cli/awscli-bundle.zip:
   object_id: e2cb3da2-2c5e-4f8d-b62c-830b3ab4d777
   sha: 9c7652a1ed539732eb8fa43df91cb7f928d6b9d0
   size: 7058663
+golang/go1.6.3.linux-amd64.tar.gz:
+  object_id: 428eb111-4a03-4d40-b566-cec7641b13b6
+  sha: 5e916ba4dd8c2fc43beafca4c08b334c4d0686f3
+  size: 84856920
