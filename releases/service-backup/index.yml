@@ -32,6 +32,4 @@ builds:
     version: '15'
   c0921f8e-9442-4432-b850-04d7e83f9faf:
     version: '16'
-  09b46ab9-d65d-4c6d-b781-c45d6de2ce4f:
-    version: 0.16.1
 format-version: '2'
