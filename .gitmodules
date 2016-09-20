@@ -37,3 +37,6 @@
 	path = src/github.com/satori/go.uuid
 	url = https://github.com/satori/go.uuid
 	branch = master
+[submodule "docs"]
+	path = docs
+	url = git@github.com:pivotal-cf/docs-service-backup.git
