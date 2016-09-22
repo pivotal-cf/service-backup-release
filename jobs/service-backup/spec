@@ -35,6 +35,10 @@ properties:
   service-backup.cron_schedule:
     description: Schedule on which to perform backups. Supports "* * * * *" syntax.
 
+  service-backup.backup_user:
+    default: vcap
+    description: User which will run the backup daemon.
+
   service-backup.missing_properties_message:
     default: Provide these missing fields in your manifest.
     description: Custom message to show when required backup parameters are not present.
