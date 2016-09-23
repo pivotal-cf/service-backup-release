@@ -1,9 +1,5 @@
 require 'spec_helper'
 
-require 'yaml'
-require 'bosh/template/renderer'
-require 'bosh/template/property_helper'
-
 RSpec.describe 'backup job config rendering' do
   let(:renderer) {
      Bosh::Template::Renderer.new({context: emulate_bosh_director_merge(YAML.load_file(manifest_file)).to_json})
@@ -38,6 +34,12 @@ RSpec.describe 'backup job config rendering' do
       "exit_if_in_progress" => "false",
       "service_identifier_executable" => nil
     })}
+  end
+
+  context 'when the manifest contains a custom backup user' do
+    let(:manifest_file) { 'spec/fixtures/valid_with_backup_user.yml' }
+    subject{ YAML.load(renderer.render('jobs/service-backup/templates/backup.yml.erb')) }
+    its(["backup_user"]){ should eq("backuper")}
   end
 
   context 'when the manifest contains no endpoint_url' do
