@@ -21,10 +21,4 @@ blobs
 
 manifests/*deployment.yml
 
-# Development dependencies
-src/github.com/vito/gosub/
-src/github.com/codegangsta/cli/
-src/github.com/maxbrunsfeld/counterfeiter/
-src/golang.org/
-
 secrets.yml

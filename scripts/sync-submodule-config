@@ -2,15 +2,13 @@
 
 # This script can be run manually to update all of the submodules in the workspace
 # $GOPATH. It has also been added in as a pre-commit hook.
-set -eux
-
-go get github.com/vito/gosub
-go install github.com/vito/gosub
+set -eu
+set -o pipefail
 
 echo $GOPATH
 
 {
   gosub list \
     -test github.com/pivotal-cf-experimental/service-backup/... \
-    -app  github.com/pivotal-cf-experimental/service-backup/... 
+    -app  github.com/pivotal-cf-experimental/service-backup/...
 } | xargs gosub sync
