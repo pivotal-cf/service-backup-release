@@ -1,6 +1,6 @@
 [submodule "src/github.com/pivotal-cf-experimental/service-backup"]
 	path = src/github.com/pivotal-cf-experimental/service-backup
-	url = https://github.com/pivotal-cf-experimental/service-backup
+	url = git@github.com:pivotal-cf-experimental/service-backup.git
 	branch = master
 [submodule "src/github.com/cloudfoundry-incubator/cf-lager"]
 	path = src/github.com/cloudfoundry-incubator/cf-lager
