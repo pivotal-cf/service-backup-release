@@ -37,7 +37,7 @@ def required_properties(type)
     'scp' => ['server', 'user', 'destination', 'key'],
     's3' => ['access_key_id', 'secret_access_key', 'bucket_name', 'bucket_path'],
     'azure' => ['storage_account', 'storage_access_key', 'container', 'path'],
-    'gcs' => [] # TODO invalid config scenarios for GCS
+    'gcs' => ['service_account_json', 'project_id', 'bucket_name']
   }[type]
 end
 
@@ -53,7 +53,7 @@ def set_defaults(type, destination)
     'azure' => lambda {
       destination["config"]["blob_store_base_url"] = "core.windows.net" if destination["config"]["blob_store_base_url"].nil?
     },
-    'gcs' => lambda {} # TODO defaults for GCS
+    'gcs' => lambda {}
   }[type].call
 end
 

@@ -107,6 +107,27 @@ RSpec.describe 'backup job config rendering' do
     })}
   end
 
+  context 'when the manifest is missing mandatory instance group fields' do
+    ['service_account_json', 'bucket_name', 'project_id'].each do |missing_field|
+      context ": #{missing_field}" do
+        let(:manifest_file) do
+          manifest = YAML.load_file('spec/fixtures/valid_gcs.yml')
+          manifest.fetch('properties').fetch('service-backup').fetch('destinations')[0].fetch('config').delete(missing_field)
+
+          @save_me = create_temp_file(manifest.to_yaml)
+          @save_me.path
+        end
+
+        it 'templating raises an error' do
+          expect {
+            YAML.load(renderer.render('jobs/service-backup/templates/backup.yml.erb'))
+          }.to raise_error(RuntimeError, "Invalid config - Missing values for gcs: #{missing_field}.\n#{custom_msg}")
+        end
+      end
+    end
+  end
+
+
   context 'when the manifest contains valid scp properties' do
     let(:manifest_file) { 'spec/fixtures/valid_scp.yml' }
     subject{ YAML.load(renderer.render('jobs/service-backup/templates/backup.yml.erb')) }
@@ -341,4 +362,11 @@ RSpec.describe 'backup job config rendering' do
 
     manifest.merge({"properties" => effective_properties})
   end
+end
+
+def create_temp_file(content)
+  file = Tempfile.new('template')
+  file.write(content)
+  file.close
+  file
 end
