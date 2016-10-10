@@ -79,6 +79,34 @@ RSpec.describe 'backup job config rendering' do
     end
   end
 
+  context 'when the manifest contains valid gcs properties' do
+    let(:manifest_file) { 'spec/fixtures/valid_gcs.yml' }
+    subject{ YAML.load(renderer.render('jobs/service-backup/templates/backup.yml.erb')) }
+    it { should eq({
+      "destinations"=>
+      [
+        {
+          "type"=>"gcs",
+          "config"=> {
+            "service_account_json"=>"some-json",
+            "project_id"=>"gcs-project",
+            "bucket_name"=>"foo",
+          }
+        }
+      ],
+      "source_folder"=>"/foo",
+      "aws_cli_path" => "/var/vcap/packages/aws-cli/bin/aws",
+      "azure_cli_path" => "/var/vcap/packages/blobxfer/bin/blobxfer",
+      "source_executable"=>"whoami",
+      "cron_schedule"=>"*/5 * * * * *",
+      "backup_user"=>"vcap",
+      "cleanup_executable"=>"somecleanup",
+      "missing_properties_message"=>"custom message",
+      "exit_if_in_progress" => "false",
+      "service_identifier_executable" => nil
+    })}
+  end
+
   context 'when the manifest contains valid scp properties' do
     let(:manifest_file) { 'spec/fixtures/valid_scp.yml' }
     subject{ YAML.load(renderer.render('jobs/service-backup/templates/backup.yml.erb')) }

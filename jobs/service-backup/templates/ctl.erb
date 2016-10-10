@@ -32,6 +32,7 @@ case $1 in
 
     chown -R "${BACKUP_USER}:${BACKUP_USER}" "$SOURCE_FOLDER"
 
+    export GCP_SERVICE_ACCOUNT_FILE=/var/vcap/jobs/service-backup/config/gcp_service_account.json
     exec chpst -u "${BACKUP_USER}:${BACKUP_USER}" /var/vcap/packages/service-backup/bin/service-backup \
     /var/vcap/jobs/service-backup/config/backup.yml 2>&1 >> "$LOG_DIR/out.log"
 
