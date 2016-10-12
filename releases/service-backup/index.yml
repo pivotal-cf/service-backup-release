@@ -36,4 +36,6 @@ builds:
     version: 16.0.1
   18c4d1ad-ecde-4889-a100-c80b04863bda:
     version: 17.0.0
+  4d8a03a3-e4bc-4ac0-8d7a-cdabd7a61a72:
+    version: 17.1.0
 format-version: '2'
