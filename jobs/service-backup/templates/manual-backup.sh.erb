@@ -5,4 +5,5 @@
   mkdir -p "${SOURCE_FOLDER}"
 <% end %>
 
+export GCP_SERVICE_ACCOUNT_FILE=/var/vcap/jobs/service-backup/config/gcp_service_account.json
 /var/vcap/packages/service-backup/bin/manual-backup /var/vcap/jobs/service-backup/config/backup.yml
