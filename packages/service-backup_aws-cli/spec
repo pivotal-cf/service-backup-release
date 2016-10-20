@@ -1,8 +1,8 @@
 ---
-name: aws-cli
+name: service-backup_aws-cli
 
 dependencies:
-  - python
+  - service-backup_python
 
 files:
   - aws-cli/awscli-bundle.zip

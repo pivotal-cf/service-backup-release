@@ -1,6 +1,6 @@
 set -e
 
-cp -r /var/vcap/packages/python/* ${BOSH_INSTALL_TARGET}
+cp -r /var/vcap/packages/service-backup_python/* ${BOSH_INSTALL_TARGET}
 
 tar xfv blobxfer/blobxfer-0.11.1.tar.gz
 pushd blobxfer-0.11.1

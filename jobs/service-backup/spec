@@ -13,9 +13,9 @@ templates:
 
 packages:
 - service-backup
-- aws-cli
-- blobxfer
-- python
+- service-backup_aws-cli
+- service-backup_blobxfer
+- service-backup_python
 
 properties:
 
@@ -52,9 +52,9 @@ properties:
     description: Optional field to reject subsequent backup requests if a backup is already in progress. Defaults to false.
 
   service-backup.aws_cli_path:
-    default: /var/vcap/packages/aws-cli/bin/aws
+    default: /var/vcap/packages/service-backup_aws-cli/bin/aws
     description: Path the to aws cli
 
   service-backup.azure_cli_path:
-    default: /var/vcap/packages/blobxfer/bin/blobxfer
+    default: /var/vcap/packages/service-backup_blobxfer/bin/blobxfer
     description: Path the to azure cli

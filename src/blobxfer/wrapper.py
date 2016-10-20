@@ -1,4 +1,4 @@
-#!/var/vcap/packages/blobxfer/bin/python
+#!/var/vcap/packages/service-backup_blobxfer/bin/python
 
 # -*- coding: utf-8 -*-
 import re

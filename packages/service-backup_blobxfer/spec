@@ -1,8 +1,8 @@
 ---
-name: blobxfer
+name: service-backup_blobxfer
 
 dependencies:
-  - python
+  - service-backup_python
 
 files:
   - blobxfer/*
