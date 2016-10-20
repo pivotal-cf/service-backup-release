@@ -23,8 +23,8 @@ RSpec.describe 'backup job config rendering' do
           }
         }
       ],
-      "aws_cli_path" => "/var/vcap/packages/aws-cli/bin/aws",
-      "azure_cli_path" => "/var/vcap/packages/blobxfer/bin/blobxfer",
+      "aws_cli_path" => "/var/vcap/packages/service-backup_aws-cli/bin/aws",
+      "azure_cli_path" => "/var/vcap/packages/service-backup_blobxfer/bin/blobxfer",
       "source_folder"=>"/foo",
       "source_executable"=>"whoami",
       "cron_schedule"=>"*/5 * * * * *",
@@ -95,8 +95,8 @@ RSpec.describe 'backup job config rendering' do
         }
       ],
       "source_folder"=>"/foo",
-      "aws_cli_path" => "/var/vcap/packages/aws-cli/bin/aws",
-      "azure_cli_path" => "/var/vcap/packages/blobxfer/bin/blobxfer",
+      "aws_cli_path" => "/var/vcap/packages/service-backup_aws-cli/bin/aws",
+      "azure_cli_path" => "/var/vcap/packages/service-backup_blobxfer/bin/blobxfer",
       "source_executable"=>"whoami",
       "cron_schedule"=>"*/5 * * * * *",
       "backup_user"=>"vcap",
@@ -142,8 +142,8 @@ RSpec.describe 'backup job config rendering' do
           "fingerprint"=>"ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAubiN81eDcafrgMeLzaFPsw2kNvEcq",
           "port"=>22}}],
      "source_folder"=>"/foo",
-     "aws_cli_path" => "/var/vcap/packages/aws-cli/bin/aws",
-     "azure_cli_path" => "/var/vcap/packages/blobxfer/bin/blobxfer",
+     "aws_cli_path" => "/var/vcap/packages/service-backup_aws-cli/bin/aws",
+     "azure_cli_path" => "/var/vcap/packages/service-backup_blobxfer/bin/blobxfer",
      "source_executable"=>"whoami",
      "cron_schedule"=>"*/5 * * * * *",
      "backup_user"=>"vcap",
@@ -206,8 +206,8 @@ RSpec.describe 'backup job config rendering' do
      "cleanup_executable"=>"somecleanup",
      "exit_if_in_progress" => "false",
      "service_identifier_executable" => nil,
-     "aws_cli_path" => "/var/vcap/packages/aws-cli/bin/aws",
-     "azure_cli_path" => "/var/vcap/packages/blobxfer/bin/blobxfer",
+     "aws_cli_path" => "/var/vcap/packages/service-backup_aws-cli/bin/aws",
+     "azure_cli_path" => "/var/vcap/packages/service-backup_blobxfer/bin/blobxfer",
      "missing_properties_message"=>"custom message"})}
   end
 
@@ -238,8 +238,8 @@ RSpec.describe 'backup job config rendering' do
      "cron_schedule"=>"*/5 * * * * *",
      "backup_user"=>"vcap",
      "cleanup_executable"=>"somecleanup",
-     "aws_cli_path" => "/var/vcap/packages/aws-cli/bin/aws",
-     "azure_cli_path" => "/var/vcap/packages/blobxfer/bin/blobxfer",
+     "aws_cli_path" => "/var/vcap/packages/service-backup_aws-cli/bin/aws",
+     "azure_cli_path" => "/var/vcap/packages/service-backup_blobxfer/bin/blobxfer",
      "exit_if_in_progress" => "false",
      "service_identifier_executable" => nil,
      "missing_properties_message"=>"custom message"})}
@@ -255,8 +255,8 @@ RSpec.describe 'backup job config rendering' do
      "cron_schedule"=>"*/5 * * * * *",
      "backup_user"=>"vcap",
      "cleanup_executable"=>"somecleanup",
-     "aws_cli_path" => "/var/vcap/packages/aws-cli/bin/aws",
-     "azure_cli_path" => "/var/vcap/packages/blobxfer/bin/blobxfer",
+     "aws_cli_path" => "/var/vcap/packages/service-backup_aws-cli/bin/aws",
+     "azure_cli_path" => "/var/vcap/packages/service-backup_blobxfer/bin/blobxfer",
      "exit_if_in_progress" => "false",
      "service_identifier_executable" => nil,
      "missing_properties_message"=>"custom message"})}
@@ -281,8 +281,8 @@ RSpec.describe 'backup job config rendering' do
         "backup_user"=>"vcap",
         "destinations" => [],
         "exit_if_in_progress" => "false",
-        "aws_cli_path" => "/var/vcap/packages/aws-cli/bin/aws",
-        "azure_cli_path" => "/var/vcap/packages/blobxfer/bin/blobxfer",
+        "aws_cli_path" => "/var/vcap/packages/service-backup_aws-cli/bin/aws",
+        "azure_cli_path" => "/var/vcap/packages/service-backup_blobxfer/bin/blobxfer",
         "missing_properties_message" => "Provide these missing fields in your manifest.",
         "service_identifier_executable" => nil,
         "source_executable" => nil,
@@ -342,8 +342,8 @@ RSpec.describe 'backup job config rendering' do
      "cleanup_executable"=>"somecleanup",
      "exit_if_in_progress" => "false",
      "service_identifier_executable" => nil,
-     "aws_cli_path" => "/var/vcap/packages/aws-cli/bin/aws",
-     "azure_cli_path" => "/var/vcap/packages/blobxfer/bin/blobxfer",
+     "aws_cli_path" => "/var/vcap/packages/service-backup_aws-cli/bin/aws",
+     "azure_cli_path" => "/var/vcap/packages/service-backup_blobxfer/bin/blobxfer",
      "missing_properties_message"=>"custom message"})}
   end
 
