@@ -23,6 +23,7 @@ RSpec.describe 'backup job config rendering' do
           }
         }
       ],
+      "alerts" => nil,
       "aws_cli_path" => "/var/vcap/packages/service-backup_aws-cli/bin/aws",
       "azure_cli_path" => "/var/vcap/packages/service-backup_blobxfer/bin/blobxfer",
       "source_folder"=>"/foo",
@@ -94,6 +95,7 @@ RSpec.describe 'backup job config rendering' do
           }
         }
       ],
+      "alerts" => nil,
       "source_folder"=>"/foo",
       "aws_cli_path" => "/var/vcap/packages/service-backup_aws-cli/bin/aws",
       "azure_cli_path" => "/var/vcap/packages/service-backup_blobxfer/bin/blobxfer",
@@ -141,6 +143,7 @@ RSpec.describe 'backup job config rendering' do
           "key"=>"akey",
           "fingerprint"=>"ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAubiN81eDcafrgMeLzaFPsw2kNvEcq",
           "port"=>22}}],
+     "alerts" => nil,
      "source_folder"=>"/foo",
      "aws_cli_path" => "/var/vcap/packages/service-backup_aws-cli/bin/aws",
      "azure_cli_path" => "/var/vcap/packages/service-backup_blobxfer/bin/blobxfer",
@@ -199,6 +202,7 @@ RSpec.describe 'backup job config rendering' do
           "container"=>"some-container",
           "path"=>"some/path",
           "blob_store_base_url"=>"endpoint.com"}}],
+     "alerts" => nil,
      "source_folder"=>"/foo",
      "source_executable"=>"whoami",
      "cron_schedule"=>"*/5 * * * * *",
@@ -233,6 +237,7 @@ RSpec.describe 'backup job config rendering' do
     subject{ YAML.load(renderer.render('jobs/service-backup/templates/backup.yml.erb')) }
 
     it { should eq({"destinations"=> [],
+     "alerts" => nil,
      "source_folder"=>"/foo",
      "source_executable"=>"whoami",
      "cron_schedule"=>"*/5 * * * * *",
@@ -250,6 +255,7 @@ RSpec.describe 'backup job config rendering' do
     subject{ YAML.load(renderer.render('jobs/service-backup/templates/backup.yml.erb')) }
 
     it { should eq({"destinations"=> [],
+     "alerts" => nil,
      "source_folder"=>"/foo",
      "source_executable"=>"whoami",
      "cron_schedule"=>"*/5 * * * * *",
@@ -280,6 +286,7 @@ RSpec.describe 'backup job config rendering' do
         "cron_schedule" => nil,
         "backup_user"=>"vcap",
         "destinations" => [],
+        "alerts" => nil,
         "exit_if_in_progress" => "false",
         "aws_cli_path" => "/var/vcap/packages/service-backup_aws-cli/bin/aws",
         "azure_cli_path" => "/var/vcap/packages/service-backup_blobxfer/bin/blobxfer",
@@ -335,6 +342,7 @@ RSpec.describe 'backup job config rendering' do
            "port"=>22}
        }
      ],
+     "alerts" => nil,
      "source_folder"=>"/foo",
      "source_executable"=>"whoami",
      "cron_schedule"=>"*/5 * * * * *",
@@ -345,6 +353,58 @@ RSpec.describe 'backup job config rendering' do
      "aws_cli_path" => "/var/vcap/packages/service-backup_aws-cli/bin/aws",
      "azure_cli_path" => "/var/vcap/packages/service-backup_blobxfer/bin/blobxfer",
      "missing_properties_message"=>"custom message"})}
+  end
+
+  context 'when the manifest contains valid alert configuration' do
+    let(:manifest_file) { 'spec/fixtures/valid_s3_with_alerts.yml' }
+    subject{ YAML.load(renderer.render('jobs/service-backup/templates/backup.yml.erb')) }
+    it { should eq({
+      "destinations" => [
+        {
+          "type" => "s3",
+          "config" => {
+            "endpoint_url" => "some-url",
+            "bucket_name" => "test",
+            "bucket_path" => "foo/bar",
+            "access_key_id" => "key",
+            "secret_access_key" => "itsasecret"
+          }
+        }
+      ],
+      "alerts" => {
+        "product_name" => "MySQL",
+        "cloud_controller" => {
+          "url" => "https://api.cf.com",
+          "user" => "admin",
+          "password" => "password"
+        },
+        "notification_target" => {
+          "url" => "https://notifcations.cf.com",
+          "skip_ssl_validation" => false,
+          "cf_org" => "system",
+          "cf_space" => "mysql-notifications",
+          "reply_to" => "me@example.com",
+          "authentication" => {
+            "uaa" => {
+              "url" => "https://10.10.10.10:5493",
+              "client_id" => "admin",
+              "client_secret" => "password"
+            }
+          }
+        },
+        "timeout_seconds" => 60
+      },
+      "aws_cli_path" => "/var/vcap/packages/service-backup_aws-cli/bin/aws",
+      "azure_cli_path" => "/var/vcap/packages/service-backup_blobxfer/bin/blobxfer",
+      "source_folder" => "/foo",
+      "source_executable" => "whoami",
+      "cron_schedule" => "*/5 * * * * *",
+      "backup_user" => "vcap",
+      "cleanup_executable" => "somecleanup",
+      "missing_properties_message" => "custom message",
+      "exit_if_in_progress" => "false",
+      "service_identifier_executable" => nil,
+    })}
   end
 
   include Bosh::Template::PropertyHelper

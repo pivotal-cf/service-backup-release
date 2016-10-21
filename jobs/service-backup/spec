@@ -23,6 +23,9 @@ properties:
   service-backup.destinations:
     default: []
 
+  service-backup.alerts:
+    description: Configuration for service-alerts-client. If provided, a service alert will be sent when backups fail.
+
   service-backup.source_folder:
     description: Local path from which backups are uploaded. All files in here are uploaded.
 
