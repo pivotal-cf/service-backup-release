@@ -2,9 +2,6 @@
 	path = src/github.com/pivotal-cf-experimental/service-backup
 	url = git@github.com:pivotal-cf-experimental/service-backup.git
 	branch = master
-[submodule "src/github.com/cloudfoundry-incubator/cf-lager"]
-	path = src/github.com/cloudfoundry-incubator/cf-lager
-	url = https://github.com/cloudfoundry-incubator/cf-lager
 [submodule "src/github.com/onsi/ginkgo"]
 	path = src/github.com/onsi/ginkgo
 	url = https://github.com/onsi/ginkgo
@@ -12,10 +9,6 @@
 [submodule "src/github.com/onsi/gomega"]
 	path = src/github.com/onsi/gomega
 	url = https://github.com/onsi/gomega
-	branch = master
-[submodule "src/github.com/pivotal-golang/lager"]
-	path = src/github.com/pivotal-golang/lager
-	url = https://github.com/pivotal-golang/lager
 	branch = master
 [submodule "src/gopkg.in/robfig/cron.v2"]
 	path = src/gopkg.in/robfig/cron.v2
@@ -68,3 +61,9 @@
 	path = src/golang.org/x/oauth2
 	url = https://go.googlesource.com/oauth2
 	branch = master
+[submodule "src/github.com/pivotal-cf/service-alerts-client"]
+	path = src/github.com/pivotal-cf/service-alerts-client
+	url = git@github.com:pivotal-cf/service-alerts-client.git
+[submodule "src/code.cloudfoundry.org/lager"]
+	path = src/code.cloudfoundry.org/lager
+	url = git@github.com:cloudfoundry/lager.git

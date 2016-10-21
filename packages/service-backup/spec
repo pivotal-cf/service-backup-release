@@ -8,7 +8,7 @@ files:
   - cloud.google.com/go/compute/metadata/*.go # gosub
   - cloud.google.com/go/internal/*.go # gosub
   - cloud.google.com/go/storage/*.go # gosub
-  - github.com/cloudfoundry-incubator/cf-lager/*.go # gosub
+  - code.cloudfoundry.org/lager/*.go # gosub
   - github.com/golang/protobuf/proto/*.go # gosub
   - github.com/pivotal-cf-experimental/service-backup/*.go # gosub
   - github.com/pivotal-cf-experimental/service-backup/azure/*.go # gosub
@@ -19,7 +19,9 @@ files:
   - github.com/pivotal-cf-experimental/service-backup/gcp/*.go # gosub
   - github.com/pivotal-cf-experimental/service-backup/s3/*.go # gosub
   - github.com/pivotal-cf-experimental/service-backup/scp/*.go # gosub
-  - github.com/pivotal-golang/lager/*.go # gosub
+  - github.com/pivotal-cf/service-alerts-client/client/*.go # gosub
+  - github.com/pivotal-cf/service-alerts-client/vendor/github.com/cenk/backoff/*.go # gosub
+  - github.com/pivotal-cf/service-alerts-client/vendor/github.com/craigfurman/herottp/*.go # gosub
   - github.com/satori/go.uuid/*.go # gosub
   - github.com/tedsuo/ifrit/*.go # gosub
   - golang.org/x/net/context/*.go # gosub
