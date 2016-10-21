@@ -9,29 +9,29 @@ RSpec.describe 'backup job config rendering' do
   context 'when the manifest contains valid s3 properties' do
     let(:manifest_file) { 'spec/fixtures/valid_s3.yml' }
     subject{ YAML.load(renderer.render('jobs/service-backup/templates/backup.yml.erb')) }
+
     it { should eq({
-      "destinations"=>
-      [
+      "destinations" => [
         {
-          "type"=>"s3",
-          "config"=> {
-            "endpoint_url"=>"some-url",
-            "bucket_name"=>"test",
-            "bucket_path"=>"foo/bar",
-            "access_key_id"=>"key",
-            "secret_access_key"=>"itsasecret"
+          "type" => "s3",
+          "config" => {
+            "endpoint_url" => "some-url",
+            "bucket_name" => "test",
+            "bucket_path" => "foo/bar",
+            "access_key_id" => "key",
+            "secret_access_key" => "itsasecret"
           }
         }
       ],
       "alerts" => nil,
       "aws_cli_path" => "/var/vcap/packages/service-backup_aws-cli/bin/aws",
       "azure_cli_path" => "/var/vcap/packages/service-backup_blobxfer/bin/blobxfer",
-      "source_folder"=>"/foo",
-      "source_executable"=>"whoami",
-      "cron_schedule"=>"*/5 * * * * *",
-      "backup_user"=>"vcap",
-      "cleanup_executable"=>"somecleanup",
-      "missing_properties_message"=>"custom message",
+      "source_folder" => "/foo",
+      "source_executable" => "whoami",
+      "cron_schedule" => "*/5 * * * * *",
+      "backup_user" => "vcap",
+      "cleanup_executable" => "somecleanup",
+      "missing_properties_message" => "custom message",
       "exit_if_in_progress" => "false",
       "service_identifier_executable" => nil
     })}
@@ -84,14 +84,13 @@ RSpec.describe 'backup job config rendering' do
     let(:manifest_file) { 'spec/fixtures/valid_gcs.yml' }
     subject{ YAML.load(renderer.render('jobs/service-backup/templates/backup.yml.erb')) }
     it { should eq({
-      "destinations"=>
-      [
+      "destinations" => [
         {
-          "type"=>"gcs",
-          "config"=> {
-            "service_account_json"=>"some-json",
-            "project_id"=>"gcs-project",
-            "bucket_name"=>"foo",
+          "type" => "gcs",
+          "config" => {
+            "service_account_json" => "some-json",
+            "project_id" => "gcs-project",
+            "bucket_name" => "foo",
           }
         }
       ],
@@ -134,26 +133,32 @@ RSpec.describe 'backup job config rendering' do
     let(:manifest_file) { 'spec/fixtures/valid_scp.yml' }
     subject{ YAML.load(renderer.render('jobs/service-backup/templates/backup.yml.erb')) }
 
-    it { should eq({"destinations"=>
-      [{"type"=>"scp",
-        "config"=>
-         {"server"=>"foo",
-          "user"=>"user",
-          "destination"=>"/var",
-          "key"=>"akey",
-          "fingerprint"=>"ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAubiN81eDcafrgMeLzaFPsw2kNvEcq",
-          "port"=>22}}],
-     "alerts" => nil,
-     "source_folder"=>"/foo",
-     "aws_cli_path" => "/var/vcap/packages/service-backup_aws-cli/bin/aws",
-     "azure_cli_path" => "/var/vcap/packages/service-backup_blobxfer/bin/blobxfer",
-     "source_executable"=>"whoami",
-     "cron_schedule"=>"*/5 * * * * *",
-     "backup_user"=>"vcap",
-     "cleanup_executable"=>"somecleanup",
-     "exit_if_in_progress" => "false",
-     "service_identifier_executable" => nil,
-     "missing_properties_message"=>"custom message"})}
+    it { should eq({
+      "destinations" => [
+        {
+          "type" => "scp",
+          "config" => {
+            "server" => "foo",
+            "user" => "user",
+            "destination" => "/var",
+            "key" => "akey",
+            "fingerprint" => "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAubiN81eDcafrgMeLzaFPsw2kNvEcq",
+            "port" =>22
+          }
+        }
+      ],
+      "alerts" => nil,
+      "source_folder" => "/foo",
+      "aws_cli_path" => "/var/vcap/packages/service-backup_aws-cli/bin/aws",
+      "azure_cli_path" => "/var/vcap/packages/service-backup_blobxfer/bin/blobxfer",
+      "source_executable" => "whoami",
+      "cron_schedule" => "*/5 * * * * *",
+      "backup_user" => "vcap",
+      "cleanup_executable" => "somecleanup",
+      "exit_if_in_progress" => "false",
+      "service_identifier_executable" => nil,
+      "missing_properties_message" => "custom message"
+    })}
   end
 
   context 'when the manifest contains invalid scp properties' do
@@ -194,25 +199,31 @@ RSpec.describe 'backup job config rendering' do
     let(:manifest_file) { 'spec/fixtures/valid_azure.yml' }
     subject{ YAML.load(renderer.render('jobs/service-backup/templates/backup.yml.erb')) }
 
-    it { should eq({"destinations"=>
-      [{"type"=>"azure",
-        "config"=> {
-          "storage_account"=>"some-account",
-          "storage_access_key"=>"some-access-key",
-          "container"=>"some-container",
-          "path"=>"some/path",
-          "blob_store_base_url"=>"endpoint.com"}}],
-     "alerts" => nil,
-     "source_folder"=>"/foo",
-     "source_executable"=>"whoami",
-     "cron_schedule"=>"*/5 * * * * *",
-     "backup_user"=>"vcap",
-     "cleanup_executable"=>"somecleanup",
-     "exit_if_in_progress" => "false",
-     "service_identifier_executable" => nil,
-     "aws_cli_path" => "/var/vcap/packages/service-backup_aws-cli/bin/aws",
-     "azure_cli_path" => "/var/vcap/packages/service-backup_blobxfer/bin/blobxfer",
-     "missing_properties_message"=>"custom message"})}
+    it { should eq({
+      "destinations" => [
+        {
+          "type" => "azure",
+          "config" => {
+            "storage_account" => "some-account",
+            "storage_access_key" => "some-access-key",
+            "container" => "some-container",
+            "path" => "some/path",
+            "blob_store_base_url" => "endpoint.com"
+          }
+        }
+      ],
+      "alerts" => nil,
+      "source_folder" => "/foo",
+      "source_executable" => "whoami",
+      "cron_schedule" => "*/5 * * * * *",
+      "backup_user" => "vcap",
+      "cleanup_executable" => "somecleanup",
+      "exit_if_in_progress" => "false",
+      "service_identifier_executable" => nil,
+      "aws_cli_path" => "/var/vcap/packages/service-backup_aws-cli/bin/aws",
+      "azure_cli_path" => "/var/vcap/packages/service-backup_blobxfer/bin/blobxfer",
+      "missing_properties_message" => "custom message"
+    })}
   end
 
   context 'when the manifest contains valid azure properties' do
@@ -236,36 +247,40 @@ RSpec.describe 'backup job config rendering' do
     let(:manifest_file) { 'spec/fixtures/valid_no_destinations.yml' }
     subject{ YAML.load(renderer.render('jobs/service-backup/templates/backup.yml.erb')) }
 
-    it { should eq({"destinations"=> [],
-     "alerts" => nil,
-     "source_folder"=>"/foo",
-     "source_executable"=>"whoami",
-     "cron_schedule"=>"*/5 * * * * *",
-     "backup_user"=>"vcap",
-     "cleanup_executable"=>"somecleanup",
-     "aws_cli_path" => "/var/vcap/packages/service-backup_aws-cli/bin/aws",
-     "azure_cli_path" => "/var/vcap/packages/service-backup_blobxfer/bin/blobxfer",
-     "exit_if_in_progress" => "false",
-     "service_identifier_executable" => nil,
-     "missing_properties_message"=>"custom message"})}
+    it { should eq({
+      "destinations" => [],
+      "alerts" => nil,
+      "source_folder" => "/foo",
+      "source_executable" => "whoami",
+      "cron_schedule" => "*/5 * * * * *",
+      "backup_user" => "vcap",
+      "cleanup_executable" => "somecleanup",
+      "aws_cli_path" => "/var/vcap/packages/service-backup_aws-cli/bin/aws",
+      "azure_cli_path" => "/var/vcap/packages/service-backup_blobxfer/bin/blobxfer",
+      "exit_if_in_progress" => "false",
+      "service_identifier_executable" => nil,
+      "missing_properties_message" => "custom message"
+    })}
   end
 
   context 'when the manifest contains no backup destination properties' do
     let(:manifest_file) { 'spec/fixtures/skip_backups.yml' }
     subject{ YAML.load(renderer.render('jobs/service-backup/templates/backup.yml.erb')) }
 
-    it { should eq({"destinations"=> [],
-     "alerts" => nil,
-     "source_folder"=>"/foo",
-     "source_executable"=>"whoami",
-     "cron_schedule"=>"*/5 * * * * *",
-     "backup_user"=>"vcap",
-     "cleanup_executable"=>"somecleanup",
-     "aws_cli_path" => "/var/vcap/packages/service-backup_aws-cli/bin/aws",
-     "azure_cli_path" => "/var/vcap/packages/service-backup_blobxfer/bin/blobxfer",
-     "exit_if_in_progress" => "false",
-     "service_identifier_executable" => nil,
-     "missing_properties_message"=>"custom message"})}
+    it { should eq({
+      "destinations" => [],
+      "alerts" => nil,
+      "source_folder" => "/foo",
+      "source_executable" => "whoami",
+      "cron_schedule" => "*/5 * * * * *",
+      "backup_user" => "vcap",
+      "cleanup_executable" => "somecleanup",
+      "aws_cli_path" => "/var/vcap/packages/service-backup_aws-cli/bin/aws",
+      "azure_cli_path" => "/var/vcap/packages/service-backup_blobxfer/bin/blobxfer",
+      "exit_if_in_progress" => "false",
+      "service_identifier_executable" => nil,
+      "missing_properties_message" => "custom message"
+    })}
   end
 
   context 'when the manifest contains a service identifier command' do
@@ -284,7 +299,7 @@ RSpec.describe 'backup job config rendering' do
       expect(subject).to eq({
         "cleanup_executable" => "",
         "cron_schedule" => nil,
-        "backup_user"=>"vcap",
+        "backup_user" => "vcap",
         "destinations" => [],
         "alerts" => nil,
         "exit_if_in_progress" => "false",
@@ -322,37 +337,43 @@ RSpec.describe 'backup job config rendering' do
     let(:manifest_file) { 'spec/fixtures/valid_multiple_destinations.yml' }
     subject{ YAML.load(renderer.render('jobs/service-backup/templates/backup.yml.erb')) }
 
-    it { should eq({"destinations"=>
-      [{"type"=>"azure",
-        "name"=>"long-term-backups",
-        "config"=> {
-          "storage_account"=>"some-account",
-          "storage_access_key"=>"some-access-key",
-          "container"=>"some-container",
-          "path"=>"some/path",
-          "blob_store_base_url"=>"endpoint.com"}
-       },
-       {"type"=>"scp",
-         "config"=>
-          {"server"=>"foo",
-           "user"=>"user",
-           "destination"=>"/var",
-           "key"=>"akey",
-           "fingerprint"=>"",
-           "port"=>22}
-       }
-     ],
-     "alerts" => nil,
-     "source_folder"=>"/foo",
-     "source_executable"=>"whoami",
-     "cron_schedule"=>"*/5 * * * * *",
-     "backup_user"=>"vcap",
-     "cleanup_executable"=>"somecleanup",
-     "exit_if_in_progress" => "false",
-     "service_identifier_executable" => nil,
-     "aws_cli_path" => "/var/vcap/packages/service-backup_aws-cli/bin/aws",
-     "azure_cli_path" => "/var/vcap/packages/service-backup_blobxfer/bin/blobxfer",
-     "missing_properties_message"=>"custom message"})}
+    it { should eq({
+      "destinations" => [
+        {
+          "type" => "azure",
+          "name" => "long-term-backups",
+          "config" => {
+            "storage_account" => "some-account",
+            "storage_access_key" => "some-access-key",
+            "container" => "some-container",
+            "path" => "some/path",
+            "blob_store_base_url" => "endpoint.com"
+          }
+        },
+        {
+          "type" => "scp",
+          "config" =>{
+            "server" => "foo",
+            "user" => "user",
+            "destination" => "/var",
+            "key" => "akey",
+            "fingerprint" => "",
+            "port" => 22
+          }
+        }
+      ],
+      "alerts" => nil,
+      "source_folder" => "/foo",
+      "source_executable" => "whoami",
+      "cron_schedule" => "*/5 * * * * *",
+      "backup_user" => "vcap",
+      "cleanup_executable" => "somecleanup",
+      "exit_if_in_progress" => "false",
+      "service_identifier_executable" => nil,
+      "aws_cli_path" => "/var/vcap/packages/service-backup_aws-cli/bin/aws",
+      "azure_cli_path" => "/var/vcap/packages/service-backup_blobxfer/bin/blobxfer",
+      "missing_properties_message" => "custom message"
+    })}
   end
 
   context 'when the manifest contains valid alert configuration' do
