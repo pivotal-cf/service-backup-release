@@ -15,7 +15,6 @@ files:
   - github.com/pivotal-cf-experimental/service-backup/backup/*.go # gosub
   - github.com/pivotal-cf-experimental/service-backup/cmd/manual-backup/*.go # gosub
   - github.com/pivotal-cf-experimental/service-backup/config/*.go # gosub
-  - github.com/pivotal-cf-experimental/service-backup/dummy/*.go # gosub
   - github.com/pivotal-cf-experimental/service-backup/executor/*.go # gosub
   - github.com/pivotal-cf-experimental/service-backup/gcp/*.go # gosub
   - github.com/pivotal-cf-experimental/service-backup/s3/*.go # gosub
