@@ -32,7 +32,7 @@ RSpec.describe 'backup job config rendering' do
       "backup_user" => "vcap",
       "cleanup_executable" => "somecleanup",
       "missing_properties_message" => "custom message",
-      "exit_if_in_progress" => "false",
+      "exit_if_in_progress" => false,
       "service_identifier_executable" => nil
     })}
   end
@@ -103,7 +103,7 @@ RSpec.describe 'backup job config rendering' do
       "backup_user"=>"vcap",
       "cleanup_executable"=>"somecleanup",
       "missing_properties_message"=>"custom message",
-      "exit_if_in_progress" => "false",
+      "exit_if_in_progress" => false,
       "service_identifier_executable" => nil
     })}
   end
@@ -155,7 +155,7 @@ RSpec.describe 'backup job config rendering' do
       "cron_schedule" => "*/5 * * * * *",
       "backup_user" => "vcap",
       "cleanup_executable" => "somecleanup",
-      "exit_if_in_progress" => "false",
+      "exit_if_in_progress" => false,
       "service_identifier_executable" => nil,
       "missing_properties_message" => "custom message"
     })}
@@ -218,7 +218,7 @@ RSpec.describe 'backup job config rendering' do
       "cron_schedule" => "*/5 * * * * *",
       "backup_user" => "vcap",
       "cleanup_executable" => "somecleanup",
-      "exit_if_in_progress" => "false",
+      "exit_if_in_progress" => false,
       "service_identifier_executable" => nil,
       "aws_cli_path" => "/var/vcap/packages/service-backup_aws-cli/bin/aws",
       "azure_cli_path" => "/var/vcap/packages/service-backup_blobxfer/bin/blobxfer",
@@ -257,7 +257,7 @@ RSpec.describe 'backup job config rendering' do
       "cleanup_executable" => "somecleanup",
       "aws_cli_path" => "/var/vcap/packages/service-backup_aws-cli/bin/aws",
       "azure_cli_path" => "/var/vcap/packages/service-backup_blobxfer/bin/blobxfer",
-      "exit_if_in_progress" => "false",
+      "exit_if_in_progress" => false,
       "service_identifier_executable" => nil,
       "missing_properties_message" => "custom message"
     })}
@@ -277,7 +277,7 @@ RSpec.describe 'backup job config rendering' do
       "cleanup_executable" => "somecleanup",
       "aws_cli_path" => "/var/vcap/packages/service-backup_aws-cli/bin/aws",
       "azure_cli_path" => "/var/vcap/packages/service-backup_blobxfer/bin/blobxfer",
-      "exit_if_in_progress" => "false",
+      "exit_if_in_progress" => false,
       "service_identifier_executable" => nil,
       "missing_properties_message" => "custom message"
     })}
@@ -302,7 +302,7 @@ RSpec.describe 'backup job config rendering' do
         "backup_user" => "vcap",
         "destinations" => [],
         "alerts" => nil,
-        "exit_if_in_progress" => "false",
+        "exit_if_in_progress" => false,
         "aws_cli_path" => "/var/vcap/packages/service-backup_aws-cli/bin/aws",
         "azure_cli_path" => "/var/vcap/packages/service-backup_blobxfer/bin/blobxfer",
         "missing_properties_message" => "Provide these missing fields in your manifest.",
@@ -368,7 +368,7 @@ RSpec.describe 'backup job config rendering' do
       "cron_schedule" => "*/5 * * * * *",
       "backup_user" => "vcap",
       "cleanup_executable" => "somecleanup",
-      "exit_if_in_progress" => "false",
+      "exit_if_in_progress" => false,
       "service_identifier_executable" => nil,
       "aws_cli_path" => "/var/vcap/packages/service-backup_aws-cli/bin/aws",
       "azure_cli_path" => "/var/vcap/packages/service-backup_blobxfer/bin/blobxfer",
@@ -423,7 +423,7 @@ RSpec.describe 'backup job config rendering' do
       "backup_user" => "vcap",
       "cleanup_executable" => "somecleanup",
       "missing_properties_message" => "custom message",
-      "exit_if_in_progress" => "false",
+      "exit_if_in_progress" => false,
       "service_identifier_executable" => nil,
     })}
   end
