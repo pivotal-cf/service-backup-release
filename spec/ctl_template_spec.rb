@@ -16,7 +16,7 @@ RSpec.describe 'Service Backups Ctl script' do
     let(:manifest_file) { File.open('spec/fixtures/valid_with_backup_user.yml') }
 
     it 'templates the value of backup_user' do
-      expect(rendered_template).to include("BACKUP_USER='backuper'")
+      expect(rendered_template).to include("backup_user='backuper'")
     end
   end
 
@@ -24,7 +24,7 @@ RSpec.describe 'Service Backups Ctl script' do
     let(:manifest_file) { File.open('spec/fixtures/valid_s3.yml') }
 
     it 'templates the default value' do
-      expect(rendered_template).to include("BACKUP_USER='vcap'")
+      expect(rendered_template).to include("backup_user='vcap'")
     end
   end
 
@@ -32,7 +32,7 @@ RSpec.describe 'Service Backups Ctl script' do
     let(:manifest_file) { File.open('spec/fixtures/valid_s3.yml') }
 
     it 'templates the value of source folder' do
-      expect(rendered_template).to include("SOURCE_FOLDER='/foo'")
+      expect(rendered_template).to include("source_folder='/foo'")
     end
   end
 end

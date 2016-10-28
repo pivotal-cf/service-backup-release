@@ -1,52 +1,77 @@
 #!/bin/bash -e
 
+set -o pipefail
+
 mkdir -p /var/vcap/sys/log/monit
 
 exec 1>> /var/vcap/sys/log/monit/service-backup.log
 exec 2>> /var/vcap/sys/log/monit/service-backup.err.log
 
-log(){
-  message=$1
-  echo "$(date +"%Y-%m-%d %H:%M:%S") ----- $message"
-}
+log_facility=user
+log_dir=/var/vcap/sys/log/service-backup
 
-RUN_DIR=/var/vcap/sys/run/service-backup
-LOG_DIR=/var/vcap/sys/log/service-backup
-PIDFILE=${RUN_DIR}/pid
+mkdir -p $log_dir
+chown -R vcap:vcap $log_dir
+
+script_log_tag=service-backup-ctl
+script_log_file=$log_dir/ctl.log
+backup_log_tag=service-backup
+backup_log_file=$log_dir/out.log
+
+pidfile=/var/vcap/sys/run/service-backup/pid
+
+write_log() {
+  local log_tag=$1
+  local log_file=$2
+  local log_level=$3
+  logger --priority $log_facility.$log_level --tag $log_tag --stderr 2>> $log_file
+}
+export -f write_log
+
+log() {
+  local log_level=$1
+  shift
+  echo "$(date): $*" | write_log $script_log_tag $script_log_file $log_level
+}
+export -f log
+
+backup_log() {
+  local log_level=$1
+  write_log $backup_log_tag $backup_log_file $log_level
+}
+export -f backup_log
 
 case $1 in
-
   start)
-    mkdir -p $RUN_DIR $LOG_DIR
-    chown -R vcap:vcap $RUN_DIR $LOG_DIR
-    echo $$ > $PIDFILE
+    log info "start script: starting service-backup"
+    echo $$ > $pidfile
+
+    backup_user='<%= p('service-backup.backup_user') %>'
 
     <% if_p('service-backup.source_folder') do %>
-      SOURCE_FOLDER='<%= p('service-backup.source_folder') %>'
-      mkdir -p "${SOURCE_FOLDER}"
+      source_folder='<%= p('service-backup.source_folder') %>'
+      mkdir -p "${source_folder}"
+      chown -R "${backup_user}:${backup_user}" "$source_folder"
     <% end %>
 
-    log "start script: starting service-backup"
-
-    BACKUP_USER='<%= p('service-backup.backup_user') %>'
-
-    chown -R "${BACKUP_USER}:${BACKUP_USER}" "$SOURCE_FOLDER"
-
     export GCP_SERVICE_ACCOUNT_FILE=/var/vcap/jobs/service-backup/config/gcp_service_account.json
-    exec chpst -u "${BACKUP_USER}:${BACKUP_USER}" /var/vcap/packages/service-backup/bin/service-backup \
-    /var/vcap/jobs/service-backup/config/backup.yml 2>&1 >> "$LOG_DIR/out.log"
+    exec chpst -u "${backup_user}:${backup_user}" /var/vcap/packages/service-backup/bin/service-backup \
+    /var/vcap/jobs/service-backup/config/backup.yml > >(backup_log info) 2>&1
 
-    log "start script: completed starting service-backup"
+    log info "start script: completed starting service-backup"
     ;;
 
   stop)
-    log "stop script: stopping service-backup"
-    kill -9 `cat $PIDFILE`
-    rm -f $PIDFILE
-    log "stop script: completed stopping service-backup"
+    log info "stop script: stopping service-backup"
+    kill $(cat $pidfile)
+    rm -f $pidfile
+    log info "stop script: completed stopping service-backup"
     ;;
 
   *)
-    echo "Usage: ctl {start|stop}" ;;
+    log warning "operation '$1' is not supported"
+    echo "Usage: ctl {start|stop}" >&2
+    exit 1
+    ;;
 
 esac
