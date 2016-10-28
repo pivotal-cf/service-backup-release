@@ -35,7 +35,7 @@ aws-cli/awscli-bundle.zip:
   object_id: e2cb3da2-2c5e-4f8d-b62c-830b3ab4d777
   sha: 9c7652a1ed539732eb8fa43df91cb7f928d6b9d0
   size: 7058663
-golang/go1.7.linux-amd64.tar.gz:
-  object_id: 78e08e28-d93d-4552-b7f7-04002111759a
-  sha: a744e29da97fc3aadad1ee0d7d89b0d899645e50
-  size: 81573766
+golang/go1.7.3.linux-amd64.tar.gz:
+  object_id: c55ab2ea-416f-4a3d-9d23-06fed48348f1
+  sha: ead40e884ad4d6512bcf7b3c7420dd7fa4a96140
+  size: 82565628
