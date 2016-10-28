@@ -1,5 +1,5 @@
 check process service-backup
-  with pidfile /var/vcap/sys/run/service-backup/pid
+  with pidfile /var/vcap/sys/run/service-backup.pid
   start program "/var/vcap/jobs/service-backup/bin/ctl start"
   stop program "/var/vcap/jobs/service-backup/bin/ctl stop"
   group vcap
