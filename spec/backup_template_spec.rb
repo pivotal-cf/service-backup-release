@@ -18,7 +18,7 @@ RSpec.describe 'backup job config rendering' do
             "endpoint_url" => "some-url",
             "bucket_name" => "test",
             "bucket_path" => "foo/bar",
-            "access_key_id" => "key",
+            "access_key_id" => "*4!'T#f\"J}A,~Da{)4{jz",
             "secret_access_key" => "itsasecret"
           }
         }
