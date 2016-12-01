@@ -12,6 +12,8 @@ outputs:
 - name: backups-with-tag
 
 run:
-  path: backups-final-tag/ci/scripts/push-backups-tag.sh
+  path: backups-final-tag/ci/scripts/push-submodule-tag.sh
 
-params: {}
+params:
+  SUBMODULE_PATH: src/github.com/pivotal-cf-experimental/service-backup
+  TAG_PATH: backups-with-tag
