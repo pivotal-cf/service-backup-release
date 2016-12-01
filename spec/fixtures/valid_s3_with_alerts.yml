@@ -28,18 +28,15 @@ properties:
         url: https://api.cf.com
         user: admin
         password: password
-      notification_target:
-        url: https://notifcations.cf.com
-        skip_ssl_validation: false
+      notifications:
+        service_url: https://notifcations.cf.com
         cf_org: system
         cf_space: mysql-notifications
         reply_to: me@example.com
-        authentication:
-          uaa:
-            url: https://10.10.10.10:5493
-            client_id: admin
-            client_secret: password
+        client_id: admin
+        client_secret: password
       timeout_seconds: 60
+      skip_ssl_validation: false
 
 jobs:
 - name: service-backup

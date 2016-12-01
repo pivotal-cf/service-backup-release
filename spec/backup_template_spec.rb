@@ -399,20 +399,15 @@ RSpec.describe 'backup job config rendering' do
           "user" => "admin",
           "password" => "password"
         },
-        "notification_target" => {
-          "url" => "https://notifcations.cf.com",
-          "skip_ssl_validation" => false,
+        "notifications" => {
+          "service_url" => "https://notifcations.cf.com",
           "cf_org" => "system",
           "cf_space" => "mysql-notifications",
           "reply_to" => "me@example.com",
-          "authentication" => {
-            "uaa" => {
-              "url" => "https://10.10.10.10:5493",
-              "client_id" => "admin",
-              "client_secret" => "password"
-            }
-          }
+          "client_id" => "admin",
+          "client_secret" => "password"
         },
+        "skip_ssl_validation" => false,
         "timeout_seconds" => 60
       },
       "aws_cli_path" => "/var/vcap/packages/service-backup_aws-cli/bin/aws",
