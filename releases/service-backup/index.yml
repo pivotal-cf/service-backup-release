@@ -42,4 +42,6 @@ builds:
     version: 17.1.2
   92df4838-7465-4802-96ad-ae8f12c53815:
     version: 17.2.0
+  448442ea-dc7a-46b5-b55b-ae6eb16a0c60:
+    version: 18.0.0
 format-version: '2'
