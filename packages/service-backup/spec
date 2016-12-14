@@ -20,6 +20,7 @@ files:
   - github.com/pivotal-cf-experimental/service-backup/s3/*.go # gosub
   - github.com/pivotal-cf-experimental/service-backup/scheduler/*.go # gosub
   - github.com/pivotal-cf-experimental/service-backup/scp/*.go # gosub
+  - github.com/pivotal-cf-experimental/service-backup/systemtruststorelocator/*.go # gosub
   - github.com/pivotal-cf/service-alerts-client/client/*.go # gosub
   - github.com/pivotal-cf/service-alerts-client/vendor/github.com/cenk/backoff/*.go # gosub
   - github.com/pivotal-cf/service-alerts-client/vendor/github.com/craigfurman/herottp/*.go # gosub
