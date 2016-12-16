@@ -46,4 +46,6 @@ builds:
     version: 18.0.0
   51aaff98-e03b-497f-9a48-9f55bb2c7493:
     version: 18.0.1
+  3acd20b7-29d2-4a4a-9df2-e0801b5d4473:
+    version: 18.0.2
 format-version: '2'
