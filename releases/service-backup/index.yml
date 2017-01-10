@@ -48,4 +48,6 @@ builds:
     version: 18.0.1
   3acd20b7-29d2-4a4a-9df2-e0801b5d4473:
     version: 18.0.2
+  6b2a817d-3793-4d13-a909-5bf8724d5ad6:
+    version: 18.0.3
 format-version: '2'
