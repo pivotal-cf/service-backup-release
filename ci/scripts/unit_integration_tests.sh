@@ -31,5 +31,5 @@ pushd "${BASE_DIR}"
   bundle exec rspec
 
   go install github.com/onsi/ginkgo/ginkgo
-  ./src/github.com/pivotal-cf-experimental/service-backup/scripts/test_integration
+  ./src/github.com/pivotal-cf/service-backup/scripts/test_integration
 popd

@@ -17,7 +17,7 @@ Below are the steps to clone and work on the Service Backup repo, however, if yo
 - **Clone the repo**:
 
     ```bash
-    git clone git@github.com:pivotal-cf-experimental/service-backup-release.git
+    git clone git@github.com:pivotal-cf/service-backup-release.git
     ```
 
     Note that development is carried out on a branch called `master`; this will be checked out by default.
@@ -78,7 +78,7 @@ This repository is the BOSH release, and contains the Go code for the service ba
     ```
 
     This script will overwrite the `.gitmodules` file. Due to a [bug in gosub](https://github.com/vito/gosub/issues/1), it will replace `git@` with
-    `https://`. This needs to be manually corrected for any private repositories, e.g. `pivotal-cf-experimental/service-backup`.
+    `https://`. This needs to be manually corrected for any private repositories, e.g. `pivotal-cf/service-backup`.
 
 - **Send a pull request**
 

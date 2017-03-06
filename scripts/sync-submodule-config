@@ -9,6 +9,6 @@ echo $GOPATH
 
 {
   gosub list \
-    -test github.com/pivotal-cf-experimental/service-backup/... \
-    -app  github.com/pivotal-cf-experimental/service-backup/...
-} | xargs gosub sync
+    -test github.com/pivotal-cf/service-backup/... \
+    -app  github.com/pivotal-cf/service-backup/...
+} | xargs gosub sync --force-https=false

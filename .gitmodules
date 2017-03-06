@@ -1,7 +1,3 @@
-[submodule "src/github.com/pivotal-cf-experimental/service-backup"]
-	path = src/github.com/pivotal-cf-experimental/service-backup
-	url = git@github.com:pivotal-cf-experimental/service-backup.git
-	branch = master
 [submodule "src/github.com/onsi/ginkgo"]
 	path = src/github.com/onsi/ginkgo
 	url = https://github.com/onsi/ginkgo
@@ -67,3 +63,7 @@
 [submodule "src/code.cloudfoundry.org/lager"]
 	path = src/code.cloudfoundry.org/lager
 	url = git@github.com:cloudfoundry/lager.git
+[submodule "src/github.com/pivotal-cf/service-backup"]
+	path = src/github.com/pivotal-cf/service-backup
+	url = git@github.com:pivotal-cf/service-backup.git
+	branch = master

@@ -30,7 +30,7 @@ function sync_package() {
 }
 
 sync_package service-backup \
-  -app github.com/pivotal-cf-experimental/service-backup \
-  -app github.com/pivotal-cf-experimental/service-backup/cmd/manual-backup
+  -app github.com/pivotal-cf/service-backup \
+  -app github.com/pivotal-cf/service-backup/cmd/manual-backup
 
 popd
