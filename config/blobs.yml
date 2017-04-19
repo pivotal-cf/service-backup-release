@@ -39,3 +39,71 @@ golang/go1.7.4.linux-amd64.tar.gz:
   object_id: f30f3558-c7e6-4557-8a1f-7a8649281b43
   sha: 2e5baf03d1590e048c84d1d5b4b6f2540efaaea1
   size: 84021919
+aws-cli/awscli-bundle/install:
+  object_id: 1445db61-1c13-46f5-aaec-487679f0d42a
+  sha: ecd095ddcbf2335d839c0dc1ace4b0253b3580e6
+  size: 4528
+aws-cli/awscli-bundle/packages/argparse-1.2.1.tar.gz:
+  object_id: f4ddbf39-dfdb-4e80-8c61-dfa82eee9722
+  sha: caadac82aa2576d6b445058c1fcf6ef0b14dbaa1
+  size: 69297
+aws-cli/awscli-bundle/packages/awscli-1.10.47.tar.gz:
+  object_id: 3b6ea997-9786-47c7-a4bb-e3147e8d1bed
+  sha: b841d7eb90adb26458d3277bff7d7ed0b3a8d9c1
+  size: 474772
+aws-cli/awscli-bundle/packages/botocore-1.4.37.tar.gz:
+  object_id: 4da9142b-2eff-49ba-8d6e-4d77ce6874b8
+  sha: 55621d58d401c5b64e8a4cb3b8e4bde13fae2b76
+  size: 2642647
+aws-cli/awscli-bundle/packages/colorama-0.3.7.zip:
+  object_id: 4f74c7ae-d4ac-4d3b-ac22-4f460f13a185
+  sha: eccdfd7b4ec124032a82129a0c26ebf85069bb79
+  size: 36767
+aws-cli/awscli-bundle/packages/docutils-0.12.tar.gz:
+  object_id: a3672689-a648-4dbf-b4f2-96b2a1e8425c
+  sha: 002450621b33c5690060345b0aac25bc2426d675
+  size: 1618353
+aws-cli/awscli-bundle/packages/futures-3.0.5.tar.gz:
+  object_id: 60ac772f-2ea5-44e2-8065-6dbd98d9c44e
+  sha: 759bf3669b517808810c96a4a620e9a272064487
+  size: 25153
+aws-cli/awscli-bundle/packages/jmespath-0.9.0.tar.gz:
+  object_id: db86d0ba-9e62-452a-b117-2f6c11f85ac6
+  sha: 642800c1bc901a440639d5743c9cd74ba59c2d4a
+  size: 20855
+aws-cli/awscli-bundle/packages/ordereddict-1.1.tar.gz:
+  object_id: cdfc178d-71a4-4c02-8b5e-837e6fcacc44
+  sha: ab90b67dceab55a11b609d253846fa486eb980c4
+  size: 2114
+aws-cli/awscli-bundle/packages/pyasn1-0.1.9.tar.gz:
+  object_id: 442f9dee-2abc-4d20-b1f5-b7a011cab480
+  sha: d19599c5d9d039ead21ffcd1a2392c29a838ae03
+  size: 75947
+aws-cli/awscli-bundle/packages/python-dateutil-2.5.3.tar.gz:
+  object_id: d9718e04-4e3d-4c1d-b05a-22b155075e0f
+  sha: a53ebfeecc784ea5781ba504ddf7f4ad13738213
+  size: 236877
+aws-cli/awscli-bundle/packages/rsa-3.4.2.tar.gz:
+  object_id: b6dff0b6-2ff8-4421-b133-9d31bd847f9b
+  sha: 5e01533d344df8e55c090f0fce9c5f9383bf9e9c
+  size: 40956
+aws-cli/awscli-bundle/packages/s3transfer-0.0.1.tar.gz:
+  object_id: 0f26dc97-67d1-45ee-9d6e-b06d8485eed9
+  sha: d16ec86e2ed6a08f080d31ec31437a88e469861b
+  size: 9465
+aws-cli/awscli-bundle/packages/simplejson-3.3.0.tar.gz:
+  object_id: 4cf839b1-523a-47a4-8a9e-9d62af475bb7
+  sha: 18f2e278a4a5f976460b690068c03c0e28045b79
+  size: 67250
+aws-cli/awscli-bundle/packages/six-1.10.0.tar.gz:
+  object_id: 8b2be0c2-7d50-4161-84ae-53b3cfce5154
+  sha: 30d480d2e352e8e4c2aae042cf1bf33368ff0920
+  size: 29630
+aws-cli/awscli-bundle/packages/virtualenv-13.0.3.tar.gz:
+  object_id: 7a7630d3-7d9c-47c3-aa77-765228566ed7
+  sha: 8cd0bbc84d4cc99e72eca483912bcdf7ed384c17
+  size: 1726220
+golang/go1.7.5.linux-amd64.tar.gz:
+  object_id: 1c523c9a-8ea7-4cd2-886c-b11d29459b9b
+  sha: 7c6902ce8cd3b9963082d748c50df074e4896796
+  size: 84176916
