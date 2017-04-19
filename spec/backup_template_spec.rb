@@ -18,6 +18,7 @@ RSpec.describe 'backup job config rendering' do
             "endpoint_url" => "some-url",
             "bucket_name" => "test",
             "bucket_path" => "foo/bar",
+            "bucket_region" => "some-region",
             "access_key_id" => "*4!'T#f\"J}A,~Da{)4{jz",
             "secret_access_key" => "itsasecret"
           }
@@ -48,6 +49,13 @@ RSpec.describe 'backup job config rendering' do
     subject{ YAML.load(renderer.render('jobs/service-backup/templates/backup.yml.erb')) }
 
     its(["destinations", 0, "config", "endpoint_url"]){ should eq("https://s3.amazonaws.com")}
+  end
+
+  context 'when the manifest contains no bucket_region' do
+    let(:manifest_file) { 'spec/fixtures/valid_s3_without_bucket_region.yml' }
+    subject{ YAML.load(renderer.render('jobs/service-backup/templates/backup.yml.erb')) }
+
+    its(["destinations", 0, "config", "bucket_region"]){ should eq("us-east-1")}
   end
 
   context 'when the manifest contains invalid S3 properties' do
@@ -387,6 +395,7 @@ RSpec.describe 'backup job config rendering' do
             "endpoint_url" => "some-url",
             "bucket_name" => "test",
             "bucket_path" => "foo/bar",
+            "bucket_region" => "some-region",
             "access_key_id" => "key",
             "secret_access_key" => "itsasecret"
           }
