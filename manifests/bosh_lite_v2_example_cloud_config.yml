@@ -1,24 +1,27 @@
 vm_types:
-- name: medium
+- name: container
   cloud_properties: {}
 
 disk_types:
-- name: ten
-  disk_size: 3000
+- name: 1GB
+  disk_size: 1_000
   cloud_properties: {}
 
 networks:
 - name: backup-network
   subnets:
-  - cloud_properties:
-      name: random
-    range: 10.244.9.0/28
-    reserved:
-    - 10.244.9.1
+  - range: 10.244.9.0/28
+    gateway: 10.244.9.1
+    az: lite
+    cloud_properties: {}
+
+azs:
+- name: lite
+  cloud_properties: {}
 
 compilation:
-  cloud_properties:
-    name: random
-  network: backup-network
-  reuse_compilation_vms: true
   workers: 5
+  reuse_compilation_vms: true
+  network: backup-network
+  az: lite
+  cloud_properties: {}
