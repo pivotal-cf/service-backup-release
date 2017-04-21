@@ -16,9 +16,9 @@ RSpec.describe 'backup job config rendering' do
           "type" => "s3",
           "config" => {
             "endpoint_url" => "some-url",
+            "region" => "some-region",
             "bucket_name" => "test",
             "bucket_path" => "foo/bar",
-            "bucket_region" => "some-region",
             "access_key_id" => "*4!'T#f\"J}A,~Da{)4{jz",
             "secret_access_key" => "itsasecret"
           }
@@ -44,18 +44,18 @@ RSpec.describe 'backup job config rendering' do
     its(["backup_user"]){ should eq("backuper")}
   end
 
-  context 'when the manifest contains no endpoint_url' do
+  context 'when the manifest contains no S3 endpoint_url' do
     let(:manifest_file) { 'spec/fixtures/valid_s3_without_endpoint.yml' }
     subject{ YAML.load(renderer.render('jobs/service-backup/templates/backup.yml.erb')) }
 
     its(["destinations", 0, "config", "endpoint_url"]){ should eq("https://s3.amazonaws.com")}
   end
 
-  context 'when the manifest contains no bucket_region' do
-    let(:manifest_file) { 'spec/fixtures/valid_s3_without_bucket_region.yml' }
+  context 'when the manifest contains no S3 region' do
+    let(:manifest_file) { 'spec/fixtures/valid_s3_without_region.yml' }
     subject{ YAML.load(renderer.render('jobs/service-backup/templates/backup.yml.erb')) }
 
-    its(["destinations", 0, "config", "bucket_region"]){ should eq("us-east-1")}
+    its(["destinations", 0, "config", "region"]){ should eq("")}
   end
 
   context 'when the manifest contains invalid S3 properties' do
@@ -393,9 +393,9 @@ RSpec.describe 'backup job config rendering' do
           "type" => "s3",
           "config" => {
             "endpoint_url" => "some-url",
+            "region" => "some-region",
             "bucket_name" => "test",
             "bucket_path" => "foo/bar",
-            "bucket_region" => "some-region",
             "access_key_id" => "key",
             "secret_access_key" => "itsasecret"
           }

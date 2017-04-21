@@ -13,9 +13,9 @@ properties:
       - type: s3
         config:
           endpoint_url: some-url
+          region: some-region
           bucket_name: test
           bucket_path: foo/bar
-          bucket_region: some-region
           access_key_id: '*4!''T#f"J}A,~Da{)4{jz'
           secret_access_key: itsasecret
     source_folder: /foo

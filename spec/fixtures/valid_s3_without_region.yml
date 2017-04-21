@@ -12,6 +12,7 @@ properties:
     destinations:
       - type: s3
         config:
+          endpoint_url: some-url
           bucket_name: test
           bucket_path: foo/bar
           access_key_id: key
