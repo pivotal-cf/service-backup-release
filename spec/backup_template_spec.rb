@@ -48,7 +48,7 @@ RSpec.describe 'backup job config rendering' do
     let(:manifest_file) { 'spec/fixtures/valid_s3_without_endpoint.yml' }
     subject{ YAML.load(renderer.render('jobs/service-backup/templates/backup.yml.erb')) }
 
-    its(["destinations", 0, "config", "endpoint_url"]){ should eq("https://s3.amazonaws.com")}
+    its(["destinations", 0, "config", "endpoint_url"]){ should eq("")}
   end
 
   context 'when the manifest contains no S3 region' do

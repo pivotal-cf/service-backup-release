@@ -48,7 +48,7 @@ def set_defaults(type, destination)
       destination["config"]["fingerprint"] = "" if destination["config"]["fingerprint"].nil?
     },
     's3' => lambda {
-      destination["config"]["endpoint_url"] = "https://s3.amazonaws.com" if destination["config"]["endpoint_url"].nil?
+      destination["config"]["endpoint_url"] = "" if destination["config"]["endpoint_url"].nil?
       destination["config"]["region"] = "" if destination["config"]["region"].nil?
     },
     'azure' => lambda {
