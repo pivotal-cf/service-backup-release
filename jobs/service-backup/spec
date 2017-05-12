@@ -61,3 +61,7 @@ properties:
   service-backup.azure_cli_path:
     default: /var/vcap/packages/service-backup_blobxfer/bin/blobxfer
     description: Path the to azure cli
+
+  service-backup.add_deployment_name_to_backup_path:
+    default: false
+    description: Optional, adds the deployment name to the remote backup path.

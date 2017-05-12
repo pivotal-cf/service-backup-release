@@ -44,6 +44,12 @@ RSpec.describe 'backup job config rendering' do
     its(["backup_user"]){ should eq("backuper")}
   end
 
+  context 'when the manifest sets add_deployment_name_to_backup_path to true' do
+    let(:manifest_file) { 'spec/fixtures/valid_with_add_deployment_name_to_backup_path.yml' }
+    subject{ YAML.load(renderer.render('jobs/service-backup/templates/backup.yml.erb')) }
+    its(["deployment_name"]) { should eq("service-backup") }
+  end
+
   context 'when the manifest contains no S3 endpoint_url' do
     let(:manifest_file) { 'spec/fixtures/valid_s3_without_endpoint.yml' }
     subject{ YAML.load(renderer.render('jobs/service-backup/templates/backup.yml.erb')) }
