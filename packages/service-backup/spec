@@ -15,7 +15,6 @@ files:
   - github.com/pivotal-cf/service-alerts-client/vendor/github.com/craigfurman/herottp/*.go # gosub
   - github.com/pivotal-cf/service-backup/*.go # gosub
   - github.com/pivotal-cf/service-backup/azure/*.go # gosub
-  - github.com/pivotal-cf/service-backup/backup/*.go # gosub
   - github.com/pivotal-cf/service-backup/cmd/manual-backup/*.go # gosub
   - github.com/pivotal-cf/service-backup/config/*.go # gosub
   - github.com/pivotal-cf/service-backup/executor/*.go # gosub
@@ -23,7 +22,7 @@ files:
   - github.com/pivotal-cf/service-backup/s3/*.go # gosub
   - github.com/pivotal-cf/service-backup/scheduler/*.go # gosub
   - github.com/pivotal-cf/service-backup/scp/*.go # gosub
-  - github.com/pivotal-cf/service-backup/systemtruststorelocator/*.go # gosub
+  - github.com/pivotal-cf/service-backup/upload/*.go # gosub
   - github.com/satori/go.uuid/*.go # gosub
   - github.com/tedsuo/ifrit/*.go # gosub
   - golang.org/x/net/context/*.go # gosub
