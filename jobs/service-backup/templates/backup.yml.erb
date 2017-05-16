@@ -42,9 +42,7 @@ def required_properties(type)
 end
 
 def set_defaults(config)
-  if config.delete("add_deployment_name_to_backup_path")
-    config["deployment_name"] = spec.name  # TODO: spec.deployment ?
-  end
+  config["deployment_name"] = spec.deployment
 end
 
 def set_destination_defaults(type, destination)

@@ -24,6 +24,8 @@ RSpec.describe 'backup job config rendering' do
           }
         }
       ],
+      "add_deployment_name_to_backup_path" => false,
+      "deployment_name" => "service-backup",
       "alerts" => nil,
       "aws_cli_path" => "/var/vcap/packages/service-backup_aws-cli/bin/aws",
       "azure_cli_path" => "/var/vcap/packages/service-backup_blobxfer/bin/blobxfer",
@@ -109,6 +111,8 @@ RSpec.describe 'backup job config rendering' do
         }
       ],
       "alerts" => nil,
+      "add_deployment_name_to_backup_path" => false,
+      "deployment_name" => "service-backup",
       "source_folder"=>"/foo",
       "aws_cli_path" => "/var/vcap/packages/service-backup_aws-cli/bin/aws",
       "azure_cli_path" => "/var/vcap/packages/service-backup_blobxfer/bin/blobxfer",
@@ -161,6 +165,8 @@ RSpec.describe 'backup job config rendering' do
           }
         }
       ],
+      "add_deployment_name_to_backup_path" => false,
+      "deployment_name" => "service-backup",
       "alerts" => nil,
       "source_folder" => "/foo",
       "aws_cli_path" => "/var/vcap/packages/service-backup_aws-cli/bin/aws",
@@ -226,6 +232,8 @@ RSpec.describe 'backup job config rendering' do
           }
         }
       ],
+      "add_deployment_name_to_backup_path" => false,
+      "deployment_name" => "service-backup",
       "alerts" => nil,
       "source_folder" => "/foo",
       "source_executable" => "whoami",
@@ -264,6 +272,8 @@ RSpec.describe 'backup job config rendering' do
     it { should eq({
       "destinations" => [],
       "alerts" => nil,
+      "add_deployment_name_to_backup_path" => false,
+      "deployment_name" => "service-backup",
       "source_folder" => "/foo",
       "source_executable" => "whoami",
       "cron_schedule" => "*/5 * * * * *",
@@ -284,6 +294,8 @@ RSpec.describe 'backup job config rendering' do
     it { should eq({
       "destinations" => [],
       "alerts" => nil,
+      "add_deployment_name_to_backup_path" => false,
+      "deployment_name" => "service-backup",
       "source_folder" => "/foo",
       "source_executable" => "whoami",
       "cron_schedule" => "*/5 * * * * *",
@@ -316,6 +328,8 @@ RSpec.describe 'backup job config rendering' do
         "backup_user" => "vcap",
         "destinations" => [],
         "alerts" => nil,
+        "add_deployment_name_to_backup_path" => false,
+        "deployment_name" => "service-backup",
         "exit_if_in_progress" => false,
         "aws_cli_path" => "/var/vcap/packages/service-backup_aws-cli/bin/aws",
         "azure_cli_path" => "/var/vcap/packages/service-backup_blobxfer/bin/blobxfer",
@@ -377,6 +391,8 @@ RSpec.describe 'backup job config rendering' do
         }
       ],
       "alerts" => nil,
+      "add_deployment_name_to_backup_path" => false,
+      "deployment_name" => "service-backup",
       "source_folder" => "/foo",
       "source_executable" => "whoami",
       "cron_schedule" => "*/5 * * * * *",
@@ -425,6 +441,8 @@ RSpec.describe 'backup job config rendering' do
         "skip_ssl_validation" => false,
         "timeout_seconds" => 60
       },
+      "add_deployment_name_to_backup_path" => false,
+      "deployment_name" => "service-backup",
       "aws_cli_path" => "/var/vcap/packages/service-backup_aws-cli/bin/aws",
       "azure_cli_path" => "/var/vcap/packages/service-backup_blobxfer/bin/blobxfer",
       "source_folder" => "/foo",
@@ -450,6 +468,8 @@ RSpec.describe 'backup job config rendering' do
     spec_properties.each_pair do |name, definition|
       copy_property(effective_properties, manifest_properties, name, definition["default"])
     end
+
+    manifest['deployment'] = 'service-backup'
 
     manifest.merge({"properties" => effective_properties})
   end
