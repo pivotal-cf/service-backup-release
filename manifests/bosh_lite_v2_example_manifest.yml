@@ -57,7 +57,7 @@ instance_groups:
             storage_access_key: AZURE_STORAGE_KEY
             container: AZURE_STORAGE_CONTAINER
             path: CONTAINER_PATH
-            blob_store_base_url: core.windows.net # optional
+            endpoint: core.windows.net # optional
         - type: gcs
           name: DESTINATION_NAME # optional
           config:

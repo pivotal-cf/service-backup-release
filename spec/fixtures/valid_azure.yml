@@ -22,7 +22,7 @@ properties:
           storage_access_key: some-access-key
           container: some-container
           path: some/path
-          blob_store_base_url: endpoint.com
+          endpoint: endpoint.com
     source_folder: /foo
     source_executable: whoami
     cron_schedule: '*/5 * * * * *'

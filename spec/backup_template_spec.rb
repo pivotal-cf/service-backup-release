@@ -256,7 +256,7 @@ RSpec.describe 'backup job config rendering' do
             "storage_access_key" => "some-access-key",
             "container" => "some-container",
             "path" => "some/path",
-            "blob_store_base_url" => "endpoint.com"
+            "endpoint" => "endpoint.com"
           }
         }
       ],
@@ -274,13 +274,6 @@ RSpec.describe 'backup job config rendering' do
       "azure_cli_path" => "/var/vcap/packages/service-backup_blobxfer/bin/blobxfer",
       "missing_properties_message" => "custom message"
     })}
-  end
-
-  context 'when the manifest contains valid azure properties' do
-    let(:manifest_file) { 'spec/fixtures/valid_azure_without_blobstore.yml' }
-    subject{ YAML.load(renderer.render('jobs/service-backup/templates/backup.yml.erb')) }
-
-    its(["destinations", 0, "config", "blob_store_base_url"]){ should eq("core.windows.net")}
   end
 
   context 'when the manifest contains invalid azure properties' do
@@ -403,7 +396,7 @@ RSpec.describe 'backup job config rendering' do
             "storage_access_key" => "some-access-key",
             "container" => "some-container",
             "path" => "some/path",
-            "blob_store_base_url" => "endpoint.com"
+            "endpoint" => "endpoint.com"
           }
         },
         {

@@ -61,9 +61,7 @@ def set_destination_defaults(type, destination)
       destination["config"]["endpoint_url"] = "" if destination["config"]["endpoint_url"].nil?
       destination["config"]["region"] = "" if destination["config"]["region"].nil?
     },
-    'azure' => lambda {
-      destination["config"]["blob_store_base_url"] = "core.windows.net" if destination["config"]["blob_store_base_url"].nil?
-    },
+    'azure' => lambda {},
     'gcs' => lambda {}
   }[type].call
 end

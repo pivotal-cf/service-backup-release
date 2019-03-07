@@ -44,6 +44,7 @@ properties:
           storage_access_key: <storage key>
           container: <container name>
           path: <path in container>
+          endpoint: <blob-store endpoint>
       - type: gcs
         config:
           service_account_json: |
