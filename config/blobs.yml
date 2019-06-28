@@ -1,7 +1,7 @@
-aws-cli/awscli-bundle-1.11.91.zip:
-  size: 8735594
-  object_id: a4088e50-d8c3-4ef6-84d4-7b6848560e96
-  sha: 0a37876f9d7fa18d9ae801640247eb18ccd8e783
+aws-cli/awscli-bundle-1.16.189.zip:
+  size: 12207011
+  object_id: d2699257-adb9-44f2-6d86-d8cca902dc19
+  sha: 28f508c796fed5a8d8bc49418c842eb6bf32dc59
 blobxfer/asn1crypto-0.22.0.tar.gz:
   size: 84508
   object_id: 27cbba76-d420-4906-43f7-1a4665263171

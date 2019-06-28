@@ -6,5 +6,7 @@
 
 set -e
 
-unzip aws-cli/awscli-bundle-1.11.91.zip
-/var/vcap/packages/service-backup_python/bin/python3 ./awscli-bundle/install -i $BOSH_INSTALL_TARGET
+: "${PYTHON:-/var/vcap/packages/service-backup_python/bin/python3}"
+
+unzip "aws-cli/awscli-bundle-1.16.189.zip"
+"$PYTHON" ./awscli-bundle/install -i "$BOSH_INSTALL_TARGET"
