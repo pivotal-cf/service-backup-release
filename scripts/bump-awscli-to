@@ -2,7 +2,7 @@
 
 set -e
 
-: "${TMPDIR:-$(mktemp -d)}"
+: "${TMPDIR:=$(mktemp -d)}"
 
 RELEASE_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 
@@ -22,11 +22,13 @@ cat > "$RELEASE_DIR/packages/service-backup_aws-cli/packaging" << EOF
 
 set -e
 
-: "\${PYTHON:-/var/vcap/packages/service-backup_python/bin/python3}"
+: "\${PYTHON:=/var/vcap/packages/service-backup_python/bin/python3}"
 
 unzip "aws-cli/awscli-bundle-$AWSCLI_VERSION.zip"
 "\$PYTHON" ./awscli-bundle/install -i "\$BOSH_INSTALL_TARGET"
 EOF
+
+chmod +x "$RELEASE_DIR/packages/service-backup_aws-cli/packaging"
 
 cat > "$RELEASE_DIR/packages/service-backup_aws-cli/spec" << EOF
 # Copyright (C) 2016-Present Pivotal Software, Inc. All rights reserved.
@@ -45,5 +47,3 @@ files:
   - aws-cli/awscli-bundle-$AWSCLI_VERSION.zip
 EOF
 
-
-chmod +x "$RELEASE_DIR/packages/service-backup_aws-cli/packaging"
