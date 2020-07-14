@@ -2,6 +2,8 @@
 
 BOSH operators running services (e.g. Redis service broker for Cloud Foundry) may want to back up certain files from the virtual machines running these services so that they can restore them after a disaster.
 
+This product is not under active development. We do address security vulnarabilities and issues patches. 
+
 ## Using Service Backup
 
 User documentation can be found [here](https://docs.pivotal.io/service-backup).
