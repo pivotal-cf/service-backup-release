@@ -1,11 +1,3 @@
-[submodule "src/github.com/onsi/ginkgo"]
-	path = src/github.com/onsi/ginkgo
-	url = https://github.com/onsi/ginkgo
-	branch = master
-[submodule "src/github.com/onsi/gomega"]
-	path = src/github.com/onsi/gomega
-	url = https://github.com/onsi/gomega
-	branch = master
 [submodule "src/gopkg.in/robfig/cron.v2"]
 	path = src/gopkg.in/robfig/cron.v2
 	url = https://gopkg.in/robfig/cron.v2
