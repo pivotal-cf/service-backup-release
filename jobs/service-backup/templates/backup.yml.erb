@@ -18,6 +18,12 @@ def validate_config(config)
   end
 end
 
+def alerts_config(config)
+  if config['alerts']['product_name'].nil? || config['alerts']['product_name'].empty?
+      config["alerts"] = nil
+  end
+end
+
 def validate_type(type)
   unless %w(scp s3 azure gcs).include?(type)
     raise invalid_config_message("Unknown destination type: #{type}")
@@ -85,6 +91,8 @@ service_backup_config["destinations"].each do |destination|
   validate_destination(type, destination)
   set_destination_defaults(type, destination)
 end
+alerts_config(service_backup_config)
+
 %>
 
 <%= service_backup_config.to_yaml %>

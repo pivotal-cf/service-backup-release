@@ -11,28 +11,6 @@ RSpec.describe 'backup job config rendering' do
      Bosh::Template::Renderer.new({context: emulate_bosh_director_merge(YAML.load_file(manifest_file)).to_json})
   }
   let(:custom_msg) { 'custom message' }
-  let(:empty_alerts) do
-    {
-      "product_name" => "",
-      "config" => {
-        "cloud_controller" => {
-          "url" => "",
-          "user" => "",
-          "password" => ""
-        },
-        "notifications" => {
-          "service_url" => "",
-          "cf_org" => "",
-          "cf_space" => "",
-          "reply_to" => "",
-          "client_id" => "",
-          "client_secret" => ""
-        },
-        "timeout_seconds" => 60,
-        "skip_ssl_validation" => false
-      }
-    }
-  end
 
   context 'when the manifest contains valid s3 properties' do
     let(:manifest_file) { 'spec/fixtures/valid_s3.yml' }
@@ -54,7 +32,7 @@ RSpec.describe 'backup job config rendering' do
       ],
       "add_deployment_name_to_backup_path" => false,
       "deployment_name" => "service-backup",
-      "alerts" => empty_alerts,
+      "alerts" => nil,
       "aws_cli_path" => "/var/vcap/packages/service-backup_aws-cli/bin/aws",
       "azure_cli_path" => "/var/vcap/packages/service-backup_blobxfer/bin/blobxfer",
       "source_folder" => "/foo",
@@ -138,7 +116,7 @@ RSpec.describe 'backup job config rendering' do
           }
         }
       ],
-      "alerts" => empty_alerts,
+      "alerts" => nil,
       "add_deployment_name_to_backup_path" => false,
       "deployment_name" => "service-backup",
       "source_folder"=>"/foo",
@@ -195,7 +173,7 @@ RSpec.describe 'backup job config rendering' do
       ],
       "add_deployment_name_to_backup_path" => false,
       "deployment_name" => "service-backup",
-      "alerts" => empty_alerts,
+      "alerts" => nil,
       "source_folder" => "/foo",
       "aws_cli_path" => "/var/vcap/packages/service-backup_aws-cli/bin/aws",
       "azure_cli_path" => "/var/vcap/packages/service-backup_blobxfer/bin/blobxfer",
@@ -262,7 +240,7 @@ RSpec.describe 'backup job config rendering' do
       ],
       "add_deployment_name_to_backup_path" => false,
       "deployment_name" => "service-backup",
-      "alerts" => empty_alerts,
+      "alerts" => nil,
       "source_folder" => "/foo",
       "source_executable" => "whoami",
       "cron_schedule" => "*/5 * * * * *",
@@ -292,7 +270,7 @@ RSpec.describe 'backup job config rendering' do
 
     it { should eq({
       "destinations" => [],
-      "alerts" => empty_alerts,
+      "alerts" => nil,
       "add_deployment_name_to_backup_path" => false,
       "deployment_name" => "service-backup",
       "source_folder" => "/foo",
@@ -314,7 +292,7 @@ RSpec.describe 'backup job config rendering' do
 
     it { should eq({
       "destinations" => [],
-      "alerts" => empty_alerts,
+      "alerts" => nil,
       "add_deployment_name_to_backup_path" => false,
       "deployment_name" => "service-backup",
       "source_folder" => "/foo",
@@ -348,7 +326,7 @@ RSpec.describe 'backup job config rendering' do
         "cron_schedule" => nil,
         "backup_user" => "vcap",
         "destinations" => [],
-        "alerts" => empty_alerts,
+        "alerts" => nil,
         "add_deployment_name_to_backup_path" => false,
         "deployment_name" => "service-backup",
         "exit_if_in_progress" => false,
@@ -411,7 +389,7 @@ RSpec.describe 'backup job config rendering' do
           }
         }
       ],
-      "alerts" => empty_alerts,
+      "alerts" => nil,
       "add_deployment_name_to_backup_path" => false,
       "deployment_name" => "service-backup",
       "source_folder" => "/foo",
