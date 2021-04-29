@@ -10,7 +10,7 @@ updates:
     schedule:
       interval: daily
   - package-ecosystem: bundler
-  directory: "/"
-  schedule:
-    interval: weekly
-  versioning-strategy: increase
+    directory: "/"
+    schedule:
+      interval: weekly
+    versioning-strategy: increase
