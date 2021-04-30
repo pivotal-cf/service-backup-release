@@ -12,5 +12,7 @@ updates:
   - package-ecosystem: bundler
     directory: "/"
     schedule:
-      interval: weekly
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
     versioning-strategy: increase
