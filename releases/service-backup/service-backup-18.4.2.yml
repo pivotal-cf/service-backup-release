@@ -1,0 +1,53 @@
+name: service-backup
+version: 18.4.2
+commit_hash: e105290
+uncommitted_changes: false
+jobs:
+- name: service-backup
+  version: c5594800c9dab03f3ae9d693befa7aca98fe89ab1707eacf6f81a4104c8e58b5
+  fingerprint: c5594800c9dab03f3ae9d693befa7aca98fe89ab1707eacf6f81a4104c8e58b5
+  sha1: sha256:f75748576600b41779bed212df0c7c06980d8ac01dd2279212c7c34cf70d4732
+  packages:
+  - service-backup
+  - service-backup_utils
+  - service-backup_aws-cli
+  - service-backup_blobxfer
+  - service-backup_python
+packages:
+- name: golang-1-linux
+  version: 5b79dae188e2d5d5f7dde7df37bf9e4b6d93f798c40a18f3ed76bf7500b8a333
+  fingerprint: 5b79dae188e2d5d5f7dde7df37bf9e4b6d93f798c40a18f3ed76bf7500b8a333
+  sha1: sha256:e2f67fda8349c0f8e8118c87230035785b29cea5c93b396ab9f90c52336b62e4
+  dependencies: []
+- name: service-backup
+  version: 567be573fab71a2c7ca79de67550a493909726ee083cbf845bf2010adbac1125
+  fingerprint: 567be573fab71a2c7ca79de67550a493909726ee083cbf845bf2010adbac1125
+  sha1: sha256:d37a0ba80840c411b72f99fc9396a3c0c2a64693fdb6549ae464c3cefafb3b63
+  dependencies:
+  - golang-1-linux
+- name: service-backup_aws-cli
+  version: e9f210d9aa71460874018fd92b236f25001cf3926f9de081326b9228f688716e
+  fingerprint: e9f210d9aa71460874018fd92b236f25001cf3926f9de081326b9228f688716e
+  sha1: sha256:4609b454eb2768a75c19ea7b103b51f5c2ef493f3db6b385be3a40ab979e5625
+  dependencies:
+  - service-backup_python
+- name: service-backup_blobxfer
+  version: 58de47b318d3ba114e6d86933dd48d014e803370f4a1f2e5117356a76ccd19a7
+  fingerprint: 58de47b318d3ba114e6d86933dd48d014e803370f4a1f2e5117356a76ccd19a7
+  sha1: sha256:104dacb9055fe4e6c10b91a5fdbee1f169f4d2f06ef0d30f5e52656d4a9e8c1a
+  dependencies:
+  - service-backup_python
+- name: service-backup_python
+  version: 6f053775e6934dffc3e08493efae04c5797cb231d18c2f935b71d2cd5905a284
+  fingerprint: 6f053775e6934dffc3e08493efae04c5797cb231d18c2f935b71d2cd5905a284
+  sha1: sha256:4c757ea4f0d7ebd1dcd2fdedf146edb5c69c34dc93392cfa718f576c6b819167
+  dependencies: []
+- name: service-backup_utils
+  version: 9760e8bf4bda9e7b63b034a0e1381c6ffde77889f37e5559871efd65d1f27455
+  fingerprint: 9760e8bf4bda9e7b63b034a0e1381c6ffde77889f37e5559871efd65d1f27455
+  sha1: sha256:b6e54dc31e8e35de29d298f334e668e7d95a805688413d7130465cd88c913822
+  dependencies: []
+license:
+  version: 5327c8fcea6fa89dc3c1e540dd4033845672f638e5a24191f86962a6999a9309
+  fingerprint: 5327c8fcea6fa89dc3c1e540dd4033845672f638e5a24191f86962a6999a9309
+  sha1: sha256:6bc889a817d4c7410bdb2672a3bfe79ca8bb6fc13a9909f01f547dba0c892fa1
