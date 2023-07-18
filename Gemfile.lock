@@ -67,8 +67,5 @@ DEPENDENCIES
   rspec
   rspec-its
 
-RUBY VERSION
-   ruby 2.7.2
-
 BUNDLED WITH
    1.17.2
