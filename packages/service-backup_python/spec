@@ -7,5 +7,5 @@
 ---
 name: service-backup_python
 files:
-  - python/Python-3.9.7.tgz
+  - python/Python-3.11.4.tgz
   - python/pip-21.2.3.tar.gz
