@@ -30,6 +30,10 @@ blobxfer/blobxfer-1.0.0.tar.gz:
   size: 147438
   object_id: 30b65134-1fb1-4f9e-7999-3a25ecb0ed01
   sha: 06027e6589ba3b61acb4bf888175eb65931f34af
+blobxfer/blobxfer-1.11.0.tar.gz:
+  size: 166060
+  object_id: 56c22507-29f1-4df4-7865-49fbf77a06b5
+  sha: sha256:b80429b46bd1e1a0f36493d49d1cef9653465b8190adc709fde4e545fe6d1cd0
 blobxfer/certifi-2017.11.5.tar.gz:
   size: 329246
   object_id: 7fb6ac51-be9e-4889-4a2f-68d91b12d6a5
@@ -66,6 +70,10 @@ blobxfer/libffi-3.2.1.tar.gz:
   size: 940837
   object_id: 5aa1d6b7-d5e2-40e1-72a4-cd98638714ca
   sha: 280c265b789e041c02e5c97815793dfc283fb1e6
+blobxfer/libffi-3.4.4.tar.gz:
+  size: 1362394
+  object_id: 01d1ea1d-68d1-4d08-7884-fd3c3cf2bfd5
+  sha: sha256:d66c56ad259a82cf2a9dfc408b32bf5da52371500b84745f7fb8b645712df676
 blobxfer/pycparser-2.18.tar.gz:
   size: 245897
   object_id: 2d837d9b-dfdc-4542-67c8-041f7954ca32
@@ -102,6 +110,10 @@ pkg-config/pkg-config-0.29.2.tar.gz:
   size: 2016830
   object_id: 0e026ffc-8f7a-4e51-4b8e-1e30099469d0
   sha: 76e501663b29cb7580245720edfb6106164fad2b
+pkg-config/pkg-config.1.9.5.tar.gz:
+  size: 117406
+  object_id: c17ee1d8-5b27-4c8b-47dc-6462bd7c4d40
+  sha: sha256:3fd0ace7d4398d75f0c566759f9beb4f8b3984fee7ed9804d41c52b193d9745a
 python/Python-3.6.2.tgz:
   size: 22580749
   object_id: 8a08d759-e895-4632-70a4-e8cbce179223

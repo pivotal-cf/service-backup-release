@@ -13,4 +13,4 @@ dependencies:
 files:
   - blobxfer/*
   - blobxfer/wrapper.py
-  - pkg-config/pkg-config-0.29.2.tar.gz
+  - pkg-config/pkg-config-1.9.5.tar.gz
