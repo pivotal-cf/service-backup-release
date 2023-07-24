@@ -110,9 +110,9 @@ pkg-config/pkg-config-0.29.2.tar.gz:
   size: 2016830
   object_id: 0e026ffc-8f7a-4e51-4b8e-1e30099469d0
   sha: 76e501663b29cb7580245720edfb6106164fad2b
-pkg-config/pkg-config.1.9.5.tar.gz:
+pkg-config/pkg-config-1.9.5.tar.gz:
   size: 117406
-  object_id: c17ee1d8-5b27-4c8b-47dc-6462bd7c4d40
+  object_id: 00a561c5-2cee-44a5-473c-a5955935a530
   sha: sha256:3fd0ace7d4398d75f0c566759f9beb4f8b3984fee7ed9804d41c52b193d9745a
 python/Python-3.6.2.tgz:
   size: 22580749
