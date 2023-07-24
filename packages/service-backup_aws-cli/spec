@@ -11,4 +11,4 @@ dependencies:
   - service-backup_python
 
 files:
-  - aws-cli/awscli-bundle-1.29.9.zip
+  - aws-cli/awscli-bundle-2.13.3.zip

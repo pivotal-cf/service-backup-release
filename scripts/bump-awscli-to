@@ -6,9 +6,9 @@ set -e
 
 RELEASE_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 
-AWSCLI_VERSION="${1:?"You need to specify a version, i.e. $0 1.16.189"}"
+AWSCLI_VERSION="2.13.3"
 
-curl --silent --progress-bar "https://s3.amazonaws.com/aws-cli/awscli-bundle-$AWSCLI_VERSION.zip" -o "$TMPDIR/awscli-bundle-$AWSCLI_VERSION.zip"
+curl --silent --progress-bar "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "$TMPDIR/awscli-bundle-$AWSCLI_VERSION.zip"
 
 bosh add-blob "$TMPDIR/awscli-bundle-$AWSCLI_VERSION.zip" "aws-cli/awscli-bundle-$AWSCLI_VERSION.zip"
 bosh upload-blobs
@@ -25,7 +25,7 @@ set -e
 : "\${PYTHON:=/var/vcap/packages/service-backup_python/bin/python3}"
 
 unzip "aws-cli/awscli-bundle-$AWSCLI_VERSION.zip"
-"\$PYTHON" ./awscli-bundle/install -i "\$BOSH_INSTALL_TARGET"
+./aws/install -i "\$BOSH_INSTALL_TARGET"
 EOF
 
 chmod +x "$RELEASE_DIR/packages/service-backup_aws-cli/packaging"

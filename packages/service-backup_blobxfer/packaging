@@ -28,8 +28,8 @@ export PKG_CONFIG=${BOSH_INSTALL_TARGET}/bin/pkg-config
 PIP_LOCATION=/var/vcap/packages/service-backup_python/bin/pip
 export PKG_CONFIG_PATH=${BOSH_INSTALL_TARGET}/lib/pkgconfig:$PKG_CONFIG_PATH
 
-mkdir -p $BOSH_INSTALL_TARGET/lib/python3.6/site-packages
-export PYTHONPATH=$BOSH_INSTALL_TARGET/lib/python3.6/site-packages:$PYTHONPATH
+mkdir -p $BOSH_INSTALL_TARGET/lib/python3.11/site-packages
+export PYTHONPATH=$BOSH_INSTALL_TARGET/lib/python3.11/site-packages:$PYTHONPATH
 
 pushd blobxfer
   $PIP_LOCATION install --prefix=${BOSH_INSTALL_TARGET} --no-index --find-links=. blobxfer-1.11.0.tar.gz

@@ -4,9 +4,12 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 # Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
-set -e
+set -ex
 
 : "${PYTHON:=/var/vcap/packages/service-backup_python/bin/python3}"
+echo "$BOSH_INSTALL_TARGET"
 
-unzip "aws-cli/awscli-bundle-1.29.9.zip"
-"$PYTHON" ./awscli-bundle/install -i "$BOSH_INSTALL_TARGET"
+unzip "aws-cli/awscli-bundle-2.13.3.zip"
+./aws/install -i "$BOSH_INSTALL_TARGET"
+
+$(which aws) --version

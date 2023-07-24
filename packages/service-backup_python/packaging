@@ -19,8 +19,8 @@ echo "Extracting pip..."
 tar xzf python/pip-21.2.3.tar.gz
 
 echo "Setting the PYTHONPATH with pip site packages..."
-mkdir -p $BOSH_INSTALL_TARGET/lib/python3.9/site-packages
-export PYTHONPATH=$BOSH_INSTALL_TARGET/lib/python3.9/site-packages:$PYTHONPATH
+mkdir -p $BOSH_INSTALL_TARGET/lib/python3.11/site-packages
+export PYTHONPATH=$BOSH_INSTALL_TARGET/lib/python3.11/site-packages:$PYTHONPATH
 
 echo "Installing pip..."
 pushd pip-21.2.3

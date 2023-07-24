@@ -1,7 +1,7 @@
-aws-cli/awscli-bundle-1.29.9.zip:
-  size: 21221713
-  object_id: 5c9fd7a9-2aa3-42a0-58a1-3a38b7ee8012
-  sha: sha256:d53fe89594e6883f90c1421a094d10657c6bf6b00ef797d376f6ef53ab2649d7
+aws-cli/awscli-bundle-2.13.3.zip:
+  size: 58117850
+  object_id: bc96aa96-9a4b-483b-58a4-1756112c93ee
+  sha: sha256:25a81479d3a00c7875a98a7fe341d4c924d030f04c042fa6deebe3e499fa0d1d
 blobxfer/asn1crypto-0.22.0.tar.gz:
   size: 84508
   object_id: 27cbba76-d420-4906-43f7-1a4665263171
@@ -26,10 +26,6 @@ blobxfer/bitstring-3.1.5.zip:
   size: 624428
   object_id: b735893e-caca-4274-4cda-afe628195a8f
   sha: 96ffe09e9788a22a3d75ad4a629d24bfc70bdac3
-blobxfer/blobxfer-1.0.0.tar.gz:
-  size: 147438
-  object_id: 30b65134-1fb1-4f9e-7999-3a25ecb0ed01
-  sha: 06027e6589ba3b61acb4bf888175eb65931f34af
 blobxfer/blobxfer-1.11.0.tar.gz:
   size: 166060
   object_id: 56c22507-29f1-4df4-7865-49fbf77a06b5
@@ -106,18 +102,10 @@ pkg-config/pkg-config-0.29.2.tar.gz:
   size: 2016830
   object_id: 0e026ffc-8f7a-4e51-4b8e-1e30099469d0
   sha: 76e501663b29cb7580245720edfb6106164fad2b
-python/Python-3.6.2.tgz:
-  size: 22580749
-  object_id: 8a08d759-e895-4632-70a4-e8cbce179223
-  sha: b157ed490a453387874b354b743d1ae656680403
 python/Python-3.11.4.tgz:
   size: 26526163
-  object_id: b3ded982-eeee-4f6f-50dd-84badf0f5c90
+  object_id: c4ce5430-af2a-40c9-7200-c883dd27b4fd
   sha: sha256:85c37a265e5c9dd9f75b35f954e31fbfc10383162417285e30ad25cc073a0d63
-python/pip-9.0.1.tar.gz:
-  size: 6109437
-  object_id: 8f39a555-5b4f-4664-6659-21cea98e304e
-  sha: 39b5840f6a9e6888d56a78beb447a064aeaf1592
 python/pip-21.2.3.tar.gz:
   size: 1572274
   object_id: be28e377-dda6-4213-5256-89eb90104992
