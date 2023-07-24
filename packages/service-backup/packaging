@@ -13,8 +13,6 @@ source /var/vcap/packages/golang-1-linux/bosh/compile.env
 
 export GOBIN="${BOSH_INSTALL_TARGET}/bin"
 
-go version
-
 pushd github.com/pivotal-cf/service-backup
     go install
 popd
