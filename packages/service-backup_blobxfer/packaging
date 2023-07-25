@@ -6,24 +6,24 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 # Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
-set -e
+set -ex
 
 cp -r /var/vcap/packages/service-backup_python/* ${BOSH_INSTALL_TARGET}
 
-tar xvf blobxfer/libffi-3.2.1.tar.gz
-pushd libffi-3.2.1
+tar xvf blobxfer/libffi-3.4.4.tar.gz
+pushd libffi-3.4.4
   ./configure --prefix=${BOSH_INSTALL_TARGET}
   make
   make install
 popd
 
-tar xvf pkg-config/pkg-config-0.29.2.tar.gz
-pushd pkg-config-0.29.2
-  ./configure --prefix=${BOSH_INSTALL_TARGET} --with-internal-glib
-  make
-  make install
-popd
-export PKG_CONFIG=${BOSH_INSTALL_TARGET}/bin/pkg-config
+#tar xvf pkg-config/pkg-config-0.29.2.tar.gz
+#pushd pkg-config-0.29.2
+#  ./configure --prefix=${BOSH_INSTALL_TARGET} --with-internal-glib
+#  make
+#  make install
+#popd
+#export PKG_CONFIG=${BOSH_INSTALL_TARGET}/bin/pkg-config
 
 PIP_LOCATION=/var/vcap/packages/service-backup_python/bin/pip
 export PKG_CONFIG_PATH=${BOSH_INSTALL_TARGET}/lib/pkgconfig:$PKG_CONFIG_PATH
@@ -32,7 +32,10 @@ mkdir -p $BOSH_INSTALL_TARGET/lib/python3.11/site-packages
 export PYTHONPATH=$BOSH_INSTALL_TARGET/lib/python3.11/site-packages:$PYTHONPATH
 
 pushd blobxfer
-  $PIP_LOCATION install --prefix=${BOSH_INSTALL_TARGET} --no-index --find-links=. blobxfer-1.11.0.tar.gz
+  $PIP_LOCATION install --no-index --find-links=. setuptools-68.0.0.tar.gz
+  $PIP_LOCATION install --no-index --find-links=. wheel-0.41.0.tar.gz
+  $PIP_LOCATION install --no-index --find-links=. setuptools-rust-1.6.0.tar.gz
+  $PIP_LOCATION install --prefix=${BOSH_INSTALL_TARGET} --no-build-isolation --no-index --find-links=. blobxfer-1.11.0.tar.gz
 popd
 
 cp blobxfer/wrapper.py ${BOSH_INSTALL_TARGET}/bin/blobxfer

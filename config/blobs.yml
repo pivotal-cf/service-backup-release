@@ -10,22 +10,22 @@ blobxfer/azure-common-1.1.8.zip:
   size: 16849
   object_id: 22e4842e-6b21-4f28-5e2f-700d00cefe9a
   sha: 0b8025e5acba3a79bfd494f4dd7d079abfe09cc9
-blobxfer/azure-storage-blob-0.37.1.tar.gz:
-  size: 69898
-  object_id: a1ccae34-8306-4488-7e90-94478fd3a0b4
-  sha: 8ab0d8787d33c299dd3a72074a959b2aebe742e4
+blobxfer/azure-storage-blob-2.1.0.tar.gz:
+  size: 83156
+  object_id: d7c8713b-0708-4bd6-7382-859aed9a1245
+  sha: sha256:b90323aad60f207f9f90a0c4cf94c10acc313c20b39403398dfba51f25f7b454
 blobxfer/azure-storage-common-0.37.1.tar.gz:
   size: 40939
   object_id: 8e32e789-a85e-4554-6b6d-87129226e478
   sha: 8970c249a1b1bbc6071807343fafaea79db831e0
-blobxfer/azure-storage-file-0.37.0.tar.gz:
-  size: 34040
-  object_id: 990b9639-7fed-41f5-772e-63c95d22c5c3
-  sha: 2cca46349add9998de53ddc9e4fa62852fd57a49
-blobxfer/bitstring-3.1.5.zip:
-  size: 624428
-  object_id: b735893e-caca-4274-4cda-afe628195a8f
-  sha: 96ffe09e9788a22a3d75ad4a629d24bfc70bdac3
+blobxfer/azure-storage-file-2.1.0.tar.gz:
+  size: 36191
+  object_id: 4cf63af5-65a0-4bde-5e84-070e381f6221
+  sha: sha256:3559b9c7ab13450c66ea833eb82c28233bee24f1bd8ca19aa7d27f8c23d5bc53
+blobxfer/bitstring-3.1.9.tar.gz:
+  size: 198509
+  object_id: 6c6dabcb-4725-4a44-6141-fd3beec6ae5d
+  sha: sha256:a5848a3f63111785224dca8bb4c0a75b62ecdef56a042c8d6be74b16f7e860e7
 blobxfer/blobxfer-1.11.0.tar.gz:
   size: 166060
   object_id: 56c22507-29f1-4df4-7865-49fbf77a06b5
@@ -42,14 +42,18 @@ blobxfer/chardet-3.0.4.tar.gz:
   size: 1868453
   object_id: 8b4965bb-e3fd-41f6-6772-f8f4a6237fdb
   sha: 4766fb07e700945a7085d073257f1f320d037ce8
-blobxfer/click-6.7.tar.gz:
-  size: 279019
-  object_id: 0282e131-efe6-43e2-55ee-ccdb97849105
-  sha: c16e7cb561a40c385ae8d1a50528e549cc1d8e94
-blobxfer/cryptography-2.1.4.tar.gz:
-  size: 441557
-  object_id: 42d114f8-d8e0-4c62-67eb-0decf87b4a21
-  sha: 0c4d8104c78e6e3e94ca8bdb1d99a365f29673e7
+blobxfer/click-8.1.6.tar.gz:
+  size: 336051
+  object_id: 1d15f837-84f8-4929-6054-363bae535a5c
+  sha: sha256:48ee849951919527a045bfe3bf7baa8a959c423134e1a5b98c05c20ba75a1cbd
+blobxfer/cryptography-41.0.2.tar.gz:
+  size: 630080
+  object_id: 34a08790-6317-468f-7425-5814ffb1e10e
+  sha: sha256:7d230bf856164de164ecb615ccc14c7fc6de6906ddd5b491f3af90d3514c925c
+blobxfer/flit_core-3.9.0.tar.gz:
+  size: 41917
+  object_id: b9e13575-b644-404a-4e3d-c3637af2228b
+  sha: sha256:72ad266176c4a3fcfab5f2930d76896059851240570ce9a98733b658cb786eba
 blobxfer/future-0.16.0.tar.gz:
   size: 824484
   object_id: 1027f24b-41ff-4641-6b90-e8d83a0c23a9
@@ -66,26 +70,38 @@ blobxfer/libffi-3.2.1.tar.gz:
   size: 940837
   object_id: 5aa1d6b7-d5e2-40e1-72a4-cd98638714ca
   sha: 280c265b789e041c02e5c97815793dfc283fb1e6
+blobxfer/libffi-3.4.4.tar.gz:
+  size: 1362394
+  object_id: cf28fa4a-b495-4ddc-6c26-7e569ec66039
+  sha: sha256:d66c56ad259a82cf2a9dfc408b32bf5da52371500b84745f7fb8b645712df676
 blobxfer/pycparser-2.18.tar.gz:
   size: 245897
   object_id: 2d837d9b-dfdc-4542-67c8-041f7954ca32
   sha: 1c75af69ae6273b1f1f531744f87d060965ed85d
-blobxfer/python-dateutil-2.6.1.tar.gz:
-  size: 241428
-  object_id: 2926fe62-6243-4880-4203-ccac771b341c
-  sha: db2ace298dee7e47fd720ed03eb790885347bf4e
-blobxfer/requests-2.18.4.tar.gz:
-  size: 126224
-  object_id: 10e724ea-5b95-45ff-4f12-a9f2ecebb3d1
-  sha: f5e1dbba5a12ff2df063333fd2bf071e24659b63
+blobxfer/python-dateutil-2.8.2.tar.gz:
+  size: 357324
+  object_id: d51db1ec-7bbb-4633-44fd-3bb5dcc24ba7
+  sha: sha256:0123cacc1627ae19ddf3c27a5de5bd67ee4586fbdd6440d9748f8abb483d3e86
+blobxfer/requests-2.31.0.tar.gz:
+  size: 110794
+  object_id: b716e7bd-f653-490f-6187-172f7f7396bc
+  sha: sha256:942c5a758f98d790eaed1a29cb6eefc7ffb0d1cf7af05c3d2791656dbd6ad1e1
 blobxfer/ruamel.ordereddict-0.4.13.tar.gzz:
   size: 57711
   object_id: a601e191-5fb4-49d9-5495-fb8468865ac9
   sha: d1f3187f0df90522e5bcd5235be3aa75390cc663
-blobxfer/ruamel.yaml-0.15.34.tar.gz:
-  size: 260561
-  object_id: 8bd35a20-40ad-4e8e-65bb-2776130d74e7
-  sha: 2108aa705128d088bb739f794cd3c5f7497a8b19
+blobxfer/ruamel.yaml-0.17.32.tar.gz:
+  size: 134455
+  object_id: 65b4344b-4bf2-4dd6-436c-2e9002ff75be
+  sha: sha256:ec939063761914e14542972a5cba6d33c23b0859ab6342f61cf070cfc600efc2
+blobxfer/setuptools-68.0.0.tar.gz:
+  size: 2194111
+  object_id: 0ef2ce60-6dab-4c23-6175-716376a39478
+  sha: sha256:baf1fdb41c6da4cd2eae722e135500da913332ab3f2f5c7d33af9b492acb5235
+blobxfer/setuptools-rust-1.6.0.tar.gz:
+  size: 296421
+  object_id: 95d6923b-1c8c-48bc-5f71-e8d26d7047db
+  sha: sha256:c86e734deac330597998bfbc08da45187e6b27837e23bd91eadb320732392262
 blobxfer/six-1.11.0.tar.gz:
   size: 29860
   object_id: 7737f486-2987-4fde-7777-9f8296eb44d3
@@ -94,6 +110,10 @@ blobxfer/urllib3-1.22.tar.gz:
   size: 226083
   object_id: 3be8363d-60d9-4c0f-4912-5d82c238b12f
   sha: 02c623c3bdceda4ef5bffdafdda472d2d9e34ef1
+blobxfer/wheel-0.41.0.tar.gz:
+  size: 96943
+  object_id: b832fa03-1bf2-4bf0-6c4d-5f30473fac6e
+  sha: sha256:55a0f0a5a84869bce5ba775abfd9c462e3a6b1b7b7ec69d72c0b83d673a5114d
 go/go1.10.linux-amd64.tar.gz:
   size: 119905205
   object_id: a736e772-073c-4ab0-7d2f-60ac540a91ce
