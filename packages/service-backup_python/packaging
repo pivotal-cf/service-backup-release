@@ -13,6 +13,7 @@ pushd $name
   ./configure --prefix=${BOSH_INSTALL_TARGET}
   make
   make install
+  ln -s ${BOSH_INSTALL_TARGET}/bin/python3 ${BOSH_INSTALL_TARGET}/bin/python
 popd
 
 echo "Extracting pip..."

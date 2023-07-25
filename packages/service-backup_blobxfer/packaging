@@ -32,7 +32,8 @@ mkdir -p $BOSH_INSTALL_TARGET/lib/python3.11/site-packages
 export PYTHONPATH=$BOSH_INSTALL_TARGET/lib/python3.11/site-packages:$PYTHONPATH
 
 pushd blobxfer
-  $PIP_LOCATION install --prefix=${BOSH_INSTALL_TARGET} --no-index --find-links=. blobxfer-1.11.0.tar.gz
+  $PIP_LOCATION install --prefix=${BOSH_INSTALL_TARGET} wheel
+  $PIP_LOCATION install --prefix=${BOSH_INSTALL_TARGET} --no-build-isolation --no-index --find-links=. blobxfer-1.0.0.tar.gz
 popd
 
 cp blobxfer/wrapper.py ${BOSH_INSTALL_TARGET}/bin/blobxfer
