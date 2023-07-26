@@ -92,7 +92,7 @@ properties:
     description: Optional field to reject subsequent backup requests if a backup is already in progress. Defaults to false.
 
   service-backup.aws_cli_path:
-    default: /var/vcap/packages/service-backup_aws-cli/bin/aws
+    default: /var/vcap/packages/service-backup_aws-cli/v2/current/bin/aws
     description: Path the to aws cli
 
   service-backup.azure_cli_path:
