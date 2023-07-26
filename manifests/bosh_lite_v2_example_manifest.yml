@@ -48,8 +48,8 @@ instance_groups:
             secret_access_key: AWS_SECRET_ACCESS_KEY
             bucket_name: BUCKET_NAME
             bucket_path: BUCKET_PATH
-            endpoint_url: https://s3.amazonaws.com # optional
-            region: eu-west-1 # optional
+            endpoint_url: https://s3-us-west-2.amazonaws.com # optional
+            region: us-west-2 # optional
         - type: azure
           name: DESTINATION_NAME # optional
           config:
