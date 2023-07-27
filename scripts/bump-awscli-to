@@ -22,10 +22,10 @@ cat > "$RELEASE_DIR/packages/service-backup_aws-cli/packaging" << EOF
 
 set -e
 
-mkdir -p "$BOSH_INSTALL_TARGET"/bin
-mkdir -p "$BOSH_INSTALL_TARGET"/aws-cli
+mkdir -p "\$BOSH_INSTALL_TARGET"/bin
+mkdir -p "\$BOSH_INSTALL_TARGET"/aws-cli
 unzip "aws-cli/awscli-bundle-$AWSCLI_VERSION.zip"
-./aws/install --bin-dir "$BOSH_INSTALL_TARGET"/bin --install-dir "$BOSH_INSTALL_TARGET"/aws-cli
+./aws/install --bin-dir "\$BOSH_INSTALL_TARGET"/bin --install-dir "\$BOSH_INSTALL_TARGET"/aws-cli
 EOF
 
 chmod +x "$RELEASE_DIR/packages/service-backup_aws-cli/packaging"
