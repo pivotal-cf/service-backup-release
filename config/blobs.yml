@@ -1,7 +1,7 @@
-aws-cli/awscli-bundle-2.13.3.zip:
-  size: 58117850
-  object_id: 331ed99a-9eea-4b8f-589d-f7f6704ce5c7
-  sha: sha256:25a81479d3a00c7875a98a7fe341d4c924d030f04c042fa6deebe3e499fa0d1d
+aws-cli/awscli-bundle-2.13.4.zip:
+  size: 58139966
+  object_id: cccf105b-d16f-484a-5f4c-b5ff0505793b
+  sha: sha256:57efa6209a5a160b43a119953047b0f202d7eff47b257d8526e080425b6e531f
 go/go1.10.linux-amd64.tar.gz:
   size: 119905205
   object_id: a736e772-073c-4ab0-7d2f-60ac540a91ce

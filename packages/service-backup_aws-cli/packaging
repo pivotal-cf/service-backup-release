@@ -6,6 +6,7 @@
 
 set -e
 
-
-unzip "aws-cli/awscli-bundle-2.13.3.zip"
-./aws/install -i "$BOSH_INSTALL_TARGET"
+mkdir -p ""/bin
+mkdir -p ""/aws-cli
+unzip "aws-cli/awscli-bundle-2.13.4.zip"
+./aws/install --bin-dir ""/bin --install-dir ""/aws-cli

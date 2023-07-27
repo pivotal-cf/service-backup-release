@@ -6,7 +6,7 @@ set -e
 
 RELEASE_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 
-AWSCLI_VERSION="2.13.3"
+AWSCLI_VERSION="2.13.4"
 
 curl --silent --progress-bar "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "$TMPDIR/awscli-bundle-$AWSCLI_VERSION.zip"
 
@@ -22,10 +22,10 @@ cat > "$RELEASE_DIR/packages/service-backup_aws-cli/packaging" << EOF
 
 set -e
 
-: "\${PYTHON:=/var/vcap/packages/service-backup_python/bin/python3}"
-
+mkdir -p "$BOSH_INSTALL_TARGET"/bin
+mkdir -p "$BOSH_INSTALL_TARGET"/aws-cli
 unzip "aws-cli/awscli-bundle-$AWSCLI_VERSION.zip"
-./aws/install -i "\$BOSH_INSTALL_TARGET"
+./aws/install --bin-dir "$BOSH_INSTALL_TARGET"/bin --install-dir "$BOSH_INSTALL_TARGET"/aws-cli
 EOF
 
 chmod +x "$RELEASE_DIR/packages/service-backup_aws-cli/packaging"
@@ -40,8 +40,7 @@ cat > "$RELEASE_DIR/packages/service-backup_aws-cli/spec" << EOF
 ---
 name: service-backup_aws-cli
 
-dependencies:
-  - service-backup_python
+dependencies: []
 
 files:
   - aws-cli/awscli-bundle-$AWSCLI_VERSION.zip
