@@ -6,7 +6,11 @@
 
 set -e
 
-mkdir -p "$BOSH_INSTALL_TARGET"/bin
-mkdir -p "$BOSH_INSTALL_TARGET"/aws-cli
-unzip "aws-cli/awscli-bundle-2.13.4.zip"
-./aws/install --bin-dir "$BOSH_INSTALL_TARGET"/bin --install-dir "$BOSH_INSTALL_TARGET"/aws-cli
+tar xvf "aws-cli/aws-cli-2.13.5.tar.gz"
+
+pushd aws-cli-2.13.5
+  PYTHON=/var/vcap/packages/service-backup_python/bin/python3 ./configure --with-download-deps --prefix=$BOSH_INSTALL_TARGET
+  make
+  make install
+  $BOSH_INSTALL_TARGET/bin/aws --version
+popd

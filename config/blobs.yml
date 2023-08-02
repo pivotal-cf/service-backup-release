@@ -1,3 +1,7 @@
+aws-cli/aws-cli-2.13.5.tar.gz:
+  size: 13711766
+  object_id: fe628b10-b8f5-4648-5acb-449f908e244f
+  sha: sha256:be48763e396d3b343098663bcf95aa8031d7e458b655e46a85537a09b30e6e2d
 aws-cli/awscli-bundle-2.13.4.zip:
   size: 58139966
   object_id: a4e9743d-e669-4960-7fc9-67078c96afa9
@@ -6,6 +10,10 @@ go/go1.10.linux-amd64.tar.gz:
   size: 119905205
   object_id: a736e772-073c-4ab0-7d2f-60ac540a91ce
   sha: 693e2dfd99ef2d608b41c450efd9d277bf2a7f2f
+libffi/libffi-3.4.4.tar.gz:
+  size: 1362394
+  object_id: 893443d4-01f7-41d1-6990-178fecd10a3a
+  sha: sha256:d66c56ad259a82cf2a9dfc408b32bf5da52371500b84745f7fb8b645712df676
 python/Python-3.11.4.tgz:
   size: 26526163
   object_id: f02a6bb1-0cbc-46cb-46d3-32b64c366655
@@ -14,3 +22,7 @@ python/pip-9.0.1.tar.gz:
   size: 6109437
   object_id: 8f39a555-5b4f-4664-6659-21cea98e304e
   sha: 39b5840f6a9e6888d56a78beb447a064aeaf1592
+sqlite/sqlite-autoconf-3420000.tar.gz:
+  size: 3148813
+  object_id: 5de2557d-1b88-45b3-633e-872fa8070ac9
+  sha: sha256:7abcfd161c6e2742ca5c6c0895d1f853c940f203304a0b49da4e1eca5d088ca6
