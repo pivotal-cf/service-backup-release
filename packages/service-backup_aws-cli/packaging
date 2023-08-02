@@ -12,5 +12,4 @@ pushd aws-cli-2.13.5
   PYTHON=/var/vcap/packages/service-backup_python/bin/python3 ./configure --with-download-deps --prefix=$BOSH_INSTALL_TARGET
   make
   make install
-  $BOSH_INSTALL_TARGET/bin/aws --version
 popd
