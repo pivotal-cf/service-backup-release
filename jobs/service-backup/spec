@@ -21,7 +21,6 @@ templates:
 packages:
 - service-backup
 - service-backup_utils
-- service-backup_aws-cli
 - service-backup_python
 
 properties:
@@ -93,7 +92,7 @@ properties:
 
   service-backup.aws_cli_path:
     default: /var/vcap/packages/service-backup_aws-cli/bin/aws
-    description: Path the to aws cli
+    description: Path the to aws cli (no longer used)
 
   service-backup.azure_cli_path:
     default: /var/vcap/packages/service-backup_blobxfer/bin/blobxfer
