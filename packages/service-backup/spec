@@ -11,4 +11,4 @@ dependencies:
 - golang-1-linux
 
 files:
-  - ../service-backup/**/*
+  - /home/vmware/Abhishek/service-backup/**/*

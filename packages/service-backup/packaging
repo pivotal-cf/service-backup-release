@@ -13,10 +13,10 @@ source /var/vcap/packages/golang-1-linux/bosh/compile.env
 
 export GOBIN="${BOSH_INSTALL_TARGET}/bin"
 
-pushd ../service-backup
+pushd /home/vmware/Abhishek/service-backup
     go install
 popd
 
-pushd ../service-backup/cmd/manual-backup
+pushd /home/vmware/Abhishek/service-backup
     go install
 popd
