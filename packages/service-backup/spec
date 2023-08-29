@@ -11,4 +11,4 @@ dependencies:
 - golang-1-linux
 
 files:
-  - github.com/pivotal-cf/service-backup/**/*
+  - ../service-backup/**/*
