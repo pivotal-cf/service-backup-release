@@ -1,19 +1,19 @@
-go/go1.10.linux-amd64.tar.gz:
-  size: 119905205
-  object_id: a736e772-073c-4ab0-7d2f-60ac540a91ce
-  sha: 693e2dfd99ef2d608b41c450efd9d277bf2a7f2f
+go/go1.21.3.linux-amd64.tar.gz:
+  size: 66641773
+  object_id: 560bf6f1-70b3-446a-7dff-d13767852da6
+  sha: sha256:1241381b2843fae5a9707eec1f8fb2ef94d827990582c7c7c32f5bdfbfd420c8
 libffi/libffi-3.4.4.tar.gz:
   size: 1362394
   object_id: 893443d4-01f7-41d1-6990-178fecd10a3a
   sha: sha256:d66c56ad259a82cf2a9dfc408b32bf5da52371500b84745f7fb8b645712df676
-python/Python-3.11.4.tgz:
-  size: 26526163
-  object_id: f02a6bb1-0cbc-46cb-46d3-32b64c366655
-  sha: sha256:85c37a265e5c9dd9f75b35f954e31fbfc10383162417285e30ad25cc073a0d63
-python/pip-9.0.1.tar.gz:
-  size: 6109437
-  object_id: 8f39a555-5b4f-4664-6659-21cea98e304e
-  sha: 39b5840f6a9e6888d56a78beb447a064aeaf1592
+python/Python-3.12.0.tgz:
+  size: 27195214
+  object_id: ec7010fb-117b-4c29-4e26-cce70700b727
+  sha: sha256:51412956d24a1ef7c97f1cb5f70e185c13e3de1f50d131c0aac6338080687afb
+python/pip-23.3.tar.gz:
+  size: 2131482
+  object_id: ef5ef10e-042e-4f34-7128-495793ada08d
+  sha: sha256:bb7d4f69f488432e4e96394612f43ab43dd478d073ef7422604a570f7157561e
 sqlite/sqlite-autoconf-3420000.tar.gz:
   size: 3148813
   object_id: 5de2557d-1b88-45b3-633e-872fa8070ac9
