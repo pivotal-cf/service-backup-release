@@ -29,6 +29,8 @@ builds:
     version: 18.4.5
   73d07949-03a7-4338-77a3-2c6c3af9a6c6:
     version: 18.4.3-beta
+  83431034-d825-4b1b-5c59-ee2e2def1872:
+    version: 18.4.8
   8afa0ffd-26aa-42f5-6cad-e8bb6e619baa:
     version: 18.1.11
   92580a36-7a7d-464d-4398-732e11244d55:
