@@ -20,7 +20,7 @@ packages:
 - name: service-backup
   version: 0fc1749e97d398de0adb5e22b1d453c9ab1bde18403208905d3fecc9036a9895
   fingerprint: 0fc1749e97d398de0adb5e22b1d453c9ab1bde18403208905d3fecc9036a9895
-  sha1: sha256:0bfabd338c540c63012a31ef3047af9d2eec159768bcd99ccd60e0f662561ac8
+  sha1: sha256:51a1454f8dae8e035a28659c0d7f98649ac5f37364f28ba34a78494c1d6026cd
   dependencies:
   - golang-1-linux
 - name: service-backup_python
