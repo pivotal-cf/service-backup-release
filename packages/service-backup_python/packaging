@@ -36,18 +36,12 @@ pushd $name
   ln -s ${BOSH_INSTALL_TARGET}/bin/python3 ${BOSH_INSTALL_TARGET}/bin/python
 popd
 
-echo "Extracting pip..."
-tar xzf python/pip-23.3.tar.gz
-
 echo "Setting the PYTHONPATH with pip site packages..."
 mkdir -p $BOSH_INSTALL_TARGET/lib/python3.12/site-packages
 export PYTHONPATH=$BOSH_INSTALL_TARGET/lib/python3.12/site-packages:$PYTHONPATH
 
 ${BOSH_INSTALL_TARGET}/bin/python3.12 -m pip install --upgrade pip
-
-${BOSH_INSTALL_TARGET}/bin/pip3 install -U pip setuptools
-
-echo "Installing pip..."
-pushd pip-23.3
-  ${BOSH_INSTALL_TARGET}/bin/python3 setup.py install --prefix=$BOSH_INSTALL_TARGET
-popd
+${BOSH_INSTALL_TARGET}/bin/python3.12 -m ensurepip --upgrade --default-pip
+rm -rf ${BOSH_INSTALL_TARGET}/lib/python3.12/ensurepip
+${BOSH_INSTALL_TARGET}/bin/pip3.12 install -U pip setuptools
+${BOSH_INSTALL_TARGET}/bin/pip3.12 install --upgrade urllib3

@@ -8,6 +8,5 @@
 name: service-backup_python
 files:
   - python/Python-3.12.0.tgz
-  - python/pip-23.3.tar.gz
   - sqlite/sqlite-autoconf-3420000.tar.gz
   - libffi/libffi-3.4.4.tar.gz
