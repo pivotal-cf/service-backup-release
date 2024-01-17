@@ -7,6 +7,6 @@
 ---
 name: service-backup_python
 files:
-  - python/Python-3.12.0.tgz
-  - sqlite/sqlite-autoconf-3420000.tar.gz
+  - python/Python-3.12.1.tgz
+  - sqlite/sqlite-autoconf-3450000.tar.gz
   - libffi/libffi-3.4.4.tar.gz
