@@ -1,0 +1,39 @@
+name: service-backup
+version: 3.4.0
+commit_hash: 3b03c77
+uncommitted_changes: false
+jobs:
+- name: service-backup
+  version: 92494e27be585c5bccaca9085296c0d9015c6e2bda0ce959c69bc91b442147ee
+  fingerprint: 92494e27be585c5bccaca9085296c0d9015c6e2bda0ce959c69bc91b442147ee
+  sha1: sha256:a59f306d64a9d45d6d422de3acc7d807d50938ad4e461a18f71cb830402d33d9
+  packages:
+  - service-backup
+  - service-backup_utils
+  - service-backup_python
+packages:
+- name: golang-1-linux
+  version: 6aad26c0e11f1c08fe8408af93d386eed66fd4c29170b8d9a034677eaa4f61d9
+  fingerprint: 6aad26c0e11f1c08fe8408af93d386eed66fd4c29170b8d9a034677eaa4f61d9
+  sha1: sha256:6742860369e7ce134e8ca4a037917d386ef6b0b92338a5b46114baee4d3cea19
+  dependencies: []
+- name: service-backup
+  version: a85a9df85a597fdbfd93ce74f7c9d49d41d50c8582454215e34175687e834dfb
+  fingerprint: a85a9df85a597fdbfd93ce74f7c9d49d41d50c8582454215e34175687e834dfb
+  sha1: sha256:c06b13fdb3786d22003792b3f674f7b20c88a9261637129f5945886cfad1796c
+  dependencies:
+  - golang-1-linux
+- name: service-backup_python
+  version: b7ac469a70a034a32c4475b8ec844fb8c4d32c72d0b540aa91fe9fd13698cf3d
+  fingerprint: b7ac469a70a034a32c4475b8ec844fb8c4d32c72d0b540aa91fe9fd13698cf3d
+  sha1: sha256:cba2433f1dbe89b4e9821cff6a9186bfe8b20569118d788006e0e697d8a702a7
+  dependencies: []
+- name: service-backup_utils
+  version: 9760e8bf4bda9e7b63b034a0e1381c6ffde77889f37e5559871efd65d1f27455
+  fingerprint: 9760e8bf4bda9e7b63b034a0e1381c6ffde77889f37e5559871efd65d1f27455
+  sha1: sha256:8d5e9145d0337bd495b480ac8bc48cefbd2b732839a3a91206d7321fafe37c82
+  dependencies: []
+license:
+  version: 5327c8fcea6fa89dc3c1e540dd4033845672f638e5a24191f86962a6999a9309
+  fingerprint: 5327c8fcea6fa89dc3c1e540dd4033845672f638e5a24191f86962a6999a9309
+  sha1: sha256:5fb01c33665248834d3bbb199881213760e5f2dcef9d8febc9d9dbce3324d6dd
