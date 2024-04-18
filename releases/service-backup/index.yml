@@ -1,4 +1,6 @@
 builds:
   ceaeca28-17fa-4891-77be-cfb61907817b:
     version: 3.4.1
+  fd89512f-6d5b-4ed3-4fec-10541926fb13:
+    version: 3.4.2
 format-version: "2"
