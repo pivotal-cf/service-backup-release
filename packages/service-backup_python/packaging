@@ -26,7 +26,7 @@ pushd libffi-3.4.4
   make install
 popd
 
-name=Python-3.12.1
+name=Python-3.12.4
 tar zxf python/${name}.tgz
 
 pushd $name
