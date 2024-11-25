@@ -7,6 +7,6 @@
 ---
 final_name: service-backup
 blobstore:
-  provider: s3
+  provider: gcs
   options:
-    bucket_name: service-backup-blobs
+    bucket_name: service-backup-bosh-release-blobs
