@@ -6,11 +6,11 @@
 
 set -e
 
-tar zxf sqlite/sqlite-autoconf-3460100.tar.gz
+tar zxf sqlite/sqlite-autoconf-3470100.tar.gz
 
 mkdir ${BOSH_INSTALL_TARGET}/sqlite3
 
-pushd sqlite-autoconf-3460100
+pushd sqlite-autoconf-3470100
   ./configure --prefix=${BOSH_INSTALL_TARGET}/sqlite3
   make
   make install
@@ -26,7 +26,7 @@ pushd libffi-3.4.6
   make install
 popd
 
-name=Python-3.12.6
+name=Python-3.12.7
 tar zxf python/${name}.tgz
 
 pushd $name
