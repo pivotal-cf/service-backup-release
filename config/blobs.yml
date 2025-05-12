@@ -1,12 +1,12 @@
-libffi/libffi-3.4.6.tar.gz:
-  size: 1391684
-  object_id: dbefd80e-f3ee-4437-4ace-6ded85e045e9
-  sha: sha256:b0dea9df23c863a7a50e825440f3ebffabd65df1497108e5d437747843895a4e
-python/Python-3.12.7.tgz:
-  size: 27016272
-  object_id: 03564e2a-28aa-41f5-7496-c517c061e67f
-  sha: sha256:73ac8fe780227bf371add8373c3079f42a0dc62deff8d612cd15a618082ab623
-sqlite/sqlite-autoconf-3470100.tar.gz:
-  size: 3328564
-  object_id: e6fa1194-01e8-406b-694e-08eff15b43b7
-  sha: sha256:416a6f45bf2cacd494b208fdee1beda509abda951d5f47bc4f2792126f01b452
+libffi/libffi-3.4.8.tar.gz:
+  size: 1397992
+  object_id: ff52cf8b-29e9-4272-6bb5-b2f04985e67c
+  sha: sha256:bc9842a18898bfacb0ed1252c4febcc7e78fa139fd27fdc7a3e30d9d9356119b
+python/Python-3.12.10.tgz:
+  size: 27122929
+  object_id: 54d1cc7d-df30-4934-4991-79dce697729c
+  sha: sha256:15d9c623abfd2165fe816ea1fb385d6ed8cf3c664661ab357f1782e3036a6dac
+sqlite/sqlite-autoconf-3490200.tar.gz:
+  size: 3230309
+  object_id: f6635529-d363-4f67-7cdd-0dec0dc405b4
+  sha: sha256:5c6d8697e8a32a1512a9be5ad2b2e7a891241c334f56f8b0fb4fc6051e1652e8
