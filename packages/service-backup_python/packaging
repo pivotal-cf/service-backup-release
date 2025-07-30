@@ -30,7 +30,12 @@ name=Python-3.12.11
 tar zxf python/${name}.tgz
 
 pushd $name
-  LD_LIBRARY_PATH=${BOSH_INSTALL_TARGET}/sqlite3/lib:${BOSH_INSTALL_TARGET}/libffi/lib LD_RUN_PATH=${BOSH_INSTALL_TARGET}/sqlite3/lib:${BOSH_INSTALL_TARGET}/libffi/lib ./configure  LDFLAGS="-L${BOSH_INSTALL_TARGET}/sqlite3/lib -L${BOSH_INSTALL_TARGET}/libffi/lib" CPPFLAGS="-I${BOSH_INSTALL_TARGET}/sqlite3/include -I${BOSH_INSTALL_TARGET}/libffi/include" --prefix=${BOSH_INSTALL_TARGET} --enable-loadable-sqlite-extensions
+  export LD_LIBRARY_PATH=${BOSH_INSTALL_TARGET}/sqlite3/lib:${BOSH_INSTALL_TARGET}/libffi/lib
+  export LD_RUN_PATH=${BOSH_INSTALL_TARGET}/sqlite3/lib:${BOSH_INSTALL_TARGET}/libffi/lib
+  export LDFLAGS="-L${BOSH_INSTALL_TARGET}/sqlite3/lib -L${BOSH_INSTALL_TARGET}/libffi/lib"
+  export CPPFLAGS="-I${BOSH_INSTALL_TARGET}/sqlite3/include -I${BOSH_INSTALL_TARGET}/libffi/include"
+
+  ./configure --prefix=${BOSH_INSTALL_TARGET} --enable-loadable-sqlite-extensions
   make
   make install
   ln -s ${BOSH_INSTALL_TARGET}/bin/python3 ${BOSH_INSTALL_TARGET}/bin/python
