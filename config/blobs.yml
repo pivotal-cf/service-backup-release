@@ -1,7 +1,7 @@
 libffi/libffi-3.5.1.tar.gz:
-  size: 597581
-  object_id: 03308cee-c31a-4073-6ca0-10f45430b0da
-  sha: sha256:ca180dccd8e26900a169efd6e09207eaa0a9be268010b8faec10476c9c4951d9
+  size: 1419757
+  object_id: b04ad285-a6fa-402c-5989-1636e036cab2
+  sha: sha256:f99eb68a67c7d54866b7706af245e87ba060d419a062474b456d3bc8d4abdbd1
 python/Python-3.12.11.tgz:
   size: 27126512
   object_id: e1fd6108-901f-465e-6883-f9a0ddc8fb05
