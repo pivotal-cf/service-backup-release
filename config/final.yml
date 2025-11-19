@@ -9,4 +9,4 @@ final_name: service-backup
 blobstore:
   provider: gcs
   options:
-    bucket_name: cf-redis-service-backup-bosh-release-blobs
+    bucket_name: pcf-redis-service-backup-bosh-release-blobs

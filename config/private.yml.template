@@ -1,0 +1,4 @@
+blobstore:
+  options:
+    credentials_source: static
+    json_key: 'REPLACE_WITH gcp-service-account-key'
