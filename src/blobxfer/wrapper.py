@@ -4,7 +4,7 @@
 import re
 import sys
 
-sys.path.append('/var/vcap/packages/service-backup_blobxfer/lib/python3.11/site-packages')
+sys.path.append('/var/vcap/packages/service-backup_blobxfer/lib/python3.14/site-packages')
 
 from blobxfer_cli.cli import cli
 
