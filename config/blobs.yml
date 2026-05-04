@@ -2,6 +2,18 @@ libffi/libffi-3.5.1.tar.gz:
   size: 1419757
   object_id: b04ad285-a6fa-402c-5989-1636e036cab2
   sha: sha256:f99eb68a67c7d54866b7706af245e87ba060d419a062474b456d3bc8d4abdbd1
+pip_wheels/pip-26.1-py3-none-any.whl:
+  size: 1812804
+  object_id: cab69517-dfba-48f2-7e3f-4b0b7b2c990e
+  sha: sha256:4e8486d821d814b77319acb7b9e8bf5a4ee7590a643e7cb21029f209be8573c1
+pip_wheels/setuptools-82.0.1-py3-none-any.whl:
+  size: 1006223
+  object_id: ccc43ec9-4ad1-4000-4b7f-d7890cbfa3a8
+  sha: sha256:a59e362652f08dcd477c78bb6e7bd9d80a7995bc73ce773050228a348ce2e5bb
+pip_wheels/urllib3-2.6.3-py3-none-any.whl:
+  size: 131584
+  object_id: 15ac7bf2-b611-43ce-468c-94babbb5c5a2
+  sha: sha256:bf272323e553dfb2e87d9bfd225ca7b0f467b919d7bbd355436d3fd37cb0acd4
 python/Python-3.14.2.tgz:
   size: 30601597
   object_id: 1b5ed56b-cbef-461d-56bc-1400bc01411e

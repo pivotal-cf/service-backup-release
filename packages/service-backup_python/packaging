@@ -50,5 +50,7 @@ export PYTHONPATH=$BOSH_INSTALL_TARGET/lib/python3.14/site-packages:$PYTHONPATH
 
 # Bootstrap pip if needed and upgrade it along with other packages
 ${BOSH_INSTALL_TARGET}/bin/python3.14 -m ensurepip --upgrade --default-pip
-${BOSH_INSTALL_TARGET}/bin/pip3.14 install --no-cache-dir -U pip setuptools urllib3
+${BOSH_INSTALL_TARGET}/bin/pip3.14 install --no-cache-dir --no-index \
+  --find-links=${BOSH_COMPILE_TARGET}/pip_wheels \
+  -U pip setuptools urllib3
 rm -rf ${BOSH_INSTALL_TARGET}/lib/python3.14/ensurepip
