@@ -17,6 +17,8 @@ builds:
     version: 10.2.5
   aeba6bc1-c79c-41d2-567c-56b03a8a3717:
     version: 10.2.6
+  b188e428-5e2d-42e7-641b-edb46bad5a74:
+    version: 10.2.8
   b1a8f27d-9ad2-44a7-7af5-2b9c02a70c62:
     version: 10.2.2
   d573b5be-628e-4381-7e7a-df0afd2a9f18:
