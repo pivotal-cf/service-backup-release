@@ -14,10 +14,10 @@ pip_wheels/urllib3-2.6.3-py3-none-any.whl:
   size: 131584
   object_id: 15ac7bf2-b611-43ce-468c-94babbb5c5a2
   sha: sha256:bf272323e553dfb2e87d9bfd225ca7b0f467b919d7bbd355436d3fd37cb0acd4
-python/Python-3.14.2.tgz:
-  size: 30601597
-  object_id: 1b5ed56b-cbef-461d-56bc-1400bc01411e
-  sha: sha256:c609e078adab90e2c6bacb6afafacd5eaf60cd94cf670f1e159565725fcd448d
+python/Python-3.14.5.tgz:
+  size: 31197461
+  object_id: be8c02ea-ee17-41cf-6a67-2521b4b779dc
+  sha: sha256:9c22bfe9939a6c5418fc74b289a5f1cc41859ae82ac6b163016b5844bd0a86bc
 sqlite/sqlite-autoconf-3500200.tar.gz:
   size: 3172568
   object_id: 9676673f-1f71-4200-4090-e34d560be6da
