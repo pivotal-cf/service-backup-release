@@ -26,7 +26,8 @@ RSpec.describe 'backup job config rendering' do
             "bucket_name" => "test",
             "bucket_path" => "foo/bar",
             "access_key_id" => "*4!'T#f\"J}A,~Da{)4{jz",
-            "secret_access_key" => "itsasecret"
+            "secret_access_key" => "itsasecret",
+            "force_path_style" => false
           }
         }
       ],
@@ -44,6 +45,24 @@ RSpec.describe 'backup job config rendering' do
       "exit_if_in_progress" => false,
       "service_identifier_executable" => nil
     })}
+  end
+
+  context 'when force_path_style is not set in the manifest' do
+    let(:manifest_file) { 'spec/fixtures/valid_s3.yml' }
+    subject{ YAML.load(renderer.render('jobs/service-backup/templates/backup.yml.erb')) }
+
+    it 'defaults force_path_style to false' do
+      expect(subject["destinations"][0]["config"]["force_path_style"]).to eq(false)
+    end
+  end
+
+  context 'when force_path_style is set to true in the manifest (e.g. MinIO)' do
+    let(:manifest_file) { 'spec/fixtures/valid_s3_with_force_path_style.yml' }
+    subject{ YAML.load(renderer.render('jobs/service-backup/templates/backup.yml.erb')) }
+
+    it 'passes force_path_style: true through to the rendered config unchanged' do
+      expect(subject["destinations"][0]["config"]["force_path_style"]).to eq(true)
+    end
   end
 
   context 'when the manifest contains a custom backup user' do
@@ -418,7 +437,8 @@ RSpec.describe 'backup job config rendering' do
             "bucket_name" => "test",
             "bucket_path" => "foo/bar",
             "access_key_id" => "key",
-            "secret_access_key" => "itsasecret"
+            "secret_access_key" => "itsasecret",
+            "force_path_style" => false
           }
         }
       ],
