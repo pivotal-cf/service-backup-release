@@ -66,6 +66,7 @@ def set_destination_defaults(type, destination)
     's3' => lambda {
       destination["config"]["endpoint_url"] = "" if destination["config"]["endpoint_url"].nil?
       destination["config"]["region"] = "" if destination["config"]["region"].nil?
+      destination["config"]["force_path_style"] = false if destination["config"]["force_path_style"].nil?
     },
     'azure' => lambda {},
     'gcs' => lambda {}
