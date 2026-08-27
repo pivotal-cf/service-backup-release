@@ -67,6 +67,7 @@ def set_destination_defaults(type, destination)
       destination["config"]["endpoint_url"] = "" if destination["config"]["endpoint_url"].nil?
       destination["config"]["region"] = "" if destination["config"]["region"].nil?
       destination["config"]["force_path_style"] = false if destination["config"]["force_path_style"].nil?
+      destination["config"]["checksum_algorithm"] = "" if destination["config"]["checksum_algorithm"].nil?
     },
     'azure' => lambda {},
     'gcs' => lambda {}
