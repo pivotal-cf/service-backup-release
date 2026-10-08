@@ -5,6 +5,8 @@ builds:
     version: 10.2.0
   1e888e5f-9679-4878-5178-87b2d015de30:
     version: 10.4.1
+  1fc617e0-7fb8-4a74-51da-c8b4222f1cff:
+    version: 11.1.0
   2a73b92f-fb4a-438e-4264-4e3ad0e7fd95:
     version: 10.1.1
   3316dee9-45a0-4386-7478-83b8737a1b0e:
