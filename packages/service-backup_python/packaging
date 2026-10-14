@@ -29,7 +29,7 @@ pushd libffi-3.5.1
   make install
 popd
 
-name=Python-3.14.5
+name=Python-3.15.0
 tar zxf python/${name}.tgz
 
 pushd $name
@@ -45,12 +45,12 @@ pushd $name
 popd
 
 echo "Setting the PYTHONPATH with pip site packages..."
-mkdir -p $BOSH_INSTALL_TARGET/lib/python3.14/site-packages
-export PYTHONPATH=$BOSH_INSTALL_TARGET/lib/python3.14/site-packages:$PYTHONPATH
+mkdir -p $BOSH_INSTALL_TARGET/lib/python3.15/site-packages
+export PYTHONPATH=$BOSH_INSTALL_TARGET/lib/python3.15/site-packages:$PYTHONPATH
 
 # Bootstrap pip if needed and upgrade it along with other packages
-${BOSH_INSTALL_TARGET}/bin/python3.14 -m ensurepip --upgrade --default-pip
-${BOSH_INSTALL_TARGET}/bin/pip3.14 install --no-cache-dir --no-index \
+${BOSH_INSTALL_TARGET}/bin/python3.15 -m ensurepip --upgrade --default-pip
+${BOSH_INSTALL_TARGET}/bin/pip3.15 install --no-cache-dir --no-index \
   --find-links=${BOSH_COMPILE_TARGET}/pip_wheels \
   -U pip setuptools urllib3
-rm -rf ${BOSH_INSTALL_TARGET}/lib/python3.14/ensurepip
+rm -rf ${BOSH_INSTALL_TARGET}/lib/python3.15/ensurepip
